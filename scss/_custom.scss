@@ -1,3 +1,5 @@
+
+
 //THEME COLORS
 $blue:    #0d6efd;
 $indigo:  #6610f2;
@@ -26,10 +28,19 @@ $black:    #000000;
 
 
 //PRIMARY AND SECONDARY COLORS
-$primary:       $yellow ;
-$secondary:     $black;
+$primary: #FFC107;
+$body-tertiary-bg: #f8f9fa;
+
+// _variables.scss (It's a good practice to put variables in a separate file)
+
+$primary-brand: #FFC107;
+$text-black: #000000;
+$text-white: #ffffff;
+$overlay-color: rgba(0, 0, 0, 0.4);
 
 
 
 //IMPORT BOOTSTRAP
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/remixicon/fonts/remixicon.css";
+

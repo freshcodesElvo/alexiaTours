@@ -1,0 +1,92 @@
+// hero-section.scss
+@use "../custom" as*;
+.hero-section {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  .background-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+    .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // Change this value to make it darker
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 2;
+    }
+
+  .hero-content-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 100%;
+    max-width: 1320px;
+    z-index: 3;
+    .row{
+        
+        .left{
+            padding-top: 10em;
+            @include media-breakpoint-down(sm){
+                padding-top: 5em;
+            }
+
+        }
+    }
+  }
+
+  /* Styling for the call-to-action button */
+  .btn-primary {
+    background-color: $primary-brand;
+    border-color: $primary-brand;
+    font-size: 1em;
+    display: flex;
+    width: 10em;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+   
+    &:hover { // The ampersand (&) refers to the parent selector
+      background-color: darken($primary-brand, 10%); // Sass function for a darker shade
+      border-color: darken($primary-brand, 10%);
+    }
+ 
+  
+
+  }
+
+  /* For the image slider on the right */
+  #heroCarousel {
+    width: 500px;
+    height: auto;
+    .carousel-inner{
+        .carousel-item{
+            img{
+                // width: 35em;
+                width: 100%;
+                @include media-breakpoint-down(sm){
+                    width: 60%;
+                    
+
+            }
+            }
+        }
+    }
+  }
+}

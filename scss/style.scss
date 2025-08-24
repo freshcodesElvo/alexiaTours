@@ -1,3 +1,5 @@
+
+
 @use "custom";
 
 //IMPORT COMPONENTS
@@ -8,3 +10,5 @@
 
 //IMPORT SECTIONS
 @use 'sections/navbar';
+@use 'sections/herosection';
+@use 'sections/tourActivity';
