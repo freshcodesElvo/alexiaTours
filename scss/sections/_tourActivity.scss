@@ -47,6 +47,7 @@
     position: relative;
     .card-title {
       font-weight: bold;
+      width: 60%;
     }
     .stretched-link {
       position: absolute;
@@ -65,6 +66,10 @@
         transform: rotate(-45deg);
       }
     }
+    .card-text{
+      margin-top: 2em;
+    }
+    
   }
   &:hover {
     transform: translateY(-5px);

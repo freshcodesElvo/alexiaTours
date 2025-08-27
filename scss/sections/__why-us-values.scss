@@ -1,0 +1,86 @@
+// _why-us-values.scss
+@use "../custom" as*;
+
+
+.why-us-values {
+  background-color: #fff;
+  color: #000;
+
+  .btn-dark {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+    &:hover {
+      background-color: lighten(#000, 10%);
+      border-color: lighten(#000, 10%);
+    }
+  }
+
+  .interlocking-values {
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    .value-circle {
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      
+      // Changed from min-width/min-height to exact width/height
+      width: 180px; 
+      height: 180px;
+      
+      display: flex; // Ensure flex properties
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      &:nth-child(even) {
+        left: -20px;
+        z-index: 1;
+      }
+      &:not(:last-child) {
+        margin-right: -20px;
+      }
+      
+      h5 {
+        font-size: 1rem;
+        color: #333;
+      }
+
+      // Individual circle colors (customize as desired)
+      &:nth-child(1) {
+        background-color: #FFC107; // Brand yellow
+      }
+      &:nth-child(2) {
+        background-color: #E0AC00; // A darker shade of yellow
+      }
+      &:nth-child(3) {
+        background-color: #FFC107;
+      }
+      &:nth-child(4) {
+        background-color: #E0AC00;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      align-items: center;
+      .value-circle {
+        min-width: 250px;
+        min-height: 150px;
+        margin-bottom: 1rem;
+        &:nth-child(even), &:not(:last-child) {
+          left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  
+  h4 {
+    color: #000;
+  }
+  p.text-muted {
+    font-size: 0.9rem;
+  }
+}
