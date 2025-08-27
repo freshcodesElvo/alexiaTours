@@ -1,0 +1,58 @@
+// _packages.scss
+@use "../custom" as*;
+
+$bg-dark: #111;
+$highlight: #FFC107;
+
+.packages-section {
+  background: $bg-dark;
+  .text-highlight {
+    color: $highlight;
+  }
+
+  .package-card {
+    background: #2c2c2c;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    color: #fff;
+    text-align: left;
+    position: relative;
+    min-height: 320px;
+    transition: transform 0.3s ease, background 0.3s ease;
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      background: #3a3a3a;
+    }
+
+    // angled style
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  }
+
+  .featured {
+    background: #fff;
+    color: #000;
+    .btn {
+      border-color: #000;
+      color: #fff;
+
+    }
+    .btn:hover {
+      background: #000;
+      color: #fff;
+    }
+    &:hover{
+        color: #fff;
+    }
+  }
+}

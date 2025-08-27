@@ -1,0 +1,56 @@
+@use "../custom" as*;
+
+.how-to-book {
+  background-color: #fff;
+  color: #000;
+}
+
+// Horizontal sub-nav
+.sub-nav {
+  li {
+    margin: 0 1.5rem;
+    position: relative;
+    
+    span {
+      font-weight: bold;
+      color: #777;
+    }
+
+    &:not(:last-child)::after {
+      content: "⭐"; // You can use a star or any other character
+      position: absolute;
+      right: -1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
+  }
+}
+
+// Left column button
+.btn-outline-dark {
+  color: #000;
+  border-color: #000;
+  &:hover {
+    background-color: #000;
+    color: #FFC107;
+  }
+}
+
+// Right column step cards
+.step-card {
+  border: 1px solid #ddd;
+  height: 100%;
+  
+  .step-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+
+  .step-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
