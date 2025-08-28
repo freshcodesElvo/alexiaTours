@@ -84,3 +84,34 @@
     font-size: 0.9rem;
   }
 }
+
+// _about-sections.scss
+
+.testimonials-section {
+  .testimonials-carousel {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .testimonial-card {
+      min-width: 300px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+  }
+}
+
+.cta-section {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('../../pictures/lina-loos-04-C1NZk1hE-unsplash.jpg') no-repeat center center;
+  background-size: cover;
+  .btn-warning {
+    background-color: #FFC107;
+    color: #000;
+    &:hover {
+      background-color: darken(#FFC107, 10%);
+    }
+  }
+}

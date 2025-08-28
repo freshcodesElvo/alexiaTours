@@ -9,12 +9,14 @@
 
   .tour-card {
     position: relative;
+      overflow: hidden; // Ensure content doesn't spill out
+
 
     img {
-      border-radius: 1.5rem;
-      width: 100%;
-      object-fit: cover;
-    }
+    width: 100%; // Ensure image fills its container
+    height:350px; // Default height for smaller screens, adjust as needed
+    object-fit: cover;
+  }
 
     .avatars-stack {
       position: absolute;
@@ -76,3 +78,4 @@
   justify-content: center;
   align-items: center;
 }
+

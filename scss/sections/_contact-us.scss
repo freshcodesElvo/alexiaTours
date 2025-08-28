@@ -1,0 +1,34 @@
+@use "../custom" as *;
+// _contact.scss
+
+.contact-section {
+  background-color: #fff;
+  color: #000;
+  
+  .contact-detail {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+  }
+  
+  .form-label {
+    color: #495057;
+  }
+
+  .form-control {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    &:focus {
+      border-color: #FFC107;
+      box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+    }
+  }
+
+  .btn-dark {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+    &:hover {
+      background-color: lighten(#000, 10%);
+    }
+  }
+}

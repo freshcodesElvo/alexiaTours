@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Tour | Alexia's Tours</title>
+    <meta name="description" content="Complete your tour booking with Alexia's Tours. Provide your details and finalize your personalized Kenyan adventure.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    
+    <style>
+        /* Add this temporary style for page heading */
+        .page-heading {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+      <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
+
+
+
+    <section class="book-tour-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="page-heading fw-bold">Complete Your Booking</h1>
+                    <p class="lead text-muted">Just a few more steps to secure your unforgettable adventure.</p>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-4">Your Details</h2>
+                    <form action="#" method="post" class="needs-validation" novalidate>
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label for="bookingFullName" class="form-label fw-bold">Full Name</label>
+                                <input type="text" class="form-control rounded-pill" id="bookingFullName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bookingEmail" class="form-label fw-bold">Email Address</label>
+                                <input type="email" class="form-control rounded-pill" id="bookingEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bookingPhone" class="form-label fw-bold">Phone Number</label>
+                                <input type="tel" class="form-control rounded-pill" id="bookingPhone" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bookingNationality" class="form-label fw-bold">Nationality</label>
+                                <input type="text" class="form-control rounded-pill" id="bookingNationality" placeholder="Your nationality" required>
+                            </div>
+                        </div>
+
+                        <h2 class="fw-bold my-4">Traveler Information</h2>
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label for="numAdults" class="form-label fw-bold">Adults (12+)</label>
+                                <input type="number" class="form-control rounded-pill" id="numAdults" value="1" min="1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="numChildren" class="form-label fw-bold">Children (0-11)</label>
+                                <input type="number" class="form-control rounded-pill" id="numChildren" value="0" min="0">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="preferredDates" class="form-label fw-bold">Preferred Start Date</label>
+                                <input type="date" class="form-control rounded-pill" id="preferredDates" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tourOfInterest" class="form-label fw-bold">Tour of Interest</label>
+                                <select class="form-select rounded-pill" id="tourOfInterest" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option>Maasai Mara Safari</option>
+                                    <option>Diani Beach Getaway</option>
+                                    <option>Nairobi City & Culture</option>
+                                    <option>Amboseli Elephant Trek</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                        <h2 class="fw-bold my-4">Special Requests</h2>
+                        <div class="mb-4">
+                            <label for="specialRequests" class="form-label fw-bold">Any special requests or notes?</label>
+                            <textarea class="form-control rounded-4" id="specialRequests" rows="4" placeholder="Dietary restrictions, accessibility needs, etc."></textarea>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">
+                                I agree to the <a href="terms.html" class="text-decoration-none text-warning fw-bold">Terms & Conditions</a> and <a href="privacy.html" class="text-decoration-none text-warning fw-bold">Privacy Policy</a>.
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-warning btn-lg fw-bold text-uppercase" type="submit">Confirm Booking</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="booking-summary-card p-4 rounded-4 shadow">
+                        <h4 class="fw-bold mb-3">Your Booking Summary</h4>
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex justify-content-between mb-2">
+                                <span>Tour Name:</span>
+                                <span class="fw-bold">Maasai Mara Safari</span>
+                            </li>
+                            <li class="d-flex justify-content-between mb-2">
+                                <span>Duration:</span>
+                                <span class="fw-bold">7 Days</span>
+                            </li>
+                            <li class="d-flex justify-content-between mb-2">
+                                <span>Travelers:</span>
+                                <span class="fw-bold">2 Adults, 0 Children</span>
+                            </li>
+                            <li class="d-flex justify-content-between mb-2">
+                                <span>Start Date:</span>
+                                <span class="fw-bold">2025-10-27</span>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <span class="fw-bold fs-5">Total Estimated Cost:</span>
+                            <span class="fw-bold fs-4 text-warning">KSH 0.00</span>
+                        </div>
+                        <p class="small text-muted mt-2">Prices are estimates and may vary based on customization and availability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

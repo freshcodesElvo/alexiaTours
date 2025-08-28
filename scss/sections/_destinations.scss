@@ -1,0 +1,65 @@
+@use "../custom" as *;
+// _destinations.scss
+
+.destinations-section {
+  background-color: #f8f9fa; /* Changed to a lighter off-white for better contrast */
+  color: #000;
+  padding: 5rem 0; /* Added vertical padding for better spacing */
+}
+
+/* Category card improvements */
+.category-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #dee2e6; /* Used a Bootstrap-consistent border color */
+  border-radius: 1rem; /* Added border-radius for rounded corners */
+  
+  &:hover {
+    transform: translateY(-8px); /* Increased the lift on hover for more impact */
+    border-color: #FFC107; /* Used the brand's accent color on hover */
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.1); /* Added a subtle shadow on hover */
+  }
+}
+
+/* Tour carousel remains the same */
+.tour-carousel {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Tour card improvements */
+.tour-card {
+  min-width: 300px;
+  max-width: 320px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  border-radius: 1rem; /* Added border-radius for rounded corners */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+
+  img {
+    height: 200px;
+    object-fit: cover;
+  }
+  .ri-star-fill {
+    color: #FFC107;
+  }
+
+  /* Added a lift effect on hover */
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+  }
+}
+
+/* New: Style for the anchor tag wrapping the card */
+.tour-card-link {
+    text-decoration: none;
+    color: inherit;
+}

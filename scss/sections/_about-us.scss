@@ -78,3 +78,123 @@
     }
   }
 }
+
+
+ // _values.scss
+
+// .values-section {
+//   background-color: #f8f9fa;
+
+//   .numbered-point {
+//     h3 {
+//       color: #000;
+//       line-height: 1;
+//     }
+//   }
+
+//   .image-gallery-container {
+//     grid-template-columns: 1fr 1fr;
+//     grid-template-rows: auto;
+//     img:nth-child(1) {
+//       grid-column: 1;
+//       grid-row: 1 / span 2;
+//     }
+//     img:nth-child(2) {
+//       grid-column: 2;
+//       grid-row: 1 / span 1;
+//     }
+//     img:nth-child(3) {
+//       grid-column: 2;
+//       grid-row: 2 / span 1;
+//     }
+//     img:nth-child(4) {
+//       grid-column: 1;
+//       grid-row: 3 / span 2;
+//     }
+//   }
+
+//   .learn-more-btn {
+//     writing-mode: vertical-rl;
+//     text-orientation: mixed;
+//     transform: rotate(180deg);
+//     background-color: #000;
+//     color: #fff;
+//     padding: 1.5rem 0.5rem;
+//     border-top-left-radius: 1rem;
+//     border-bottom-left-radius: 1rem;
+//     text-decoration: none;
+//     transition: all 0.3s ease;
+
+//     &:hover {
+//       background-color: #FFC107;
+//       color: #000;
+//     }
+//   }
+// }
+
+
+.values-section {
+  background: #fff;
+
+  h2 {
+    font-size: 2.2rem;
+    color: #1d3c34;
+  }
+
+  .number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1d3c34;
+    margin-bottom: .5rem;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    img {
+      border-radius: 1rem;
+      object-fit: cover;
+      height: 180px;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .image-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    h2 {
+      font-size: 1.8rem;
+    }
+    .number {
+      font-size: 1.5rem;
+    }
+    .image-grid {
+      grid-template-columns: 1fr;
+      img {
+        height: 200px;
+      }
+    }
+  }
+}
+// _why-travel.scss
+
+.why-travel-section {
+  background-color: #f8f9fa;
+  color: #000;
+  
+  .benefit-card {
+    .benefit-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #FFC107; // Your brand's accent color
+      line-height: 1;
+      display: block;
+      margin-bottom: 1rem;
+    }
+  }
+}

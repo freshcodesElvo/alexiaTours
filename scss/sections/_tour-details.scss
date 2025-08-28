@@ -1,0 +1,63 @@
+@use "../custom" as *;
+// _tour-details.scss
+
+.tour-hero-section {
+    .tour-hero-image {
+        height: 70vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .tour-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.tour-overview {
+    .booking-card {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+    }
+}
+
+.gallery-section {
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+// _tour-details.scss
+
+.tour-hero-section {
+    .tour-hero-image {
+        height: 70vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .tour-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Changed to a darker, more prominent overlay */
+        display: flex; /* Ensure content inside is aligned */
+        align-items: flex-end; /* Align content to the bottom */
+        padding: 3rem; /* Add padding to the content inside the overlay */
+    }
+}
+
+// Ensure the text within the overlay is on top and bright
+.tour-hero-overlay .text-white {
+    position: relative;
+    z-index: 2; // Make sure text is above the overlay
+}
+

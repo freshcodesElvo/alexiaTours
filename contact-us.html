@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Alexia's Tours</title>
+    <meta name="description" content="Contact Alexia's Tours for inquiries, bookings, and personalized tour information.">
+    
+    <!-- Remix Icon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        /* Add this temporary style to use a bold, blocky font */
+        .page-heading {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+
+     <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
+
+
+    <section class="contact-section py-5">
+        <div class="container">
+            <!-- Header -->
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="page-heading fw-bold">Let's Get In Touch</h1>
+                </div>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="row text-center justify-content-center mb-5">
+                <!-- Phone -->
+                <div class="col-md-4 mb-4">
+                    <div class="contact-detail p-4 rounded-4 shadow-sm">
+                        <i class="ri-phone-line ri-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold mb-1">Phone Numbers</h5>
+                        <p class="small text-muted mb-0">+254 712 345 678</p>
+                        <p class="small text-muted mb-0">+254 723 456 789</p>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="col-md-4 mb-4">
+                    <div class="contact-detail p-4 rounded-4 shadow-sm">
+                        <i class="ri-mail-line ri-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold mb-1">Email Addresses</h5>
+                        <p class="small text-muted mb-0">info@alexiastours.com</p>
+                        <p class="small text-muted mb-0">bookings@alexiastours.com</p>
+                    </div>
+                </div>
+                <!-- Location -->
+                <div class="col-md-4 mb-4">
+                    <div class="contact-detail p-4 rounded-4 shadow-sm">
+                        <i class="ri-map-pin-line ri-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold mb-1">Our Location</h5>
+                        <p class="small text-muted mb-0">Nairobi, Kenya</p>
+                        <p class="small text-muted mb-0">123 Safari Street, Central</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Header -->
+            <div class="row text-center my-5">
+                <div class="col">
+                    <h2 class="fw-bold">Or fill out the form below</h2>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form action="#" method="post" class="needs-validation" novalidate>
+                <div class="row g-4">
+                    <!-- Name -->
+                    <div class="col-md-6">
+                        <label for="fullName" class="form-label fw-bold">Full Name</label>
+                        <input type="text" class="form-control rounded-pill" id="fullName" placeholder="Enter your full name..." required>
+                    </div>
+                    <!-- Email -->
+                    <div class="col-md-6">
+                        <label for="email" class="form-label fw-bold">Email Address</label>
+                        <input type="email" class="form-control rounded-pill" id="email" placeholder="Enter your email address..." required>
+                    </div>
+                    <!-- Subject -->
+                    <div class="col-12">
+                        <label for="subject" class="form-label fw-bold">Subject</label>
+                        <input type="text" class="form-control rounded-pill" id="subject" placeholder="Enter the subject of your message..." required>
+                    </div>
+                    <!-- Message -->
+                    <div class="col-12">
+                        <label for="message" class="form-label fw-bold">Message</label>
+                        <textarea class="form-control rounded-4" id="message" rows="5" placeholder="Enter your message here..." required></textarea>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="col-12 text-center mt-5">
+                        <button class="btn btn-dark btn-lg px-5 rounded-pill" type="submit">Submit Form <i class="ri-arrow-right-line ms-2"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+<div id="footer-placeholder"></div>
+
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+
+</body>
+</html>

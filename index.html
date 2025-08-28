@@ -15,69 +15,38 @@
 </head>
 <body>
 
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="pictures/Logo-removebg-preview.png" alt="Alexia's Tours Logo" width="100">
-          </a>
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about-us.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tours</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-              </li>
-              <li class="nav-item d-none d-lg-block">
-                <a class="btn btn-primary ms-2" href="#">Book Now</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+       <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
 
 
 
 
-<section class="hero-glamping py-5">
+<section class="hero-glamping py-5" >
   <div class="container">
-    <div class="row align-items-center mb-5">
-      <!-- Left Heading -->
-      <div class="col-lg-6">
-        <h1 class="display-3 fw-bold lh-sm">Mountain tours <br>& glamping</h1>
-      </div>
+   <div class="row align-items-center mb-5">
+  <div class="col-lg-6">
+    <h1 class="display-3 fw-bold lh-sm">Bespoke Safari <br>& Beach Tours</h1>
+  </div>
 
-      <!-- Center Info -->
-      <div class="col-lg-3">
-        <div class="d-flex align-items-start gap-2 mb-3">
-          <i class="bi bi-geo-alt-fill"></i>
-          <div>
-            <h6 class="fw-semibold mb-1">Hygge Retreat</h6>
-            <p class="small text-muted mb-0">Glamping is located at an altitude of 1000 m overlooking the lake</p>
-          </div>
-        </div>
-        <a href="#" class="btn btn-dark rounded-pill px-4">
-          Book now <i class="bi bi-arrow-up-right ms-2"></i>
-        </a>
-      </div>
-
-      <!-- Right Text -->
-      <div class="col-lg-3 our-tour-emmerse-section">
-        <p class="small text-muted">Our tours immerse you in the beauty of the mountains. Enjoy your time with nature choice of guided day hikes</p>
-        <small class="fw-semibold">Since 2021</small>
-      </div>
+  <div class="col-lg-3">
+    <div class="d-flex align-items-start gap-2 mb-3">
+      <i class="ri-map-pin-line ri-2x text-warning"></i> <div>
+        <h6 class="fw-semibold mb-1">Luxury Safari Stays</h6> <p class="small text-muted mb-0">Curated lodges & resorts offering breathtaking views across Kenya.</p> </div>
     </div>
+    <a href="book.html" class="btn btn-primary px-4">
+      Plan Your Adventure <i class="ri-arrow-right-line ms-2"></i> </a>
+  </div>
+
+  <div class="col-lg-3 our-tour-emmerse-section">
+    <p class="small text-muted">Our tours immerse you in Kenya's vibrant wildlife, rich cultures, and stunning landscapes. Enjoy personalized adventures with expert local guides.</p> <small class="fw-semibold">Established 2024</small> </div>
+</div>
 
     <!-- Tour Cards -->
     <div class="row g-4">
@@ -93,7 +62,7 @@
             <span class="avatar more">50+</span>
           </div>
            <div class="hashtag">
-            <span class="badge bg-light text-dark rounded-pill">#Awesome views</span>
+            <span class="badge bg-light text-dark rounded-pill p-2">#Awesome views</span>
           </div>
         </div>
       </div>
@@ -106,7 +75,7 @@
                  <ion-icon name="play-circle-outline"></ion-icon>
           </button>
             <div class="hashtag">
-            <span class="badge bg-light text-dark rounded-pill">#Pet friendly</span>
+            <span class="badge bg-light text-dark rounded-pill p-2">#Nomad life</span>
           </div>
         </div>
       </div>
@@ -119,7 +88,7 @@
               <ion-icon name="arrow-forward-outline"></ion-icon> 
           </a>
            <div class="hashtag">
-            <span class="badge bg-light text-dark rounded-pill">#Hiking</span>
+            <span class="badge bg-light text-dark rounded-pill p-2">#Hiking</span>
           </div>
         </div>
       </div>
@@ -215,7 +184,7 @@
           <div class="price">0 KSH <small>/Person</small></div>
           <h4 class="mt-3">Sunrise Spectacle</h4>
           <p>This package includes a guided tour to the best sunrise viewpoint, a visit to the Bromo crater, and a jeep ride across the Sea of Sand.</p>
-          <a href="#" class="btn btn-outline-light mt-3">Get Now →</a>
+          <a href="#" class="btn  btn-primary mt-3">Get Now →</a>
         </div>
       </div>
 
@@ -225,7 +194,7 @@
           <div class="price">0 KSH <small>/Person</small></div>
           <h4 class="mt-3">Adventure Track</h4>
           <p>For the adventurous souls, this package offers an in-depth trek around Mount Bromo. Includes guided hikes through scenic trails.</p>
-          <a href="#" class="btn btn-dark mt-3">Get Now →</a>
+          <a href="#" class="btn btn-primary mt-3 text-dark">Get Now →</a>
         </div>
       </div>
 
@@ -235,14 +204,14 @@
           <div class="price">0 KSH <small>/Person</small></div>
           <h4 class="mt-3">Stargazing Escape</h4>
           <p>Perfect for night sky enthusiasts, this package features stargazing opportunities from prime locations around Mount Bromo.</p>
-          <a href="#" class="btn btn-outline-light mt-3">Get Now →</a>
+          <a href="#" class="btn btn-primary  mt-3">Get Now →</a>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-<section class="tour-doc py-5">
+<section class="tour-doc py-5" style="overflow-x: hidden;">
   <div class="container">
     <!-- Badge -->
     <div class="text-center mb-4">
@@ -391,75 +360,15 @@
 </section>
 
 
-<footer class="main-footer text-white py-5">
-  <div class="container">
-    <div class="row align-items-center mb-5 pb-4 border-bottom border-secondary">
-      <div class="col-md-6 mb-3 mb-md-0">
-        <h3 class="fw-bold fs-2">Book Your Tour Today!</h3>
-        <p class="" style="color: #999999;">Join us for an unforgettable Kenyan adventure.</p>
-      </div>
-      <div class="col-md-6">
-        <div class="input-group">
-          <input type="email" class="form-control" placeholder="Enter your email" aria-label="Enter your email">
-          <button class="btn btn-primary" type="button">Subscribe</button>
-        </div>
-      </div>
-    </div>
+<div id="footer-placeholder"></div>
 
-    <div class="row mb-5">
-      <div class="col-lg-4 mb-4 mb-lg-0">
-        <a href="#" class="footer-logo mb-3 d-inline-block">
-          <img src="./pictures/Logo.jpeg" alt="Alexia's Tours" width="120">
-        </a>
-        <p class="small" style="color: #999999;">Discover the awe-inspiring beauty of Kenya with our exclusive safari and beach tours. We craft unique experiences tailored just for you.</p>
-        <a href="#" class="more-about-us text-white">More About Us <i class="ri-arrow-right-line"></i></a>
-      </div>
-
-      <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-        <h5 class="fw-bold mb-3">Tour Details</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Tours</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Testimonials</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-lg-3 mb-4 mb-lg-0">
-        <h5 class="fw-bold mb-3">Contact Us</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">+254 7XX XXX XXX</a></li>
-          <li><a href="#">info@alexiastours.com</a></li>
-        </ul>
-        <h5 class="fw-bold mt-4 mb-3">Location</h5>
-        <p class="small" style="color: #999999;">Nairobi, Kenya</p>
-      </div>
-
-      <div class="col-6 col-lg-3">
-        <h5 class="fw-bold mb-3">Company & Legals</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row pt-4 border-top border-secondary">
-      <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
-        <a href="#" class="social-icon"><ion-icon name="logo-facebook"></ion-icon></a>
-        <a href="#" class="social-icon"><ion-icon name="logo-instagram"></ion-icon></a>
-        <a href="#" class="social-icon"><ion-icon name="logo-twitter"></ion-icon></a>
-        <a href="#" class="social-icon"><ion-icon name="logo-tiktok"></ion-icon></a>
-      </div>
-      <div class="col-md-6 text-center text-md-end">
-        <p class="small  mb-0">© 2025 Alexia's Tours. All Rights Reserved.</p>
-      </div>
-    </div>
-
-  </div>
-</footer>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
 
 
 
