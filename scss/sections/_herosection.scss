@@ -79,3 +79,20 @@
   align-items: center;
 }
 
+.not-programmed-text{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  top: 10em;
+  width: 50%;
+  left: 1em;
+  padding: 1em;
+  border-radius: 1em 0 1em 1em ;
+  font-size: 1.2em;
+  display: none;
+  border: 2px solid rgb(0, 255, 0);
+}
+.not-programmed-text.active{
+  display: block;
+ 
+}
