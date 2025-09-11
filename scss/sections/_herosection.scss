@@ -96,3 +96,17 @@
   display: block;
  
 }
+.service-mini-card {
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  i {
+    display: block;
+  }
+}

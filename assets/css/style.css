@@ -11941,6 +11941,19 @@ textarea.form-control-lg {
   display: block;
 }
 
+.service-mini-card {
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.service-mini-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.service-mini-card i {
+  display: block;
+}
+
 .tour-packages {
   background-color: #f8f9fa;
 }
@@ -12642,6 +12655,130 @@ textarea.form-control-lg {
 .book-tour-section .btn-warning:hover {
   background-color: rgb(211, 158.25, 0);
   border-color: rgb(211, 158.25, 0);
+}
+
+.services-section {
+  background: #fff;
+}
+.services-section h2 {
+  color: #1d1d1d;
+}
+.services-section .service-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.services-section .service-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 1rem;
+  filter: grayscale(50%);
+  transition: all 0.3s ease;
+}
+.services-section .service-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+.services-section .service-card .overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-section .service-card .overlay h6, .services-section .service-card .overlay a {
+  z-index: 1;
+}
+.services-section .service-card h6 {
+  margin: 0;
+}
+.services-section .service-card .btn-circle {
+  background: #ffc107;
+  color: #000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.services-section .service-card .btn-circle:hover {
+  background: #e0a800;
+}
+
+.service-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+@media (max-width: 575.98px) {
+  .service-card {
+    width: 18em;
+  }
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  z-index: 0;
+}
+
+.service-card .service-content {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  color: #fff;
+  z-index: 4; /* above gradient */
+}
+
+.our-services {
+  background: #f9f9f9;
+}
+.our-services .service-card {
+  transition: all 0.3s ease;
+  background: #fff;
+}
+.our-services .service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+.our-services .service-card i {
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+.our-services .service-card:hover i {
+  color: #0d6efd;
+}
+
+.visa-application {
+  background: #fdfdfd;
+}
+
+.visa-application .step-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.visa-application .step-card:hover {
+  transform: translateY(-5px);
 }
 
 /*# sourceMappingURL=style.css.map */
