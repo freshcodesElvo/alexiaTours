@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=hotel" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=travel" />
 </head>
 <body>
 
@@ -26,66 +27,131 @@
       });
   </script>
 
+  <!-- Hero Section -->
+  <!-- services.html -->
+<section class=" services-hero bg-light text-center py-5">
+  <div class="hero container">
+    <h2 class="fw-bold">Our Services</h2>
+    <p class="lead">We Make Your Travel Simple, Secure & Memorable</p>
+  </div>
+</section>
 
-<section class="our-services py-5">
+<!-- Service Overview -->
+<section class="services-overview py-5">
   <div class="container">
-    <!-- Section Title -->
-    <div class="text-center mb-5">
-      <h2 class="fw-bold display-5">Our Services</h2>
-      <p class="text-muted small">
-        At Alexia’s Tours, we provide everything you need for a seamless and memorable journey.  
-      </p>
-    </div>
-
-    <!-- Services Grid -->
-    <div class="row g-4">
-      <!-- Service 1 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="service-card p-4 text-center rounded-4 shadow-sm h-100">
-          <i class="ri-passport-line ri-3x text-danger mb-3"></i>
-          <h5 class="fw-semibold">Visa Applications</h5>
-          <p class="small text-muted">
-            Hassle-free visa processing to get you ready for your adventure.
-          </p>
-        </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <img src="/pictures/visa-application-form.jpeg" class="img-fluid rounded shadow" alt="Visa Application">
       </div>
-
-      <!-- Service 2 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="service-card p-4 text-center rounded-4 shadow-sm h-100">
-          <i class="ri-hotel-bed-line ri-3x text-primary mb-3"></i>
-          <h5 class="fw-semibold">Hotel Booking</h5>
-          <p class="small text-muted">
-            Stay at top-rated hotels, resorts, and lodges with comfort guaranteed.
-          </p>
-        </div>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="service-card p-4 text-center rounded-4 shadow-sm h-100">
-          <i class="ri-flight-takeoff-line ri-3x text-success mb-3"></i>
-          <h5 class="fw-semibold">Safari Booking</h5>
-          <p class="small text-muted">
-            Experience authentic safaris across Kenya’s breathtaking landscapes.
-          </p>
-        </div>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="service-card p-4 text-center rounded-4 shadow-sm h-100">
-          <i class="ri-car-line ri-3x text-warning mb-3"></i>
-          <h5 class="fw-semibold">Airport Transfers</h5>
-          <p class="small text-muted">
-            Reliable, comfortable, and timely transfers from airport to hotel.
-          </p>
+      <div class="col-lg-6">
+        <h3 class="fw-bold mb-3" >We Provide Hassle-Free Travel Services</h3>
+        <p class="mb-4">From smooth visa applications to luxury hotel bookings, unforgettable safaris, and comfortable airport transfers – we’ve got everything covered to make your journey stress-free.</p>
+        <div class="row g-4">
+          <div class="col-6">
+            <div class="service-box p-4 border rounded shadow-sm h-100">
+              <i class="bi bi-passport fs-2 text-primary mb-3"></i>
+              <h5 class="fw-bold">Visa Application</h5>
+              <p class="small">Fast, reliable, and stress-free visa processing.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="service-box p-4 border rounded shadow-sm h-100  ">
+              <span class="material-symbols-outlined">
+hotel_class
+</span>
+              <h5 class="fw-bold">Hotel Booking</h5>
+              <p class="small">Handpicked hotels that fit your budget & style.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="service-box p-4 border rounded shadow-sm h-100">
+              <i class="bi bi-tree fs-2 text-success mb-3"></i>
+              <h5 class="fw-bold">Safari Tours</h5>
+              <p class="small">Unique safari experiences with expert guides.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="service-box p-4 border rounded shadow-sm h-100">
+              <span class="material-symbols-outlined">
+              travel
+              </span>
+              <h5 class="fw-bold">Airport Transfers</h5>
+              <p class="small">Safe and punctual transfers from airport to hotel.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Experience Section -->
+<section class="experience py-5 bg-light">
+  <div class="container text-center">
+    <h3 class="fw-bold mb-4">We Are Trusted by Travelers for Over 15 Years</h3>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <img src="pictures/expet support.jpg" class="img-fluid rounded shadow" alt="Expert Support">
+      </div>
+      <div class="col-md-4">
+        <img src="pictures/safari tour.jpg" class="img-fluid rounded shadow" alt="Safari Tour">
+      </div>
+      <div class="col-md-4">
+        <img src="pictures/Showcase your hotel's unique charm with stunning….jpg" class="img-fluid rounded shadow" alt="Hotel Stay">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-us py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <img src="pictures/happyBlackTraveller.jpg" class="img-fluid rounded shadow" alt="Happy Traveler">
+      </div>
+      <div class="col-lg-6">
+        <h3 class="fw-bold mb-3">We Offer A Unique Travel Experience</h3>
+        <p class="mb-4">Every trip is personalized – from booking to your final destination. We ensure comfort, convenience, and unforgettable memories.</p>
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="p-3 border rounded shadow-sm">
+              <h5 class="fw-bold">Expert Guidance</h5>
+              <p class="small">Dedicated support from start to finish.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-3 border rounded shadow-sm">
+              <h5 class="fw-bold">Best Prices</h5>
+              <p class="small">Affordable packages with no hidden costs.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-3 border rounded shadow-sm">
+              <h5 class="fw-bold">15+ Years Experience</h5>
+              <p class="small">A trusted brand serving global travelers.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-3 border rounded shadow-sm">
+              <h5 class="fw-bold">Tailored Packages</h5>
+              <p class="small">Trips designed just for you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call To Action -->
+<section class="cta py-5 bg-dark text-white text-center">
+  <div class="container">
+    <h3 class="fw-bold mb-3">Ready To Start Your Journey With Us?</h3>
+    <p class="mb-4">Book your trip today and let us handle the rest!</p>
+    <a href="contact.html" class="btn btn-primary btn-lg">Get Started</a>
+  </div>
+</section>
 <div id="footer-placeholder"></div>
 
   <script>
@@ -97,11 +163,5 @@
   </script>
 
 
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
-  <script src="play.js"></script>
-  
 </body>
 </html>

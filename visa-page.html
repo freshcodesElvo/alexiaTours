@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Alexia's Tours | Your Personalized Kenyan Adventure Awaits">
+  <meta property="og:description" content="We create bespoke safari, beach, and cultural experiences across Kenya, tailored to your unique desires.">
+  <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
+  <meta property="og:url" content="https://www.alexiastours.com">
+  <title>Alexia's Tours | Personalized Safari & Beach Vacations in Kenya</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+<body>
+
+       <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
+
+    <section class="visa-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-3 fw-bold">Visa Application Services</h1>
+                    <p class="lead text-muted">Let us handle the details for a smooth and stress-free journey.</p>
+                </div>
+            </div>
+
+            <div class="contact-info row g-4 mb-5 justify-content-center">
+                <div class="col-md-4">
+                    <div class="contact-card p-4 rounded-4 shadow-sm h-100">
+                        <i class="ri-phone-line ri-2x text-warning mb-3"></i>
+                        <h5 class="fw-bold mb-1">Call Us</h5>
+                        <p class="mb-0">+254 712 345 678</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card p-4 rounded-4 shadow-sm h-100">
+                        <i class="ri-mail-line ri-2x text-warning mb-3"></i>
+                        <h5 class="fw-bold mb-1">Email Us</h5>
+                        <p class="mb-0">visa@alexiastours.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold text-center mb-4">Request a Visa Consultation</h2>
+                    <form action="#" method="post" class="needs-validation" novalidate>
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label for="visaName" class="form-label fw-bold">Full Name</label>
+                                <input type="text" class="form-control rounded-pill" id="visaName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="visaEmail" class="form-label fw-bold">Email Address</label>
+                                <input type="email" class="form-control rounded-pill" id="visaEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="visaNationality" class="form-label fw-bold">Nationality</label>
+                                <input type="text" class="form-control rounded-pill" id="visaNationality" placeholder="Your nationality" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="visaDestination" class="form-label fw-bold">Destination</label>
+                                <input type="text" class="form-control rounded-pill" id="visaDestination" placeholder="Country you are travelling to" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="visaMessage" class="form-label fw-bold">Your Message</label>
+                            <textarea class="form-control rounded-4" id="visaMessage" rows="4" placeholder="Briefly describe your visa needs..."></textarea>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button class="btn btn-warning btn-lg fw-bold text-uppercase" type="submit">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
