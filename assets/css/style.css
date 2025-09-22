@@ -12820,8 +12820,7 @@ textarea.form-control-lg {
 }
 
 .hero {
-  background: url("/pictures/sammy-wong-JH0ubtXy0Tw-unsplash.jpg") center/cover no-repeat;
-  filter: brightness(0.7);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/pictures/sammy-wong-JH0ubtXy0Tw-unsplash.jpg") center/cover no-repeat;
   color: #fff;
   padding: 150px 0;
   position: relative;
