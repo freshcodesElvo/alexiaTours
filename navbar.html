@@ -1,34 +1,74 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="pictures/Logo-removebg-preview.png" alt="Alexia's Tours Logo" width="100">
-          </a>
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-              </li>
-                <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="ourServices.html">Our services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about-us.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="destinations.html">Tours</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact-us.html">Contact Us</a>
-              </li>
-              <li class="nav-item d-none d-lg-block">
-                <a class="btn btn-primary ms-2" href="book.html">Book Now</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>    
+  <div class="container-fluid">
+
+    <!-- LEFT: Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="pictures/Logo-removebg-preview.png" alt="Alexia's Tours Logo" width="100">
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- CENTER + RIGHT -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- CENTER: Language Switcher -->
+      <!-- CENTER: Language Switcher -->
+<ul class="navbar-nav mx-auto">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+       href="#"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+      <img src="./pictures/britain flag.png" alt="English" width="20" height="14">
+      <span>EN</span>
+    </a>
+
+    <ul class="dropdown-menu text-center">
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" href="?lang=en">
+          <img src="./pictures/britain flag.png" width="20" height="14">
+          English
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" href="?lang=de">
+          <img src="./pictures/germany flag.png" width="20" height="14">
+          Deutsch
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+      <!-- RIGHT: Navigation -->
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ourServices.html">Our Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about-us.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="destinations.html">Tours</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact-us.html">Contact Us</a>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+          <a class="btn btn-primary ms-3" href="book.html">Book Now</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

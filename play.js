@@ -12,3 +12,4 @@ not_programmed_btns.forEach(btn => {
         not_programmed_text.classList.toggle("active");
     });
 });
+

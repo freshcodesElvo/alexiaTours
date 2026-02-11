@@ -11855,9 +11855,26 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.start-journey-btn {
+  width: 70%;
+  padding: 14px 0 14px 0px;
+  justify-content: space-around;
+  position: relative;
+  display: flex;
+}
+.start-journey-btn .arrowbtn {
+  margin-top: 5.6px;
+}
+
 .hero-glamping h1 {
   font-size: 3.5rem;
   line-height: 1.1;
+}
+@media (max-width: 575.98px) {
+  .hero-glamping h1 {
+    font-size: 2.5rem;
+    margin-top: -1em;
+  }
 }
 .hero-glamping .tour-card {
   position: relative;
@@ -11954,6 +11971,44 @@ textarea.form-control-lg {
   display: block;
 }
 
+.tour-card {
+  overflow: hidden;
+}
+
+.image-slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-slider img.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* Keep hashtag above images */
+.cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 193, 7, 0.8); /* brand yellow */
+  pointer-events: none; /* IMPORTANT */
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.08s ease-out;
+}
+@media (max-width: 575.98px) {
+  .cursor-circle {
+    display: none;
+  }
+}
+
 .tour-packages {
   background-color: #f8f9fa;
 }
@@ -12037,43 +12092,88 @@ textarea.form-control-lg {
 .packages-section .text-highlight {
   color: #FFC107;
 }
-.packages-section .package-card {
-  background: #2c2c2c;
-  padding: 2rem;
-  border-radius: 1.2rem;
-  color: #fff;
+
+.tour-packages {
+  background: transparent;
+}
+
+/* CARD */
+.package-card {
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+  border: none;
+}
+
+/* HOVER EFFECT */
+.package-card:hover {
+  transform: translateY(-6px);
+}
+
+/* IMAGE */
+.package-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1em;
+}
+
+/* BODY */
+.packages-card-body {
+  margin-top: 1em;
+  background-color: #111;
   text-align: left;
-  position: relative;
-  min-height: 320px;
-  transition: transform 0.3s ease, background 0.3s ease;
-  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
 }
-.packages-section .package-card .price {
-  font-size: 1.5rem;
-  font-weight: bold;
+
+.packages-card-body h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  width: 80%;
 }
-.packages-section .package-card p {
+
+/* PRICE */
+.price {
   font-size: 0.9rem;
-  opacity: 0.85;
+  font-weight: 500;
+  color: #FFC107;
 }
-.packages-section .package-card:hover {
-  transform: translateY(-10px);
-  background: #3a3a3a;
+
+.price span {
+  font-size: 0.8rem;
+  color: #8a8a8a;
 }
-.packages-section .featured {
-  background: #fff;
+
+/* BUTTON */
+.explore-btn {
+  background: #FFC107;
   color: #000;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin: 10px 0;
 }
-.packages-section .featured .btn {
-  border-color: #000;
+
+.explore-btn:hover {
+  background: #816100;
   color: #fff;
 }
-.packages-section .featured .btn:hover {
-  background: #000;
-  color: #fff;
+
+/* META */
+.tour-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  color: #8a8a8a;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
 }
-.packages-section .featured:hover {
-  color: #fff;
+
+.tour-meta ion-icon {
+  margin-right: 4px;
+  vertical-align: middle;
 }
 
 .tour-doc .text-highlight {
@@ -12710,6 +12810,42 @@ textarea.form-control-lg {
 }
 .services-section .service-card .btn-circle:hover {
   background: #e0a800;
+}
+
+.service-card-container1 {
+  transform: rotate(5deg);
+}
+@media (max-width: 575.98px) {
+  .service-card-container1 {
+    transform: rotate(0deg);
+  }
+}
+
+.service-card-container2 {
+  transform: rotate(-8deg);
+}
+@media (max-width: 575.98px) {
+  .service-card-container2 {
+    transform: rotate(0deg);
+  }
+}
+
+.service-card-container3 {
+  transform: rotate(5deg);
+}
+@media (max-width: 575.98px) {
+  .service-card-container3 {
+    transform: rotate(0deg);
+  }
+}
+
+.service-card-container4 {
+  transform: rotate(-8deg);
+}
+@media (max-width: 575.98px) {
+  .service-card-container4 {
+    transform: rotate(0deg);
+  }
 }
 
 .service-card {

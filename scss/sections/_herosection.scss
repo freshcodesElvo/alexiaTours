@@ -5,6 +5,11 @@
   h1 {
     font-size: 3.5rem;
     line-height: 1.1;
+      @include media-breakpoint-down(sm){
+        font-size: 2.5rem;
+        margin-top: -1em;
+    
+  }
   }
 
   .tour-card {
@@ -109,4 +114,47 @@
   i {
     display: block;
   }
+}
+.tour-card {
+  overflow: hidden;
+}
+
+.image-slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-slider img.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* Keep hashtag above images */
+// .hashtag {
+//   position: absolute;
+//   bottom: 15px;
+//   left: 15px;
+//   z-index: 5;
+// }
+  .cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 193, 7, 0.8); /* brand yellow */
+  pointer-events: none; /* IMPORTANT */
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.08s ease-out;
+
+ @include media-breakpoint-down(sm){
+  display: none;
+ }
+
 }

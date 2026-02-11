@@ -62,6 +62,30 @@
     }
   }
 }
+.service-card-container1{
+  transform: rotate(5deg);
+  @include media-breakpoint-down(sm){
+    transform: rotate(0deg);
+  }
+}
+.service-card-container2{
+  transform: rotate(-8deg);
+  @include media-breakpoint-down(sm){
+    transform: rotate(0deg);
+  }
+}
+.service-card-container3{
+  transform: rotate(5deg);
+  @include media-breakpoint-down(sm){
+    transform: rotate(0deg);
+  }
+}
+.service-card-container4{
+  transform: rotate(-8deg);
+  @include media-breakpoint-down(sm){
+    transform: rotate(0deg);
+  }
+}
 .service-card {
   position: relative;
   border-radius: 1rem;
