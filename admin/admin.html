@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alexia Tours Admin</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+
+<style>
+
+body{
+    background:#f4f6f9;
+}
+
+/* Sidebar */
+.sidebar{
+    height:100vh;
+    background:#111;
+    color:white;
+    position:fixed;
+    width:240px;
+    padding-top:20px;
+}
+
+.sidebar h4{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:#ccc;
+    padding:12px 20px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#FFC107;
+    color:black;
+}
+
+/* Main content */
+.main{
+    margin-left:240px;
+    padding:20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- Sidebar -->
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('adminNavbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
+
+<!-- Main content -->
+<div class="main">
+
+    <h2 class="mb-4">Bookings Dashboard</h2>
+
+    <!-- Stats Cards -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+            <div class="card bg-dark text-white text-center p-3">
+                <h6>Total</h6>
+                <h3 id="totalBookings">0</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark text-center p-3">
+                <h6>Pending</h6>
+                <h3 id="pendingBookings">0</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white text-center p-3">
+                <h6>Confirmed</h6>
+                <h3 id="confirmedBookings">0</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-danger text-white text-center p-3">
+                <h6>Cancelled</h6>
+                <h3 id="cancelledBookings">0</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bookings Table -->
+    <div class="card p-3">
+
+        <h5 class="mb-3">All Bookings</h5>
+
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="bookingsTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
