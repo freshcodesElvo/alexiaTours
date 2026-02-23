@@ -11,6 +11,7 @@ async function loadPackages(){
 
     packages.forEach(pkg =>{
         const tr = document.createElement("tr")
+   
         tr.innerHTML = `
         <td>${pkg.id}</td>
         <td>${pkg.title}</td>
@@ -18,19 +19,17 @@ async function loadPackages(){
         <td>${pkg.price}</td>
         <td>${pkg.duration_days} Days / ${pkg.duration_nights} Nights</td>
 
-        <td>
-
+ <td>
         <button onclick="editPackage(${pkg.id})" 
-        class="btn btn-primary btn-sm me-1">
-        Edit
+                class="btn btn-icon" style="font-size: 1.5rem; color: blue" title="Edit package">
+            <ion-icon name="create-outline"></ion-icon>
         </button>
 
         <button onclick="deletePackage(${pkg.id})" 
-        class="btn btn-danger btn-sm">
-        Delete
+                class="btn btn-icon" style="font-size: 1.5rem; color: red" title="Delete package">
+            <ion-icon name="trash-outline"></ion-icon>
         </button>
-
-        </td>
+    </td>
 
 
         `
