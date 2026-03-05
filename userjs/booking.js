@@ -1,4 +1,4 @@
-const BOOKING_API = "http://localhost:5000/api/bookings";
+const BOOKING_API = "https://alexia-tours-backend-production.up.railway.app/api/bookings";
 
 // --- 1. LIVE SUMMARY LOGIC ---
 const updateSummary = () => {

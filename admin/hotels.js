@@ -1,5 +1,5 @@
-const API = "http://localhost:5000/api/hotels";
-const IMAGE_BASE = "http://localhost:5000/uploads/";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/hotels";
+const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
 let hotelModalInstance;
 
 // Wait for DOM to load to prevent "backdrop" undefined error

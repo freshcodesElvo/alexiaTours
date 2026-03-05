@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/messages";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/messages";
 
 document.getElementById('contactForm').addEventListener('submit', async function (e) {
     // 1. STOP the page from refreshing (Fixes the 405 error)

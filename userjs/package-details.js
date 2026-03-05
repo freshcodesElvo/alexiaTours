@@ -1,5 +1,5 @@
-const API_BASE = "http://localhost:5000/api/packages"; // Must be 'packages'
-const IMAGE_BASE = "http://localhost:5000/uploads/";
+const API_BASE = "https://alexia-tours-backend-production.up.railway.app/packages"; // Must be 'packages'
+const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
 
 async function loadFullPackageDetails() {
     const urlParams = new URLSearchParams(window.location.search);

@@ -2,7 +2,7 @@ let allBookings = []; // Master list (stays unchanged by filters)
 let filteredBookings = []; // The list currently being shown
 let currentPage = 1;
 const rowsPerPage = 5;
-const API = "http://localhost:5000/api/bookings"
+const API = "https://alexia-tours-backend-production.up.railway.app/api/bookings"
 
 document.addEventListener("DOMContentLoaded", () => {
     loadBookings();

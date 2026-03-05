@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/stats"
+const API = "https://alexia-tours-backend-production.up.railway.app/api/stats"
 async function loadDashboard() {
     try {
         const res = await fetch(API);

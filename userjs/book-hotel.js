@@ -1,5 +1,5 @@
-const API_HOTELS = "http://localhost:5000/api/hotels";
-const API_BOOKINGS = "http://localhost:5000/api/hotel-bookings"; // You'll need this endpoint
+const API_HOTELS = "https://alexia-tours-backend-production.up.railway.app/api/hotels";
+const API_BOOKINGS = "https://alexia-tours-backend-production.up.railway.app/api/hotel-bookings"; // You'll need this endpoint
 
 async function initBooking() {
     const urlParams = new URLSearchParams(window.location.search);

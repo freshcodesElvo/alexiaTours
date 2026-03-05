@@ -1,5 +1,5 @@
-const API = "http://localhost:5000/api/visa-services";
-const IMAGE_BASE = "http://localhost:5000/uploads/";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/visa-services";
+const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
 let visaModalInstance;
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -1,7 +1,7 @@
 const BASE_URL = "https://alexia-tours-backend-production.up.railway.app"; 
 const API_DESTINATIONS = `${BASE_URL}/api/destinations`;
 const IMAGE_BASE = `${BASE_URL}/uploads/`;
-const API_PACKAGES = "http://localhost:5000/api/packages";
+const API_PACKAGES = "https://alexia-tours-backend-production.up.railway.app/api/packages";
 
 async function loadIndexDestinations() {
     try {

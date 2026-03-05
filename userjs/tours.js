@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000"; 
+const BASE_URL = "https://alexia-tours-backend-production.up.railway.app"; 
 const API_TOURS = `${BASE_URL}/api/tours`;
 const API_DESTINATIONS = `${BASE_URL}/api/destinations`;
 const IMAGE_BASE = `${BASE_URL}/uploads/`;

@@ -1,7 +1,7 @@
 // const { document } = require("postcss")
 
-const API = "http://localhost:5000/api/packages"
-const IMAGE_BASE = "http://localhost:5000/uploads/";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/packages"
+const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
 
 
 async function loadPackages() {
@@ -111,7 +111,7 @@ async function savePackage() {
 }
 async function populateDestinations() {
     try {
-        const res = await fetch("http://localhost:5000/api/destinations");
+        const res = await fetch("https://alexia-tours-backend-production.up.railway.app/api/destinations");
         const destinations = await res.json();
         const select = document.getElementById("destination");
         

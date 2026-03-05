@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/messages";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/messages";
 let messageModal; // Rename to avoid confusion with the 'modal' keyword
 
 document.addEventListener("DOMContentLoaded", () => {

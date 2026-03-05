@@ -1,5 +1,5 @@
-const API = "http://localhost:5000/api/destinations";
-const IMAGE_BASE = "http://localhost:5000/uploads/";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/destinations";
+const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
 
 let modal = new bootstrap.Modal(
     document.getElementById("destinationModal")

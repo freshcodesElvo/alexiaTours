@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/bookings";
+const API = "https://alexia-tours-backend-production.up.railway.app/api/bookings";
 
 function formatDate(dateString){
     if(!dateString){
