@@ -56,21 +56,46 @@ async function loadMessages() {
 
 // Fixed View Function
 async function viewMessage(id) {
-    const res = await fetch(`${API}/${id}`);
-    const m = await res.json();
+    try {
+        const res = await fetch(`${API}/${id}`);
+        if (!res.ok) throw new Error("Could not fetch message details");
+        const m = await res.json();
 
-    document.getElementById("viewName").innerText = m.name;
-    document.getElementById("viewEmail").innerText = m.email;
-    document.getElementById("viewSubject").innerText = m.subject || "-";
-    document.getElementById("viewMessage").innerText = m.message;
+        // 1. Fill modal text
+        document.getElementById("viewName").innerText = m.name;
+        document.getElementById("viewEmail").innerText = m.email;
+        document.getElementById("viewSubject").innerText = m.subject || "No Subject";
+        document.getElementById("viewMessage").innerText = m.message;
 
-    if (messageModal) {
-        messageModal.show();
-    }
+        // 2. CONFIGURE REPLY BUTTON
+        const replyBtn = document.getElementById("replyBtn");
+        if (replyBtn) {
+            const emailTo = m.email;
+            const emailSubject = `Re: ${m.subject || 'Inquiry from Alexia Tours'}`;
+            const emailBody = `Hi ${m.name},\n\n---\nRegarding your message:\n"${m.message}"\n\n`;
 
-    if (m.status === "unread") {
-        await fetch(`${API}/${id}/read`, { method: "PUT" });
-        loadMessages();
+            replyBtn.onclick = () => {
+                window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            };
+        }
+
+        // 3. FIX: Use 'messageModal' (not 'modal')
+        if (messageModal) {
+            messageModal.show();
+        } else {
+            console.error("Modal instance is not initialized.");
+        }
+
+        // 4. Mark as read logic
+        if (m.status === "unread") {
+            await fetch(`${API}/${id}/read`, { method: "PUT" });
+            // Optional: Don't reload the whole table immediately to avoid "flicker" 
+            // while the modal is open, but it's okay to keep for now.
+            loadMessages(); 
+        }
+    } catch (err) {
+        console.error("Error opening message:", err);
+        alert("Could not load message details.");
     }
 }
 

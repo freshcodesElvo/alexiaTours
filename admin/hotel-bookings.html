@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Hotel Bookings</title>
+    <link rel="stylesheet" href="./css/admin.css">
+      <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="bg-light">
+     <div id="nav-placeholder"></div>
+
+    <script>
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+    </script>
+    <div id="navbar-placeholder"></div>
+
+    <script>
+        fetch('adminNavbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+    </script>
+    
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Bookings</title>
+    
+    <link rel="stylesheet" href="./css/admin.css">
+      <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+
+    <script>
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+    </script>
+    <div id="navbar-placeholder"></div>
+
+    <script>
+        fetch('adminNavbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+    </script>
+
+    <div class="admin-layout" style="margin-top: 5em;">
+        <main class="main-content">
+            <div class="container-fluid py-4">
+       <div class="content-header d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold">Hotel Bookings Management</h1>
+    <div class="d-flex gap-2">
+        <button class="btn btn-success d-flex align-items-center gap-2" onclick="exportToCSV()">
+            <i class="bi bi-file-earmark-spreadsheet"></i> Export CSV
+        </button>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search..." style="width: 250px;" />
+        </div>
+    </div>
+</div>
+
+        <div class="card border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th>Date Recieved</th>
+                            <th>Customer</th>
+                            <th>Hotel</th>
+                            <th>Dates (In/Out)</th>
+                            <th>Room & Guests</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-bookings-table">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<script src="./hotel-bookings.js"></script>
+</body>
+
+            
+        </main>
+    </div>
+
+    
+</body>
+</html>

@@ -109,10 +109,19 @@
     </style>
 </head>
 <body>
+    <div id="nav-placeholder"></div>
+
+    <script>
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+    </script>
 
     <div id="navbar-placeholder"></div>
 
-    <div class="main">
+    <div class="main" style="margin-top: 5em;">
         <div class="page-header d-flex justify-content-between align-items-center mb-5">
             <div>
                 <h3><i class="bi bi-grid-1x2-fill text-warning me-2"></i> Dashboard Overview</h3>
@@ -128,16 +137,21 @@
             <div class="col-md-3">
                 <div class="admin-card-container">
                     <div class="admin-card">
-                        <div class="card-front border-start border-primary border-5">
+                        <div class="card-front border-top border-primary border-5">
                             <h6 class="text-primary">New Messages</h6>
                             <h2 id="count-messages">0</h2>
                             <small class="text-muted">Hover for actions</small>
                         </div>
                         <div class="card-back">
-                            <i class="bi bi-envelope-open fs-1 mb-3 text-primary"></i>
-                            <h5>Inquiries</h5>
-                            <a href="messages.html" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Inbox</a>
+                        <i class="bi bi-envelope-open fs-1 mb-3 text-primary"></i>
+                        <h5>Inquiries</h5>
+                        <div class="d-grid gap-2 px-3">
+                            <a href="messages.html" class="btn btn-sm btn-outline-light rounded-pill">View Inbox</a>
+                            <button onclick="markAllRead(event)" class="btn btn-sm btn-primary rounded-pill">
+                                <i class="bi bi-check2-all"></i> Mark All Read
+                            </button>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -145,7 +159,7 @@
             <div class="col-md-3">
                 <div class="admin-card-container">
                     <div class="admin-card">
-                        <div class="card-front border-start border-success border-5">
+                        <div class="card-front border-bottom border-success border-5">
                             <h6 class="text-success">Total Hotels</h6>
                             <h2 id="count-hotels">0</h2>
                             <small class="text-muted">Hover for actions</small>
@@ -162,7 +176,7 @@
             <div class="col-md-3">
                 <div class="admin-card-container">
                     <div class="admin-card">
-                        <div class="card-front border-start border-info border-5">
+                        <div class="card-front border-top border-info border-5">
                             <h6 class="text-info">Visa Services</h6>
                             <h2 id="count-visas">0</h2>
                             <small class="text-muted">Hover for actions</small>
@@ -179,7 +193,7 @@
             <div class="col-md-3">
                 <div class="admin-card-container">
                     <div class="admin-card">
-                        <div class="card-front border-start border-warning border-5">
+                        <div class="card-front border-bottom border-warning border-5">
                             <h6 class="text-warning">Active Packages</h6>
                             <h2 id="count-packages">0</h2>
                             <small class="text-muted">Hover for actions</small>

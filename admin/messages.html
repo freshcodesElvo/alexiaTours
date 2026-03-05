@@ -22,6 +22,15 @@
     </style>
 </head>
 <body>
+    <div id="nav-placeholder"></div>
+
+    <script>
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+    </script>
 
 <div id="navbar-placeholder"></div>
 
@@ -31,7 +40,7 @@
     });
 </script>
 
-<div class="main">
+<div class="main" style="margin-top: 5em;">
 
 <div class="page-header">
 
@@ -83,20 +92,26 @@ Messages
                     data-bs-dismiss="modal">
                 </button>
 
-        </div>
+            </div>
 
-        <div class="modal-body">
+            <div class="modal-body">
 
-            <p><strong>Name:</strong> <span id="viewName"></span></p>
+                <p><strong>Name:</strong> <span id="viewName"></span></p>
 
-            <p><strong>Email:</strong> <span id="viewEmail"></span></p>
+                <p><strong>Email:</strong> <span id="viewEmail"></span></p>
 
-            <p><strong>Subject:</strong> <span id="viewSubject"></span></p>
+                <p><strong>Subject:</strong> <span id="viewSubject"></span></p>
 
-            <hr>
+                <hr>
 
-            <p id="viewMessage"></p>
+                <p id="viewMessage"></p>
 
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="replyBtn">
+                <i class="bi bi-reply-fill"></i> Reply via Email
+            </button>
         </div>
 
         </div>

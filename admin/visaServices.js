@@ -45,7 +45,7 @@ async function loadVisaServices() {
         <td>${v.country}</td>
         <td>${v.visa_type || "-"}</td>
         <td>${v.processing_time}</td>
-        <td>$${v.price}</td>
+        <td>KSH ${v.price}</td>
         <td>${badge}</td>
         <td>
             <button onclick="editVisa(${v.id})" class="btn btn-icon" style="color: blue">

@@ -34,7 +34,7 @@ async function loadHotels() {
             <td><img src="${IMAGE_BASE}${h.image}" class="destination-img"></td>
             <td>${h.name}</td>
             <td>${h.location}</td>
-            <td>$${h.price}</td>
+            <td>KSH ${h.price}</td>
             <td>
                 <button  onclick="editHotel(${h.id})" 
                 class="btn btn-icon" style="font-size: 1.5rem; color: blue" title="Edit hotel">

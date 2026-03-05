@@ -95,44 +95,13 @@
 </section>
 
 <!-- Hotel Types -->
-<section class="hotel-types py-5 text-center">
+<section class="hotel-list py-5">
   <div class="container">
-    <h3 class="fw-bold mb-4">Choose Your Stay</h3>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="p-4 border rounded shadow-sm h-100">
-          <h5 class="fw-bold">Luxury Hotels</h5>
-          <p>Premium accommodations with top-notch amenities.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4 border rounded shadow-sm h-100">
-          <h5 class="fw-bold">Business Hotels</h5>
-          <p>Perfect for corporate travelers with meeting facilities.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4 border rounded shadow-sm h-100">
-          <h5 class="fw-bold">Budget Stays</h5>
-          <p>Affordable and comfortable hotels for every traveler.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4 border rounded shadow-sm h-100">
-          <h5 class="fw-bold">Resorts & Villas</h5>
-          <p>Relax in private villas and resorts with scenic views.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4 border rounded shadow-sm h-100">
-          <h5 class="fw-bold">Boutique Hotels</h5>
-          <p>Stylish and unique stays with personalized service.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4 border rounded shadow-sm h-100">
-          <h5 class="fw-bold">Family Hotels</h5>
-          <p>Spacious and family-friendly accommodations.</p>
+    <h3 class="fw-bold mb-4 text-center">Available Hotels & Accommodations</h3>
+    <div id="hotels-container" class="row g-4">
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     </div>
@@ -223,5 +192,6 @@
 
   animate();
 </script>
+<script src="userjs/hotels.js"></script>
 </body>
 </html>

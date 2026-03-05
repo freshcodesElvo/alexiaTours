@@ -9,6 +9,42 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+      .horizontal-scroll {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+    }
+    .horizontal-scroll::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
+
+    .tour-card-wrapper {
+        transition: transform 0.3s ease;
+    }
+
+    .tour-card-wrapper:hover {
+        transform: translateY(-10px);
+    }
+      .destination-card img {
+    transition: transform 0.5s ease;
+      }
+
+      .destination-card:hover img {
+          transform: scale(1.1);
+      }
+
+      .destination-card .stretched-link {
+          z-index: 2;
+      }
+    </style>
 </head>
 <body>
  <div id="navbar-placeholder"></div>
@@ -69,120 +105,24 @@
         <p class="text-muted">Our most popular adventures this season.</p>
       </div>
     </div>
+
+    <!-- getting destinations from db -->
     <div class="row">
-      <div class="col">
-        <div class="tour-carousel d-flex horizontal-scroll overflow-auto pb-4">
-         <a href="tour-detail.html" class="tour-card-link">
-          <div class="tour-card me-4 rounded-4 shadow">
-            <img src="./pictures/patrick-baum-evDuzZd8Kc0-unsplash.jpg" alt="Maasai Mara" class="img-fluid rounded-top-4">
-            <div class="p-3">
-              <h5 class="fw-bold mb-1">Maasai Mara Safari</h5>
-              <p class="small text-muted mb-2">Witness the Great Migration firsthand.</p>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="fw-bold fs-5 text-warning">KSH 0.00</span>
-                <span class="text-muted small">
-                  <i class="ri-star-fill text-warning"></i>
-                  4.9 (85 reviews)
-                </span>
-              </div>
-              <ul class="list-unstyled small text-muted">
-                <li><i class="ri-time-line me-1"></i> 7 Days</li>
-                <li><i class="ri-customer-service-2-line me-1"></i> Free Consultation</li>
-                <li><i class="ri-check-line me-1"></i> All Services Included</li>
-              </ul>
+    <div class="col">
+        <div id="tour-container" class="tour-carousel d-flex horizontal-scroll overflow-auto pb-4">
             </div>
-          </div>
-        </a>
-          <div class="tour-card me-4 rounded-4 shadow">
-            <img src="./pictures/patrick-baum-evDuzZd8Kc0-unsplash.jpg" alt="Diani Beach" class="img-fluid rounded-top-4">
-            <div class="p-3">
-              <h5 class="fw-bold mb-1">Diani Beach Getaway</h5>
-              <p class="small text-muted mb-2">Relax on the white sandy beaches of Diani.</p>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="fw-bold fs-5 text-warning">KSH 0.00</span>
-                <span class="text-muted small">
-                  <i class="ri-star-fill text-warning"></i>
-                  4.7 (52 reviews)
-                </span>
-              </div>
-              <ul class="list-unstyled small text-muted">
-                <li><i class="ri-time-line me-1"></i> 5 Days</li>
-                <li><i class="ri-customer-service-2-line me-1"></i> Free Consultation</li>
-                <li><i class="ri-check-line me-1"></i> All Services Included</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tour-card me-4 rounded-4 shadow">
-            <img src="./pictures/patrick-baum-evDuzZd8Kc0-unsplash.jpg" alt="Diani Beach" class="img-fluid rounded-top-4">
-            <div class="p-3">
-              <h5 class="fw-bold mb-1">Diani Beach Getaway</h5>
-              <p class="small text-muted mb-2">Relax on the white sandy beaches of Diani.</p>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="fw-bold fs-5 text-warning">KSH 0.00</span>
-                <span class="text-muted small">
-                  <i class="ri-star-fill text-warning"></i>
-                  4.7 (52 reviews)
-                </span>
-              </div>
-              <ul class="list-unstyled small text-muted">
-                <li><i class="ri-time-line me-1"></i> 5 Days</li>
-                <li><i class="ri-customer-service-2-line me-1"></i> Free Consultation</li>
-                <li><i class="ri-check-line me-1"></i> All Services Included</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tour-card me-4 rounded-4 shadow">
-            <img src="./pictures/patrick-baum-evDuzZd8Kc0-unsplash.jpg" alt="Diani Beach" class="img-fluid rounded-top-4">
-            <div class="p-3">
-              <h5 class="fw-bold mb-1">Diani Beach Getaway</h5>
-              <p class="small text-muted mb-2">Relax on the white sandy beaches of Diani.</p>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="fw-bold fs-5 text-warning">KSH 0.00</span>
-                <span class="text-muted small">
-                  <i class="ri-star-fill text-warning"></i>
-                  4.7 (52 reviews)
-                </span>
-              </div>
-              <ul class="list-unstyled small text-muted">
-                <li><i class="ri-time-line me-1"></i> 5 Days</li>
-                <li><i class="ri-customer-service-2-line me-1"></i> Free Consultation</li>
-                <li><i class="ri-check-line me-1"></i> All Services Included</li>
-              </ul>
-            </div>
-          </div>
-
-
-          <div class="tour-card me-4 rounded-4 shadow">
-            <img src="./pictures/patrick-baum-evDuzZd8Kc0-unsplash.jpg" alt="Diani Beach" class="img-fluid rounded-top-4">
-            <div class="p-3">
-              <h5 class="fw-bold mb-1">Diani Beach Getaway</h5>
-              <p class="small text-muted mb-2">Relax on the white sandy beaches of Diani.</p>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="fw-bold fs-5 text-warning">KSH 0.00</span>
-                <span class="text-muted small">
-                  <i class="ri-star-fill text-warning"></i>
-                  4.7 (52 reviews)
-                </span>
-              </div>
-              <ul class="list-unstyled small text-muted">
-                <li><i class="ri-time-line me-1"></i> 5 Days</li>
-                <li><i class="ri-customer-service-2-line me-1"></i> Free Consultation</li>
-                <li><i class="ri-check-line me-1"></i> All Services Included</li>
-              </ul>
-            </div>
-          </div>
-          </div>
-      </div>
+    </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col">
-        <h2 class="display-6 fw-bold mb-2">Top Destinations</h2>
-        <p class="text-muted">Where adventure awaits.</p>
-      </div>
-    </div>
+   <div class="row mt-5">
+  <div class="col">
+    <h2 class="display-6 fw-bold mb-2">Top Destinations</h2>
+    <p class="text-muted">Where adventure awaits.</p>
+  </div>
+</div>
+
+<div class="row" id="destinations-grid">
+  </div>
   </div>
 </section>
 
@@ -222,6 +162,7 @@
 
   animate();
 </script>
+<script src="userjs/tours.js"></script>
 
 </body>
 </html>

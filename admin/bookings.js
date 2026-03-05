@@ -2,6 +2,7 @@ let allBookings = []; // Master list (stays unchanged by filters)
 let filteredBookings = []; // The list currently being shown
 let currentPage = 1;
 const rowsPerPage = 5;
+const API = "http://localhost:5000/api/bookings"
 
 document.addEventListener("DOMContentLoaded", () => {
     loadBookings();
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadBookings() {
-    const response = await fetch("http://localhost:5000/api/bookings");
+    const response = await fetch(API);
     allBookings = await response.json();
     filteredBookings = [...allBookings]; // Initialize filtered list with all data
     displayBookings();
@@ -29,33 +30,35 @@ function displayBookings() {
 
     paginated.forEach(booking => {
         table.innerHTML += `
-            <tr>
-                <td>${booking.id}</td>
-                <td>${booking.full_name}</td>
-                <td>${booking.email}</td>
-                <td>${booking.destination}</td>
-                <td>${new Date(booking.travel_date).toLocaleDateString()}</td>
-                <td>
-                    <span class="status ${booking.status}">
-                        ${booking.status}
-                    </span>
-                </td>
-                <td>
-                    <button class="btn-icon" onclick="viewDetails(${booking.id})" title="View Details">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </button>
-                    <button class="btn-icon" onclick="updateStatus(${booking.id}, 'confirmed')" title="Confirm">
-                        <ion-icon name="checkmark-circle-outline" style="color: green;"></ion-icon>
-                    </button>
-                    <button class="btn-icon" onclick="updateStatus(${booking.id}, 'cancelled')" title="Cancel">
-                        <ion-icon name="close-circle-outline" style="color: orange;"></ion-icon>
-                    </button>
-                    <button class="btn-icon" onclick="deleteBooking(${booking.id})" title="Delete">
-                        <ion-icon name="trash-outline" style="color: red;"></ion-icon>
-                    </button>
-                </td>
-            </tr>
-        `;
+          <tr>
+            <td>${booking.id}</td>
+            <td>${booking.full_name}</td>
+            <td>${booking.email}</td>
+            
+            <td>${booking.tour_name}</td> 
+            
+            <td>${new Date(booking.start_date).toLocaleDateString()}</td>
+            
+            <td>
+                <span class="status ${booking.status}">
+                    ${booking.status}
+                </span>
+            </td>
+            <td>
+                <button class="btn-icon" onclick="viewDetails(${booking.id})" title="View Details">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </button>
+                <button class="btn-icon" onclick="updateStatus(${booking.id}, 'confirmed')" title="Confirm">
+                    <ion-icon name="checkmark-circle-outline" style="color: green;"></ion-icon>
+                </button>
+                <button class="btn-icon" onclick="updateStatus(${booking.id}, 'cancelled')" title="Cancel">
+                    <ion-icon name="close-circle-outline" style="color: orange;"></ion-icon>
+                </button>
+                <button class="btn-icon" onclick="deleteBooking(${booking.id})" title="Delete">
+                    <ion-icon name="trash-outline" style="color: red;"></ion-icon>
+                </button>
+            </td>
+        </tr>`
     });
 
     setupPagination();
@@ -92,7 +95,7 @@ function setupPagination() {
 // ... keep the rest of your functions (updateStatus, deleteBooking, etc.)
 async function fetchDestinationsForDropdown() {
     try {
-        const response = await fetch("http://localhost:5000/api/destinations");
+        const response = await fetch(API);
         const destinations = await response.json();
         const dropdown = document.getElementById("destination");
 
@@ -143,7 +146,7 @@ function filterBookings() {
 }
 
 async function updateStatus(id, status) {
-    await fetch(`http://localhost:5000/api/bookings/${id}/status`, {
+    await fetch(`${API}/${id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status })
@@ -155,7 +158,7 @@ async function updateStatus(id, status) {
 async function deleteBooking(id) {
     if (!confirm("Delete this booking?")) return;
 
-    await fetch(`http://localhost:5000/api/bookings/${id}`, {
+    await fetch(`${API}/${id}`, {
         method: "DELETE"
     });
 
@@ -163,7 +166,7 @@ async function deleteBooking(id) {
 }
 
 async function viewDetails(id) {
-    const response = await fetch(`http://localhost:5000/api/bookings/${id}`);
+    const response = await fetch(`&{API}/${id}`);
     const booking = await response.json();
 
     document.getElementById("modallContent").innerHTML = `
