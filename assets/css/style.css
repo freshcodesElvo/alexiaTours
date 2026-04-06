@@ -12651,7 +12651,8 @@ textarea.form-control-lg {
 }
 .contact-section .form-control {
   background-color: #f8f9fa;
-  border-color: #dee2e6;
+  border-color: #0080ff;
+  color: #000;
 }
 .contact-section .form-control:focus {
   border-color: #FFC107;
@@ -12725,6 +12726,7 @@ textarea.form-control-lg {
 .book-tour-section .form-control, .book-tour-section .form-select {
   background-color: #f8f9fa;
   border-color: #dee2e6;
+  color: #000;
 }
 .book-tour-section .form-control:focus, .book-tour-section .form-select:focus {
   border-color: #FFC107;

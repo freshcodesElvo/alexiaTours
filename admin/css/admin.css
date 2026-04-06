@@ -17,11 +17,14 @@ body {
     position:fixed;
     width:240px;
     padding-top:20px;
+    z-index: 100;
 }
 
 .sidebar h4{
-    text-align:center;
-    margin-bottom:30px;
+    text-align:left;
+    margin-left: 1.5em;
+    padding-top: 1.4em;
+   
 }
 
 .sidebar a{
@@ -30,6 +33,7 @@ body {
     padding:12px 20px;
     text-decoration:none;
     transition:0.3s;
+    margin-left: 1em;
 }
 
 .sidebar a:hover{
@@ -174,3 +178,28 @@ button:hover {
 .btn-icon:hover {
     transform: scale(1.2); /* Slight zoom on hover */
 }
+
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 992px) {
+    .main { 
+        margin-left: 0 !important; /* Remove sidebar margin on mobile */
+        padding: 20px 15px;
+        margin-top: 4em !important; /* Space for the top navbar */
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+
+    .admin-card-container {
+        height: 180px; /* Slightly shorter cards for mobile density */
+    }
+
+    .card-front h2 {
+        font-size: 2.2rem; /* Scale down large numbers */
+    }
+}
+

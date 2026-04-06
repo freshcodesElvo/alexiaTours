@@ -10,7 +10,7 @@ async function loadIndexDestinations() {
         const container = document.getElementById("index-destinations-container");
         
         if (!container) return;
-        container.innerHTML = ""; // Clear the "Elvis" messages
+        container.innerHTML = ""; 
 
         destinations.forEach(dest => {
             // Use 'image' column from your destinations table

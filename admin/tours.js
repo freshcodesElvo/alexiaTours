@@ -1,5 +1,8 @@
-const API = "https://alexia-tours-backend-production.up.railway.app/api/tours";
-const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
+// --- CONFIGURATION ---
+const token = localStorage.getItem('adminToken');
+// Toggle these between localhost and Railway as needed
+const API = "http://localhost:5000/api/tours"; 
+const IMAGE_BASE = "http://localhost:5000/uploads/";
 
 // Update modal ID to match the one in your new HTML
 let modal = new bootstrap.Modal(document.getElementById("tourModal"));
@@ -14,7 +17,7 @@ document.getElementById("imageInput").addEventListener("change", function() {
     }
 });
 
-// --- 2. LOAD TOURS ---
+// --- 2. LOAD TOURS (Public) ---
 async function loadTours() {
     try {
         const res = await fetch(API);
@@ -25,7 +28,6 @@ async function loadTours() {
         table.innerHTML = "";
 
         data.forEach(t => {
-            // Note: DB column is image_path, but your backend sends filename
             const imageSrc = t.image_path 
                 ? `${IMAGE_BASE}${t.image_path.replace('./uploads/', '')}` 
                 : "https://placehold.co/70x50?text=No+Image";
@@ -33,7 +35,7 @@ async function loadTours() {
             table.innerHTML += `
             <tr>
                 <td>${t.id}</td>
-                <td><img src="${imageSrc}" class="tour-img-preview"></td>
+                <td><img src="${imageSrc}" class="tour-img-preview" style="width:70px; height:50px; object-fit:cover; border-radius:5px;"></td>
                 <td><strong>${t.title}</strong></td>
                 <td><span class="badge bg-info text-dark">${t.category}</span></td>
                 <td>KSH ${Number(t.price).toLocaleString()}</td>
@@ -75,7 +77,7 @@ function clearForm() {
     preview.style.display = "none";
 }
 
-// --- 4. SAVE TOUR (Handles all new fields) ---
+// --- 4. SAVE TOUR (Protected with Token) ---
 async function saveTour() {
     const id = document.getElementById("tourId").value;
     
@@ -92,7 +94,6 @@ async function saveTour() {
         formData.append("image", imageFile);
     }
 
-    // Validation
     if (!document.getElementById("title").value) return alert("Title is required");
 
     try {
@@ -101,8 +102,18 @@ async function saveTour() {
 
         const res = await fetch(url, {
             method: method,
+            headers: {
+                'Authorization': `Bearer ${token}` // SECURITY TOKEN ADDED
+                // Note: Don't set Content-Type header when using FormData
+            },
             body: formData 
         });
+
+        if (res.status === 401 || res.status === 403) {
+            alert("Session expired. Please login again.");
+            window.location.href = 'login.html';
+            return;
+        }
 
         if (!res.ok) throw new Error("Save failed");
 
@@ -115,7 +126,7 @@ async function saveTour() {
     }
 }
 
-// --- 5. EDIT TOUR ---
+// --- 5. EDIT TOUR (Public) ---
 async function editTour(id) {
     try {
         const res = await fetch(`${API}/${id}`);
@@ -132,7 +143,6 @@ async function editTour(id) {
 
         const preview = document.getElementById("preview");
         if (t.image_path) {
-            // Clean the path for previewing
             const fileName = t.image_path.replace('./uploads/', '');
             preview.src = `${IMAGE_BASE}${fileName}`;
             preview.style.display = "block";
@@ -146,14 +156,28 @@ async function editTour(id) {
     }
 }
 
-// --- 6. DELETE TOUR ---
+// --- 6. DELETE TOUR (Protected with Token) ---
 async function deleteTour(id) {
     if (!confirm("Are you sure you want to delete this tour?")) return;
 
     try {
-        const res = await fetch(`${API}/${id}`, { method: "DELETE" });
+        const res = await fetch(`${API}/${id}`, { 
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}` // SECURITY TOKEN ADDED
+            }
+        });
+
+        if (res.status === 401 || res.status === 403) {
+            alert("Session expired. Please login again.");
+            window.location.href = 'login.html';
+            return;
+        }
+
         if (!res.ok) throw new Error("Delete failed");
+        
         loadTours();
+        alert("Tour Deleted!");
     } catch (error) {
         console.error(error);
         alert("Error deleting tour");
