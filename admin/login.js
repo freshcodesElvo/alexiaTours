@@ -1,9 +1,9 @@
-// const API_BASE = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
-//     ? "http://localhost:5000/api"
-//     : "https://alexia-tours-backend-production.up.railway.app/api";
+const API_BASE = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+    ? "http://localhost:5000/api"
+    : "https://alexia-tours-backend-production.up.railway.app/api";
 
 
-const API_BASE = "https://alexia-tours-backend-production.up.railway.app/api";
+
 
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -14,7 +14,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const errorMsg = document.getElementById('errorMsg');
 
     try {
-        const response = await fetch(`${API_BASE}/login`, {
+        const response = await fetch(`${API_BASE}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
