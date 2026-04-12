@@ -34,11 +34,8 @@ function displayBookings() {
             <td>${booking.id}</td>
             <td>${booking.full_name}</td>
             <td>${booking.email}</td>
-            
             <td>${booking.tour_name}</td> 
-            
             <td>${new Date(booking.start_date).toLocaleDateString()}</td>
-            
             <td>
                 <span class="status ${booking.status}">
                     ${booking.status}
@@ -51,6 +48,11 @@ function displayBookings() {
                 <button class="btn-icon" onclick="updateStatus(${booking.id}, 'confirmed')" title="Confirm">
                     <ion-icon name="checkmark-circle-outline" style="color: green;"></ion-icon>
                 </button>
+
+                <button class="btn-icon" onclick="updateStatus(${booking.id}, 'completed')" title="Mark as Completed">
+                    <ion-icon name="ribbon-outline" style="color: blue;"></ion-icon>
+                </button>
+
                 <button class="btn-icon" onclick="updateStatus(${booking.id}, 'cancelled')" title="Cancel">
                     <ion-icon name="close-circle-outline" style="color: orange;"></ion-icon>
                 </button>
@@ -92,7 +94,7 @@ function setupPagination() {
         `;
     }
 }
-// ... keep the rest of your functions (updateStatus, deleteBooking, etc.)
+
 async function fetchDestinationsForDropdown() {
     try {
         const response = await fetch(API);
@@ -146,13 +148,28 @@ function filterBookings() {
 }
 
 async function updateStatus(id, status) {
-    await fetch(`${API}/${id}/status`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status })
-    });
+    // Add a specific confirmation if marking as completed
+    if (status === 'completed') {
+        const confirmComplete = confirm("Marking this as 'Completed' will automatically send a review request email to the customer. Proceed?");
+        if (!confirmComplete) return;
+    }
 
-    loadBookings();
+    try {
+        const response = await fetch(`${API}/${id}/status`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ status })
+        });
+
+        if (response.ok) {
+            loadBookings(); // Refresh the table
+        } else {
+            const errorData = await response.json();
+            alert("Error: " + errorData.error);
+        }
+    } catch (error) {
+        console.error("Failed to update status:", error);
+    }
 }
 
 async function deleteBooking(id) {
