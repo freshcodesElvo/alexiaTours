@@ -132,4 +132,8 @@ img {
   transition: transform 0.1s ease;
   top: 0;
   left: 0;
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+
 }
