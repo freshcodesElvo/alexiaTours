@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch("https://your-backend-url.railway.app/api/reviews/submit", {
+            const response = await fetch("https://alexia-tours-backend-production.up.railway.app/api/reviews/submit", {
              
 
                 method: "POST",
