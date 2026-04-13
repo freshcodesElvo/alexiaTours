@@ -1,84 +1,52 @@
-(() => {
-    const API_BASE = "https://alexia-tours-backend-production.up.railway.app/packages";
-    const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
+// 1. IMMEDIATE KILL SWITCH (Put this at the VERY top)
+if (window.location.href.includes('refresh=true')) {
+    console.error("Manual override: Stopping potential loop.");
+} else {
 
-    async function loadFullPackageDetails() {
+    (async function init() {
         const urlParams = new URLSearchParams(window.location.search);
         const pkgId = urlParams.get('id');
 
-        // 1. Prevent loop: If no ID, show a message instead of an immediate redirect
+        // 2. LOGGING FOR DEBUGGING (Check your console on the live site)
+        console.log("Checking Package ID:", pkgId);
+
         if (!pkgId) {
-            console.error("No package ID found in URL.");
-            const mainContainer = document.querySelector('.container.py-5');
-            if (mainContainer) {
-                mainContainer.innerHTML = `
-                    <div class="text-center mt-5">
-                        <h2 class="fw-bold">No Tour Selected</h2>
-                        <p class="text-muted">Please select a tour from our homepage to view details.</p>
-                        <a href="index.html" class="btn btn-warning px-4 rounded-pill">View All Tours</a>
+            console.warn("No ID found. Displaying UI message instead of redirecting.");
+            const container = document.querySelector('.container.py-5');
+            if (container) {
+                container.innerHTML = `
+                    <div class="text-center py-5">
+                        <h2>No Tour Selected</h2>
+                        <p>Please browse our <a href="./">home page</a> to find a tour.</p>
                     </div>`;
             }
-            return;
+            return; 
         }
 
         try {
-            const res = await fetch(`${API_BASE}/${pkgId}`);
-            if (!res.ok) throw new Error("Package not found");
-
-            const pkg = await res.json();
-
-            // 2. UI Updates
-            const titleEl = document.getElementById("tour-title");
-            const priceEls = document.querySelectorAll("#tour-price"); 
-            const durationEls = document.querySelectorAll("#tour-duration");
-            const categoryBadge = document.getElementById("tour-category");
-
-            if (titleEl) titleEl.innerText = pkg.title;
-            if (categoryBadge) categoryBadge.innerText = pkg.category || "Tour";
+            // Use HTTPS explicitly
+            const res = await fetch(`https://alexia-tours-backend-production.up.railway.app/packages/${pkgId}`);
+            if (!res.ok) throw new Error("Backend returned error");
             
-            priceEls.forEach(el => {
+            const pkg = await res.json();
+            
+            // Standard UI updates
+            document.title = `${pkg.title} | Alexia's Tours`;
+            if(document.getElementById("tour-title")) document.getElementById("tour-title").innerText = pkg.title;
+            
+            document.querySelectorAll("#tour-price").forEach(el => {
                 el.innerText = `KSH ${Number(pkg.price).toLocaleString()}`;
             });
 
-            durationEls.forEach(el => {
-                el.innerText = `${pkg.duration_days} Days / ${pkg.duration_nights} Nights`;
-            });
-
-            // 3. Description formatting
-            const descContainer = document.getElementById("tour-description");
-            if (descContainer && pkg.description) {
-                descContainer.innerHTML = pkg.description
-                    .split('\n')
-                    .filter(p => p.trim() !== "")
-                    .map(p => `<p class="mb-4">${p.trim()}</p>`)
-                    .join('');
+            const hero = document.getElementById("tour-hero-bg");
+            if (hero && pkg.image) {
+                hero.style.backgroundImage = `url('https://alexia-tours-backend-production.up.railway.app/uploads/${pkg.image}')`;
             }
 
-            // 4. Hero Background
-            const heroBg = document.getElementById("tour-hero-bg");
-            if (heroBg) {
-                const imgSrc = pkg.image ? `${IMAGE_BASE}${pkg.image}` : 'pictures/placeholder.jpg';
-                heroBg.style.backgroundImage = `url('${imgSrc}')`;
-            }
+            console.log("Page loaded successfully without loops.");
 
-        } catch (error) {
-            console.error("Fetch Error:", error);
-            const mainContainer = document.querySelector('.container.py-5');
-            if (mainContainer) {
-                mainContainer.innerHTML = `
-                    <div class="text-center mt-5">
-                        <h2 class="fw-bold text-danger">Package Not Found</h2>
-                        <p class="text-muted">Sorry, we couldn't find the tour you're looking for.</p>
-                        <a href="index.html" class="btn btn-warning px-4 rounded-pill">Go Back</a>
-                    </div>`;
-            }
+        } catch (err) {
+            console.error("Production Fetch Error:", err);
         }
-    }
-
-    // 5. Simplified initialization (prevents double-triggering)
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-        loadFullPackageDetails();
-    } else {
-        document.addEventListener("DOMContentLoaded", loadFullPackageDetails);
-    }
-})();
+    })();
+}
