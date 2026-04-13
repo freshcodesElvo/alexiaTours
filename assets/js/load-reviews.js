@@ -11,21 +11,26 @@ async function fetchApprovedReviews() {
         }
 
         container.innerHTML = reviews.map(review => `
-            <div class="review-card">
-                ${review.booking_id ? `<span class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified Traveler</span>` : ''}
-                <div class="text-warning mb-2">
-                    ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                </div>
-                <p class="review-text">"${review.review_text}"</p>
-                <hr>
-                <div class="reviewer-info">
-                    <strong>${review.customer_name}</strong>
-                    <p class="text-muted" style="font-size: 0.8rem;">
-                        ${new Date(review.created_at).toLocaleDateString()}
-                    </p>
-                </div>
+    <div class="review-card">
+        ${review.booking_id ? `
+            <span class="verified-badge">
+                <i class="bi bi-patch-check-fill"></i> Verified Traveler
+            </span>` : ''}
+        
+        <div class="stars">
+            ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+        </div>
+
+        <p class="review-text">"${review.review_text}"</p>
+
+        <div class="reviewer-info">
+            <div>
+                <span class="reviewer-name">${review.customer_name}</span>
+                <span class="review-date">${new Date(review.created_at).toLocaleDateString()}</span>
             </div>
-        `).join('');
+        </div>
+    </div>
+`).join('');
 
     } catch (error) {
         console.error("Error fetching reviews:", error);

@@ -12,7 +12,8 @@
   <meta property="og:title" content="Experience the Magic of Kenya | Alexia's Tours">
   <meta property="og:description" content="Bespoke safari, beach, and cultural experiences across Kenya, tailored to your unique desires.">
   <meta property="og:image" content="https://alexiastours.co.ke/uploads/maasaimara.jpg">
-
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="application/ld+json">
@@ -45,84 +46,36 @@
   </script>
 
 
-<section class="hero-glamping py-5">
-  <div class="container">
-    <div class="row align-items-center mb-5">
-      <div class="col-lg-6">
-        <h1 class="display-3 fw-bold lh-sm">
-          <!-- Explore Kenya <br>& Beyond with Ease -->
-           Alexia’s Tours – Where Every Journey Tells a Story
-        </h1>
-      </div>
+<section class="hero-safari d-flex align-items-center">
+  <div class="container text-center text-white">
 
-      <div class="col-lg-3">
-        <div class="d-flex align-items-start gap-2 mb-3">
-          <i class="ri-flight-takeoff-line ri-2x text-warning"></i>
-          <div>
-            <h6 class="fw-semibold mb-1">Visa Applications</h6>
-            <p class="small text-muted mb-0">
-               Seamless Travel <br>& Safari Experiences
-            </p>
-          </div>
-        </div>
-        <a href="book.html" class="btn btn-primary start-journey-btn px-4">
-           <span>Start Your Journey</span>
-           <ion-icon class="arrowbtn" name="arrow-forward-outline"></ion-icon>
-        </a>
-      </div>
+    <h1 class="fw-bold mb-3">
+      DISCOVER KENYA'S MAGIC
+    </h1>
 
-      <div class="col-lg-3 our-tour-emmerse-section">
-        <p class="small text-muted">
-          From <strong>Hotel Bookings</strong> to <strong>Safari Adventures</strong> and 
-          <strong>Airport Transfers</strong>, we provide everything you need for an unforgettable trip.
-        </p>
-      </div>
-    </div>
+    <p class="lead mb-4">
+      Authentic adventures tailored for you.
+    </p>
 
-    <!-- Tour Cards (kept original for visuals) -->
-    <div class="row g-4">
-   <!-- Card 1 -->
-<div class="col-md-4">
-  <div class="tour-card position-relative image-slider" data-interval="3000">
-    <img src="./pictures/hotel.jpeg" class="img-fluid rounded-4 active" alt="Visa">
-    <img src="./pictures/buffallo.jpeg" class="img-fluid rounded-4" alt="Visa">
-    <img src="./pictures/zebra.jpeg" class="img-fluid rounded-4" alt="Visa">
+    <a href="book.html" class="btn btn-warning btn-lg px-5 rounded-pill">
+      Book Now
+    </a>
 
-    <!-- <div class="hashtag">
-      <span class="badge bg-light text-dark rounded-pill p-2">#Visa Support</span>
-    </div> -->
-  </div>
-</div>
-
-<!-- Card 2 -->
-<div class="col-md-4">
-  <div class="tour-card position-relative image-slider" data-interval="3500">
-    <img src="./pictures/pic1.jpeg" class="img-fluid rounded-4 active" alt="Visa">
-    <img src="./pictures/lion.jpeg" class="img-fluid rounded-4" alt="Visa">
-    <img src="./pictures/girrafe.jpeg" class="img-fluid rounded-4" alt="Visa">
-
-    <!-- <div class="hashtag">
-      <span class="badge bg-light text-dark rounded-pill p-2">#Hotel Booking</span>
-    </div> -->
-  </div>
-</div>
-
-<!-- Card 3 -->
-<div class="col-md-4">
-  <div class="tour-card position-relative image-slider" data-interval="4000">
-    <img src="./pictures/tourist2.jpeg" class="img-fluid rounded-4 active" alt="Visa">
-    <img src="./pictures/buffallo.jpeg" class="img-fluid rounded-4" alt="Visa">
-    <img src="./pictures/hotel.jpeg" class="img-fluid rounded-4" alt="Visa">
-
-    <!-- <div class="hashtag">
-      <span class="badge bg-light text-dark rounded-pill p-2">#Safari Tours</span>
-    </div> -->
-  </div>
-</div>
-
-    </div>
   </div>
 </section>
+
+<!-- Slogan -->
+<div class="slogan-bar text-center py-4">
+  <h4 class="mb-0">
+    Alexias tours
+  </h4>
+</div>
+
+<div class="slogan-bar py-4">
+  <div class="container text-center">
+    <h2 class="slogan-text">Where every journey Tells a story.</h2>
+  </div>
+</div>
 
 
 <section class="services-section py-5">
@@ -316,7 +269,118 @@
   </div>
 </section>
 
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-subtitle">Testimonials</p>
+      <h2 class="h2 section-title">What Our Travelers Say</h2>
+    </div>
 
+    <div id="reviews-container" class="reviews-grid">
+      <p class="text-center py-5">Loading amazing stories...</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --alexia-gold: #ffb700; /* Adjust to match your exact brand yellow */
+    --alexia-dark: #1a1a1a;
+  }
+
+  .testimonials {
+    background-color: #f8f9fa;
+    padding-block: 80px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .review-card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Hover effect to make it interactive */
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  /* The Quote Icon aesthetic */
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 80px;
+    color: rgba(0, 0, 0, 0.03);
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .verified-badge {
+    font-size: 0.75rem;
+    color: #0d9488; /* Teal/green for trust */
+    background: #f0fdfa;
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+    width: fit-content;
+  }
+
+  .review-text {
+    font-style: italic;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    border-top: 1px solid #f1f1f1;
+    padding-top: 20px;
+  }
+
+  .reviewer-name {
+    font-weight: 700;
+    color: var(--alexia-dark);
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  .review-date {
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .stars {
+    color: var(--alexia-gold);
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+ 
+</style>
 
 
 <section class="how-to-book py-5">
@@ -415,9 +479,13 @@ document.querySelectorAll(".image-slider").forEach(slider => {
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
   <script src="play.js"></script>
-  <div class="cursor-circle"></div>
+  <div class="cursor-circle" style="z-index: 10000000;" ></div>
 <script>
+document.addEventListener("DOMContentLoaded", () => {
   const cursor = document.querySelector(".cursor-circle");
+
+  if (!cursor) return;
+
   let mouseX = 0, mouseY = 0;
   let currentX = 0, currentY = 0;
 
@@ -427,8 +495,8 @@ document.querySelectorAll(".image-slider").forEach(slider => {
   });
 
   function animate() {
-    currentX += (mouseX - currentX) * 0.15;
-    currentY += (mouseY - currentY) * 0.15;
+    currentX += (mouseX - currentX) * 0.1;
+    currentY += (mouseY - currentY) * 0.1;
 
     cursor.style.left = currentX + "px";
     cursor.style.top = currentY + "px";
@@ -437,6 +505,7 @@ document.querySelectorAll(".image-slider").forEach(slider => {
   }
 
   animate();
+});
 </script>
 <script src="userjs/index.js"></script>
 <script src="assets/js/load-reviews.js"></script>

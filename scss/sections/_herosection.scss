@@ -1,160 +1,135 @@
-// hero-section.scss
-@use "../custom" as*;
+@use "../custom" as *;
 
-.hero-glamping {
+/* =========================
+   HERO SECTION
+========================= */
+.hero-safari {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+    url("../../pictures/thomas-bennie-1jlJrr4XGkU-unsplash.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;
+  overflow: hidden;
+
   h1 {
     font-size: 3.5rem;
-    line-height: 1.1;
-      @include media-breakpoint-down(sm){
-        font-size: 2.5rem;
-        margin-top: -1em;
-    
-  }
-  }
+    text-shadow: 0 5px 20px rgba(0,0,0,0.6);
 
-  .tour-card {
-    position: relative;
-      overflow: hidden; // Ensure content doesn't spill out
+    @include media-breakpoint-down(md) {
+      font-size: 2.5rem;
+    }
 
-
-    img {
-    width: 100%; // Ensure image fills its container
-    height:350px; // Default height for smaller screens, adjust as needed
-    object-fit: cover;
+    @include media-breakpoint-down(sm) {
+      font-size: 2rem;
+    }
   }
 
-    .avatars-stack {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
+  p {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
-      .avatar {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        border: 2px solid #fff;
-        margin-left: -10px;
-        object-fit: cover;
-      }
+  .btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
 
-      .more {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #000;
-        color: #fff;
-        font-size: 0.75rem;
-      }
-    }
+  @include media-breakpoint-up(md) {
+    animation: zoomBg 20s ease-in-out infinite alternate;
+  }
 
-    .play-btn, .arrow-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
-    }
+  @include media-breakpoint-down(sm) {
+    min-height: 70vh;
+    background-position: center top;
+    animation: none;
+  }
 
-    .arrow-btn {
-      top: 15px;
-      right: 15px;
-      left: auto;
-      transform: none;
-    }
-
-    .hashtag {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-    }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(transparent, #ffffffab);
   }
 }
-.our-tour-emmerse-section{
-  @include media-breakpoint-down(sm){
-    margin-top: 1.4em;
+/* =========================
+   ZOOM ANIMATION (SAFE)
+========================= */
+@keyframes zoomBg {
+  from {
+    background-size: 120%;
+  }
+  to {
+    background-size: 140%;
   }
 }
 
-.play-parent{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* =========================
+   SLOGAN BAR
+========================= */
+.slogan-bar {
+  background: #111;
+  color: #fff;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
-.not-programmed-text{
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  z-index: 10;
-  top: 10em;
-  width: 50%;
-  left: 1em;
-  padding: 1em;
-  border-radius: 1em 0 1em 1em ;
-  font-size: 1.2em;
-  display: none;
-  border: 2px solid rgb(0, 255, 0);
+
+
+/* GLOBAL FIXES */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
-.not-programmed-text.active{
+
+img {
+  max-width: 100%;
+  height: auto;
   display: block;
- 
-}
-.service-mini-card {
-  background: #fff;
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-
-  i {
-    display: block;
-  }
-}
-.tour-card {
-  overflow: hidden;
 }
 
-.image-slider img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+/* Fix horizontal scroll sections */
+.horizontal-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
-.image-slider img.active {
-  opacity: 1;
-  position: relative;
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
 }
 
-/* Keep hashtag above images */
-// .hashtag {
-//   position: absolute;
-//   bottom: 15px;
-//   left: 15px;
-//   z-index: 5;
-// }
-  .cursor-circle {
+/* Prevent Bootstrap overflow bugs */
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+ .cursor-circle {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 50px;
   height: 50px;
+  border: 2px solid #ffb700; /* or any color you like */
   border-radius: 50%;
-  border: 2px solid rgba(255, 193, 7, 0.8); /* brand yellow */
-  pointer-events: none; /* IMPORTANT */
+  pointer-events: none; /* so it doesn't block clicks */
   transform: translate(-50%, -50%);
-  z-index: 9999;
-  transition: transform 0.08s ease-out;
-
- @include media-breakpoint-down(sm){
-  display: none;
- }
-
+  transition: transform 0.1s ease;
+  top: 0;
+  left: 0;
 }
