@@ -25,7 +25,7 @@ if (window.location.href.includes('refresh=true')) {
 
         try {
             // Use HTTPS explicitly
-            const res = await fetch(`https://alexia-tours-backend-production.up.railway.app/packages/${pkgId}`);
+            const res = await fetch(`https://alexia-tours-backend-production.up.railway.app/api/packages/${pkgId}`);
             if (!res.ok) throw new Error("Backend returned error");
             
             const pkg = await res.json();
