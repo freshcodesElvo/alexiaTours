@@ -23,8 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const response = await fetch("https://alexia-tours-backend-production.up.railway.app/api/reviews/submit", {
-             
-
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reviewData)
@@ -32,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
                 statusDiv.innerHTML = `<h4 class="text-success mt-3">Asante Sana!</h4><p>Your review has been shared with our team.</p>`;
-                form.style.display = "none"; // Hide form after success
+                form.style.display = "none"; 
             } else {
                 throw new Error("Failed to submit");
             }
