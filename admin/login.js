@@ -19,11 +19,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (response.ok) {
-            // SUCCESS: Save the token and redirect
-            localStorage.setItem('adminToken', data.token);
+            // ✅ SAVE BOTH TOKENS
+            localStorage.setItem('accessToken', data.accessToken);
+            localStorage.setItem('refreshToken', data.refreshToken);
+
             window.location.href = 'dashboard.html'; 
         } else {
-            // FAIL: Show error message
             errorMsg.style.display = 'block';
             errorMsg.innerText = data.message || "Login Failed";
         }
