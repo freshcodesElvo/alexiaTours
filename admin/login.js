@@ -1,4 +1,4 @@
-const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+const API_BASE = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
     ? "http://localhost:5000/api"
     : "https://alexia-tours-backend-production.up.railway.app/api";
 
@@ -19,12 +19,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (response.ok) {
-            // ✅ SAVE BOTH TOKENS
-            localStorage.setItem('accessToken', data.accessToken);
-            localStorage.setItem('refreshToken', data.refreshToken);
-
+            // SUCCESS: Save the token and redirect
             window.location.href = 'dashboard.html'; 
         } else {
+            // FAIL: Show error message
             errorMsg.style.display = 'block';
             errorMsg.innerText = data.message || "Login Failed";
         }
