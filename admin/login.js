@@ -1,4 +1,4 @@
-const API_BASE = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     ? "http://localhost:5000/api"
     : "https://alexia-tours-backend-production.up.railway.app/api";
 
