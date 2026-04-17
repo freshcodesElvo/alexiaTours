@@ -70,22 +70,40 @@
 //     }
 // });
 
-
 const BOOKING_API = "https://alexia-tours-backend-production.up.railway.app/api/bookings";
 
-// --- 1. LIVE SUMMARY LOGIC (Keep this as is) ---
+// --- 1. LIVE SUMMARY LOGIC ---
 const updateSummary = () => {
-    // ... your existing code ...
     const adults = document.getElementById('numAdults').value || 0;
     const children = document.getElementById('numChildren').value || 0;
+    const tourName = document.getElementById('tourOfInterest').value;
+    const startDate = document.getElementById('preferredDates').value;
+
+    // Update the Summary Card text
+    document.getElementById('sumTourName').innerText = tourName || "Select a Tour";
+    document.getElementById('sumTravelers').innerText = `${adults} Adult(s), ${children} Child(ren)`;
+    document.getElementById('sumStartDate').innerText = startDate || "Not selected";
+
+    // Simple pricing: 5000 per adult, 2500 per child
     const total = (adults * 5000) + (children * 2500);
     document.getElementById('sumTotal').innerText = `KSH ${total.toLocaleString()}`;
-    return total; // Return total for the payment logic
+    return total; 
 };
+
+// Attach listeners to update summary
+['numAdults', 'numChildren', 'preferredDates', 'tourOfInterest'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', updateSummary);
+});
 
 // --- 2. FORM SUBMISSION & PAYMENT LOGIC ---
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
+
+    // Safety check: Is the IntaSend library loaded?
+    if (typeof window.IntaSend === 'undefined') {
+        alert("Payment gateway is still loading. Please wait a second and try again.");
+        return;
+    }
 
     if (!this.checkValidity()) {
         e.stopPropagation();
@@ -99,8 +117,8 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     // Initialize IntaSend
     const intasend = new window.IntaSend({
-        publicAPIKey: "ISPubKey_test_90aca16d-6b14-45f0-bf30-ab6084a7f082", // REPLACE WITH YOUR SANDBOX KEY
-        live: false // Set to true when ready for real money
+        publicAPIKey: "ISPubKey_test_90aca16d-6b14-45f0-bf30-ab6084a7f082",
+        live: false 
     });
 
     // Launch the payment modal
@@ -124,7 +142,6 @@ document.querySelector('form').addEventListener('submit', function (e) {
             start_date: document.getElementById('preferredDates').value,
             tour_name: document.getElementById('tourOfInterest').value,
             special_requests: document.getElementById('specialRequests').value,
-            // New payment tracking fields
             transaction_id: results.invoice_id, 
             payment_method: results.provider
         };
@@ -139,11 +156,12 @@ document.querySelector('form').addEventListener('submit', function (e) {
             if (res.ok) {
                 alert(`Asante! Payment of KSH ${totalAmount} confirmed. Your booking is secured.`);
                 this.reset();
+                this.classList.remove('was-validated');
                 updateSummary();
             }
         } catch (error) {
             console.error("Database Save Error:", error);
-            alert("Payment was successful, but we had trouble saving your booking. Please contact booking@alexiastours.co.ke with your transaction ID: " + results.invoice_id);
+            alert("Payment successful, but database error occurred. Reference: " + results.invoice_id);
         }
     });
 });
