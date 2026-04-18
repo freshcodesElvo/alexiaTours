@@ -1,5 +1,4 @@
 const API = "https://alexia-tours-backend-production.up.railway.app/api/destinations";
-const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
 
 let modal = new bootstrap.Modal(
     document.getElementById("destinationModal")
@@ -27,13 +26,12 @@ async function loadDestinations() {
 
         data.forEach(d => {
             const imageSrc = d.image 
-                ? `${IMAGE_BASE}${d.image}`
+                ? d.image
                 : "https://placehold.co/70x50?text=No+Image";
 
-                // Create a short snippet for the table view
-    const descriptionSnippet = d.description && d.description.length > 50 
-        ? d.description.substring(0, 50) + "..." 
-        : (d.description || "-");
+            const descriptionSnippet = d.description && d.description.length > 50 
+                ? d.description.substring(0, 50) + "..." 
+                : (d.description || "-");
 
             table.innerHTML += `
             <tr>
@@ -73,7 +71,7 @@ function clearForm() {
     preview.style.display = "none";
 }
 
-// --- 4. SAVE DESTINATION (FIXED: Uses FormData) ---
+// --- 4. SAVE DESTINATION ---
 async function saveDestination() {
     const id = document.getElementById("destinationId").value;
     const name = document.getElementById("name").value.trim();
@@ -85,12 +83,10 @@ async function saveDestination() {
         return;
     }
 
-    // Prepare Multipart Data
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
     
-    // Only add image if a new file was actually picked
     if (imageFile) {
         formData.append("image", imageFile);
     }
@@ -101,9 +97,7 @@ async function saveDestination() {
 
         const res = await fetch(url, {
             method: method,
-            body: formData 
-            // IMPORTANT: Do NOT set 'Content-Type' header here. 
-            // The browser sets it automatically with the boundary for FormData.
+            body: formData
         });
 
         if (!res.ok) throw new Error("Save failed");
@@ -118,28 +112,25 @@ async function saveDestination() {
     }
 }
 
-// --- 5. EDIT DESTINATION (FIXED: Previews Image instead of setting input value) ---
+// --- 5. EDIT DESTINATION ---
 async function editDestination(id) {
     try {
         const res = await fetch(`${API}/${id}`);
         if (!res.ok) throw new Error("Destination not found");
         const d = await res.json();
 
-        // Fill text fields
         document.getElementById("destinationId").value = d.id;
         document.getElementById("name").value = d.name || "";
         document.getElementById("description").value = d.description || "";
         
-        // Handle image preview
         const preview = document.getElementById("preview");
         if (d.image) {
-            preview.src = `${IMAGE_BASE}${d.image}`;
+            preview.src = d.image;
             preview.style.display = "block";
         } else {
             preview.style.display = "none";
         }
 
-        // Reset the file input so it stays empty (Fixes the InvalidStateError)
         document.getElementById("image").value = "";
 
         modal.show();
