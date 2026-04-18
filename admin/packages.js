@@ -147,3 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPackages();
     populateDestinations();
 });
+
+function openAddModal() {
+    document.getElementById("packageId").value = "";
+    document.getElementById("packageForm").reset();
+    document.getElementById("imagePreview").style.display = 'none';
+    new bootstrap.Modal(document.getElementById("packageModal")).show();
+}
