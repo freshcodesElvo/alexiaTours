@@ -1,8 +1,4 @@
-// const { document } = require("postcss")
-
-const API = "https://alexia-tours-backend-production.up.railway.app/api/packages"
-const IMAGE_BASE = "https://alexia-tours-backend-production.up.railway.app/uploads/";
-
+const API = "https://alexia-tours-backend-production.up.railway.app/api/packages";
 
 async function loadPackages() {
     try {
@@ -11,15 +7,13 @@ async function loadPackages() {
         const table = document.getElementById("packagesTable");
 
         if (!table) return;
-        table.innerHTML = ""; // Clear existing rows
+        table.innerHTML = "";
 
         packages.forEach(pkg => {
             const tr = document.createElement("tr");
 
-            // Handle the image path correctly
-            // If pkg.image exists, it should just be the filename (e.g., "1710293.jpg")
             const imgSrc = pkg.image 
-                ? `${IMAGE_BASE}${pkg.image}` 
+                ? pkg.image  // ← Cloudinary full URL
                 : 'https://placehold.co/50x40?text=No+Img';
 
             tr.innerHTML = `
@@ -40,7 +34,6 @@ async function loadPackages() {
                             class="btn btn-icon p-0 me-2" style="font-size: 1.4rem; color: #0d6efd" title="Edit package">
                         <ion-icon name="create-outline"></ion-icon>
                     </button>
-
                     <button onclick="deletePackage(${pkg.id})" 
                             class="btn btn-icon p-0" style="font-size: 1.4rem; color: #dc3545" title="Delete package">
                         <ion-icon name="trash-outline"></ion-icon>
@@ -59,7 +52,6 @@ async function savePackage() {
     const id = document.getElementById("packageId").value;
     const imageFile = document.getElementById("imageInput").files[0];
 
-    // Use FormData instead of a plain object
     const formData = new FormData();
     formData.append("title", document.getElementById("title").value.trim());
     formData.append("price", document.getElementById("price").value);
@@ -68,7 +60,6 @@ async function savePackage() {
     formData.append("destination_id", document.getElementById("destination").value);
     formData.append("description", document.getElementById("description").value);
     
-    // Append the file if selected
     if (imageFile) {
         formData.append("image", imageFile);
     }
@@ -79,26 +70,14 @@ async function savePackage() {
     }
 
     try {
-        let response;
-        if (id) {
-            // UPDATE
-            response = await fetch(`${API}/${id}`, {
-                method: "PUT",
-                // IMPORTANT: Do NOT set Content-Type header when using FormData
-                body: formData 
-            });
-        } else {
-            // CREATE
-            response = await fetch(API, {
-                method: "POST",
-                body: formData
-            });
-        }
+        const url = id ? `${API}/${id}` : API;
+        const method = id ? "PUT" : "POST";
+
+        const response = await fetch(url, { method, body: formData });
 
         if (response.ok) {
             alert(id ? "Updated!" : "Created!");
             bootstrap.Modal.getInstance(document.getElementById("packageModal")).hide();
-            // Reset form and preview
             document.getElementById("packageForm").reset();
             document.getElementById("imagePreview").style.display = 'none';
             loadPackages();
@@ -109,19 +88,19 @@ async function savePackage() {
         console.error("Save Error:", error);
     }
 }
+
 async function populateDestinations() {
     try {
         const res = await fetch("https://alexia-tours-backend-production.up.railway.app/api/destinations");
         const destinations = await res.json();
         const select = document.getElementById("destination");
         
-        // Keep the first default option
         select.innerHTML = '<option value="">-- Select Destination --</option>';
         
         destinations.forEach(dest => {
             const option = document.createElement("option");
-            option.value = dest.id; // This is what goes to the DB
-            option.textContent = dest.name; // This is what the Admin sees
+            option.value = dest.id;
+            option.textContent = dest.name;
             select.appendChild(option);
         });
     } catch (err) {
@@ -129,20 +108,11 @@ async function populateDestinations() {
     }
 }
 
-// Call this when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-    loadPackages();
-    populateDestinations();
-});
-
-
-
 async function editPackage(id) {
     try {
         const res = await fetch(`${API}/${id}`);
         const pkg = await res.json();
 
-        // Fill text fields
         document.getElementById("packageId").value = pkg.id;
         document.getElementById("title").value = pkg.title;
         document.getElementById("price").value = pkg.price;
@@ -150,31 +120,30 @@ async function editPackage(id) {
         document.getElementById("nights").value = pkg.duration_nights;
         document.getElementById("description").value = pkg.description;
 
-        // Handle the Dropdown (Select the correct destination)
         const select = document.getElementById("destination");
         select.value = pkg.destination_id; 
 
-        // Handle the Image Preview
         const preview = document.getElementById("imagePreview");
         if (pkg.image) {
-            preview.src = `${IMAGE_BASE}${pkg.image}`;
+            preview.src = pkg.image; // ← Cloudinary full URL
             preview.style.display = 'block';
         } else {
             preview.style.display = 'none';
         }
 
-        // Show the modal
         new bootstrap.Modal(document.getElementById("packageModal")).show();
     } catch (err) {
         console.error("Error fetching package details:", err);
     }
 }
 
-async function deletePackage(id){
-    if(!confirm("Delete packege?")) return;
-    await fetch(`${API}/${id}`,{
-        method: "DELETE"
-    })
-    loadPackages()
+async function deletePackage(id) {
+    if (!confirm("Delete package?")) return;
+    await fetch(`${API}/${id}`, { method: "DELETE" });
+    loadPackages();
 }
-loadPackages()
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadPackages();
+    populateDestinations();
+});
