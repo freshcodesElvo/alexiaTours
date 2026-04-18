@@ -59,3 +59,21 @@ $highlight: #000;
     
 }
 
+.travel-guide-section .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.travel-guide-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.travel-guide-section .icon-box i {
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.travel-guide-section .bg-warning .icon-box i {
+    background: rgba(0,0,0,0.1);
+}
