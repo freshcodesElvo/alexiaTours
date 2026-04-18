@@ -14,7 +14,8 @@ async function loadIndexDestinations() {
 
         destinations.forEach(dest => {
             // Use 'image' column from your destinations table
-            const imageSrc = dest.image ? `${IMAGE_BASE}${dest.image}` : 'pictures/placeholder.jpg';
+            const imageSrc = dest.image ? dest.image : 'pictures/placeholder.jpg';
+
             const shortDescription = dest.description.length > 80 
         ? dest.description.substring(0, 80) + "..." 
         : dest.description;
