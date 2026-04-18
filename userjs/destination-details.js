@@ -33,7 +33,8 @@ async function fetchDestinationDetails() {
         }
         
         const heroBg = document.getElementById('hero-bg');
-        const imageSrc = dest.image ? `${IMAGE_BASE}${dest.image}` : 'pictures/placeholder.jpg';
+        const imageSrc = dest.image ? dest.image : 'pictures/placeholder.jpg';
+
         heroBg.style.backgroundImage = `url('${imageSrc}')`;
         document.getElementById("why-vist").innerHTML = `Why Visit ${dest.name}`
 

@@ -50,9 +50,9 @@ async function loadHomePackages() {
         const topPackages = packages.slice(0, 8);
 
         // Inside loadHomePackages function
-topPackages.forEach(pkg => {
-    const imgSrc = pkg.image ? `${IMAGE_BASE}${pkg.image}` : './pictures/placeholder.jpg';
-    const formattedPrice = Number(pkg.price).toLocaleString();
+        topPackages.forEach(pkg => {
+            const imgSrc = pkg.image ? pkg.image : './pictures/placeholder.jpg';
+            const formattedPrice = Number(pkg.price).toLocaleString();
 
     container.innerHTML += `
         <div class="col-md-3">
