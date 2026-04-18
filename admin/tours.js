@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const token = localStorage.getItem('adminToken');
+const token = sessionStorage.getItem('adminToken')
 // Toggle these between localhost and Railway as needed
 const API = "http://localhost:5000/api/tours"; 
 const IMAGE_BASE = "http://localhost:5000/uploads/";

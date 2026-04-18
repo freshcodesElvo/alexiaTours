@@ -266,12 +266,13 @@
 
                 // Actual logout
                 const confirmBtn = document.getElementById('confirmLogoutBtn');
-                if (confirmBtn) {
-                    confirmBtn.addEventListener('click', () => {
-                        localStorage.removeItem('adminToken');
-                        window.location.href = 'login.html';
-                    });
-                }
+if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('adminToken');
+        sessionStorage.removeItem('refreshToken');
+        window.location.href = 'login.html';
+    });
+}
             });
     </script>
 
