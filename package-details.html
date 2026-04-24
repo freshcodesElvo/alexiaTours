@@ -54,7 +54,14 @@
 </style>
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
+       <div id="navbar-placeholder"></div>
+     <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
     <div id="preloader">
   <dotlottie-wc
     src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
@@ -154,4 +161,10 @@
 
     <script src="userjs/package-details.js?v=1.2"></script></body>
     <script src="userjs/loader.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+          crossorigin="anonymous"></script>
 </html>
