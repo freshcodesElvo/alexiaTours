@@ -7,33 +7,81 @@
   <meta name="description" content="Learn about our story, mission, and the people behind Alexia's Tours. We are committed to providing personalized and unforgettable Kenyan adventures.">
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-
-    <link rel="stylesheet" href="assets/css/style.css">
-     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-  
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
+  type="module">
+</script>
   <style>
-    /* Add this temporary style to use a bold, blocky font */
-    .about-heading {
-        font-family: 'Arial Black', sans-serif;
-    }
+    .about-heading { font-family: 'Arial Black', sans-serif; }
+    /* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
   </style>
 </head>
 <body>
-  <div id="navbar-placeholder"></div>
 
+  <div id="navbar-placeholder"></div>
   <script>
     fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
+      .then(r => r.text())
+      .then(data => { document.getElementById('navbar-placeholder').innerHTML = data; });
   </script>
 
+  <div id="preloader">
+  <dotlottie-wc
+    src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
+    
+    style="width: 340px; height:340px"
+    autoplay
+    loop>
+  </dotlottie-wc>
+
+</div>
+
+
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
   <header class="about-hero-section py-5">
     <div class="container">
       <div class="row align-items-center mb-5">
+
         <div class="col-lg-3 px-5 d-flex flex-column about-us-head">
           <h1 class="about-heading display-1 fw-bold text-uppercase lh-1 mb-4">About<br> Us</h1>
           <p class="small text-muted mb-2">Authentic Safari and Beach Experiences</p>
@@ -41,231 +89,185 @@
         </div>
 
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="./pictures/kadyn-pierce-FhXf_8o5jTs-unsplash.jpg" alt="Alexia's Tours Team" class="img-fluid rounded-5 shadow-lg" style="margin-left: 1.5em;">
+          <img src="./pictures/kadyn-pierce-FhXf_8o5jTs-unsplash.jpg"
+               alt="Alexia's Tours Team"
+               class="img-fluid rounded-5 shadow-lg"
+               loading="eager" decoding="async"
+               width="800" height="550"
+               style="margin-left:1.5em;">
         </div>
 
         <div class="col-lg-3 px-5">
           <div class="d-flex flex-column align-items-end">
-            <img src="./pictures/bernd-dittrich-XQVYISpgCA8-unsplash.jpg" alt="Safari camp" class="img-fluid rounded-5 shadow-lg mb-4" style="max-height: 250px;">
-            <h2 class="fw-bold mb-3 ">Our Philosophy</h2>
+            <img src="./pictures/bernd-dittrich-XQVYISpgCA8-unsplash.jpg"
+                 alt="Safari camp"
+                 class="img-fluid rounded-5 shadow-lg mb-4"
+                 loading="lazy" decoding="async"
+                 width="400" height="250"
+                 style="max-height:250px;">
+            <h2 class="fw-bold mb-3">Our Philosophy</h2>
             <p class="small text-muted">At Alexia's Tours, we believe in creating deeply personal experiences that reflect our clients' tastes and desires. Every journey is a unique story waiting to be told.</p>
           </div>
         </div>
+
       </div>
     </div>
   </header>
 
 
+  <!-- ── Values & Vision ───────────────────────────────────────────────── -->
+  <section class="values-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
 
+        <div class="col-lg-7 mb-4 mb-lg-0">
+          <h2 class="fw-bold mb-3">Our Values & Vision</h2>
+          <p class="text-muted mb-5">
+            At Alexia's Tours, we take immense pride in our core values—service, integrity, and excellence.
+            We believe that an unforgettable journey is built on trust and a deep respect for the land and its people.
+          </p>
 
-   <section class="values-section py-5">
-  <div class="container">
-    <div class="row align-items-center">
-      
-      <!-- Text Content -->
-      <div class="col-lg-7 mb-4 mb-lg-0">
-        <h2 class="fw-bold mb-3">Our Values & Vision</h2>
-        <p class="text-muted mb-5">
-          At Alexia's Tours, we take immense pride in our core values—service, integrity, and excellence. 
-          We believe that an unforgettable journey is built on trust and a deep respect for the land and its people.
-        </p>
-
-        <div class="row g-4">
-          <div class="col-md-6">
-            <h3 class="number">01.</h3>
-            <h5 class="fw-bold">Who We Are</h5>
-            <p class="small text-muted">
-              A team of passionate locals who have dedicated our lives to sharing the breathtaking beauty of Kenya with the world.
-            </p>
-          </div>
-
-          <div class="col-md-6">
-            <h3 class="number">02.</h3>
-            <h5 class="fw-bold">What We Do</h5>
-            <p class="small text-muted">
-              We don't just plan tours; we craft personalized adventures that go beyond the ordinary, offering a truly authentic Kenyan experience.
-            </p>
-          </div>
-
-          <div class="col-md-6">
-            <h3 class="number">03.</h3>
-            <h5 class="fw-bold">How We Help</h5>
-            <p class="small text-muted">
-              We handle every detail of your journey with meticulous care, providing seamless travel, expert guides, and unparalleled support.
-            </p>
-          </div>
-
-          <div class="col-md-6">
-            <h3 class="number">04.</h3>
-            <h5 class="fw-bold">Our Success</h5>
-            <p class="small text-muted">
-              Our success is built on a commitment to sustainable tourism that supports local communities and protects Kenya's natural heritage.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Image Grid -->
-      <div class="col-lg-5">
-        <div class="image-grid">
-          <img src="./pictures/leopard.jpg" class="img-fluid rounded shadow-sm" alt="Kenya Tour">
-          <img src="./pictures/tourist2.jpeg" class="img-fluid rounded shadow-sm" alt="Safari Lodge">
-          <img src="./pictures/lione.jpg" class="img-fluid rounded shadow-sm" alt="Nature Experience">
-          <img src="./pictures/hippo.jpg" class="img-fluid rounded shadow-sm" alt="Local Culture">
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<section class="why-travel-section py-5" style="overflow-x: hidden;">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <h2 class="display-3 fw-bold mb-4">Why Choose Alexia's Tours?</h2>
-        <p class="lead text-muted">
-          We go beyond the traditional safari to offer you an immersive, authentic, and unforgettable journey into the heart of Kenya.
-        </p>
-        <img src="pictures/tourist2.jpeg" alt="A tour guide with clients" class="img-fluid rounded-4 shadow mt-4">
-      </div>
-
-      <div class="col-lg-6">
-        <div class="row g-5">
-          <div class="col-md-6">
-            <div class="benefit-card">
-              <span class="benefit-number">01.</span>
-              <h5 class="fw-bold mb-2">Local Expertise</h5>
-              <p class="text-muted small">
-                Our guides are born and raised in Kenya, offering a level of insight and passion that's simply unmatched.
-              </p>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h3 class="number">01.</h3>
+              <h5 class="fw-bold">Who We Are</h5>
+              <p class="small text-muted">A team of passionate locals who have dedicated our lives to sharing the breathtaking beauty of Kenya with the world.</p>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="benefit-card">
-              <span class="benefit-number">02.</span>
-              <h5 class="fw-bold mb-2">Personalized Journeys</h5>
-              <p class="text-muted small">
-                Every tour is custom-built to match your interests, ensuring a unique adventure tailored just for you.
-              </p>
+            <div class="col-md-6">
+              <h3 class="number">02.</h3>
+              <h5 class="fw-bold">What We Do</h5>
+              <p class="small text-muted">We don't just plan tours; we craft personalized adventures that go beyond the ordinary, offering a truly authentic Kenyan experience.</p>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="benefit-card">
-              <span class="benefit-number">03.</span>
-              <h5 class="fw-bold mb-2">Authentic Experiences</h5>
-              <p class="text-muted small">
-                We focus on genuine cultural connections and authentic wildlife encounters away from the crowds.
-              </p>
+            <div class="col-md-6">
+              <h3 class="number">03.</h3>
+              <h5 class="fw-bold">How We Help</h5>
+              <p class="small text-muted">We handle every detail of your journey with meticulous care, providing seamless travel, expert guides, and unparalleled support.</p>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="benefit-card">
-              <span class="benefit-number">04.</span>
-              <h5 class="fw-bold mb-2">Sustainable Tourism</h5>
-              <p class="text-muted small">
-                Your travel supports local communities and conservation efforts, making your trip a force for good.
-              </p>
+            <div class="col-md-6">
+              <h3 class="number">04.</h3>
+              <h5 class="fw-bold">Our Success</h5>
+              <p class="small text-muted">Our success is built on a commitment to sustainable tourism that supports local communities and protects Kenya's natural heritage.</p>
             </div>
           </div>
         </div>
+
+        <!-- Image Grid -->
+        <div class="col-lg-5">
+          <div class="image-grid">
+            <img src="./pictures/leopard.jpg"
+                 class="img-fluid rounded shadow-sm"
+                 alt="Kenya Tour"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <img src="./pictures/tourist2.jpeg"
+                 class="img-fluid rounded shadow-sm"
+                 alt="Safari Lodge"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <img src="./pictures/lione.jpg"
+                 class="img-fluid rounded shadow-sm"
+                 alt="Nature Experience"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <img src="./pictures/hippo.jpg"
+                 class="img-fluid rounded shadow-sm"
+                 alt="Local Culture"
+                 loading="lazy" decoding="async" width="400" height="300">
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
-<!-- <section class="testimonials-section bg-light py-5">
-  <div class="container">
-    <div class="row text-center mb-5">
-      <div class="col-lg-8 mx-auto">
-        <h2 class="fw-bold mb-3">What Our Clients Say</h2>
-        <p class="lead text-muted">Hear from the people who have experienced the magic of Kenya with us.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="testimonials-carousel d-flex horizontal-scroll overflow-auto">
-          <div class="testimonial-card p-4 me-4 rounded-4 shadow-sm">
-            <div class="d-flex align-items-center mb-3">
-              <img src="./pictures/aesthetic.jpeg" class="rounded-circle me-3" alt="Client Photo" width="60" height="60">
-              <div>
-                <h5 class="fw-bold mb-0">Jane Doe</h5>
-                <span class="text-muted small">Safari Enthusiast</span>
+  </section>
+
+
+  <!-- ── Why Choose Us ──────────────────────────────────────────────────── -->
+  <section class="why-travel-section py-5" style="overflow-x:hidden;">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="display-3 fw-bold mb-4">Why Choose Alexia's Tours?</h2>
+          <p class="lead text-muted">We go beyond the traditional safari to offer you an immersive, authentic, and unforgettable journey into the heart of Kenya.</p>
+          <img src="pictures/tourist2.jpeg"
+               alt="A tour guide with clients"
+               class="img-fluid rounded-4 shadow mt-4"
+               loading="lazy" decoding="async" width="600" height="420">
+        </div>
+
+        <div class="col-lg-6">
+          <div class="row g-5">
+            <div class="col-md-6">
+              <div class="benefit-card">
+                <span class="benefit-number">01.</span>
+                <h5 class="fw-bold mb-2">Local Expertise</h5>
+                <p class="text-muted small">Our guides are born and raised in Kenya, offering a level of insight and passion that's simply unmatched.</p>
               </div>
             </div>
-            <p class="text-muted">"Alexia's Tours provided the most authentic and breathtaking safari experience. The guides were incredibly knowledgeable, and every detail was perfect!"</p>
-            <div class="star-rating text-warning">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-            </div>
-          </div>
-          <div class="testimonial-card p-4 me-4 rounded-4 shadow-sm">
-            <div class="d-flex align-items-center mb-3">
-              <img src="./pictures/aesthetic.jpeg" class="rounded-circle me-3" alt="Client Photo" width="60" height="60">
-              <div>
-                <h5 class="fw-bold mb-0">John Smith</h5>
-                <span class="text-muted small">Travel Blogger</span>
+            <div class="col-md-6">
+              <div class="benefit-card">
+                <span class="benefit-number">02.</span>
+                <h5 class="fw-bold mb-2">Personalized Journeys</h5>
+                <p class="text-muted small">Every tour is custom-built to match your interests, ensuring a unique adventure tailored just for you.</p>
               </div>
             </div>
-            <p class="text-muted">"The team's passion for Kenya is infectious! Their personalized approach made our trip truly unforgettable. Highly recommend for anyone looking for a unique adventure."</p>
-            <div class="star-rating text-warning">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
+            <div class="col-md-6">
+              <div class="benefit-card">
+                <span class="benefit-number">03.</span>
+                <h5 class="fw-bold mb-2">Authentic Experiences</h5>
+                <p class="text-muted small">We focus on genuine cultural connections and authentic wildlife encounters away from the crowds.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="benefit-card">
+                <span class="benefit-number">04.</span>
+                <h5 class="fw-bold mb-2">Sustainable Tourism</h5>
+                <p class="text-muted small">Your travel supports local communities and conservation efforts, making your trip a force for good.</p>
+              </div>
             </div>
           </div>
-          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section> -->
+  </section>
 
-<section class="cta-section py-5 ">
-  <div class="container text-center text-white py-5">
-    <h2 class="display-4 fw-bold mb-4">Ready to Begin Your Journey?</h2>
-    <p class="lead mb-4">Let's craft your custom-built Kenyan adventure together. We are here to help every step of the way.</p>
-    <a href="contact-us.html" class="btn btn-warning btn-lg fw-bold text-uppercase">Contact Us Today</a>
-  </div>
-</section>
- <div id="footer-placeholder"></div>
 
+  <!-- ── CTA ───────────────────────────────────────────────────────────── -->
+  <section class="cta-section py-5">
+    <div class="container text-center text-white py-5">
+      <h2 class="display-4 fw-bold mb-4">Ready to Begin Your Journey?</h2>
+      <p class="lead mb-4">Let's craft your custom-built Kenyan adventure together. We are here to help every step of the way.</p>
+      <a href="contact-us.html" class="btn btn-warning btn-lg fw-bold text-uppercase">Contact Us Today</a>
+    </div>
+  </section>
+
+
+  <!-- ── Footer ────────────────────────────────────────────────────────── -->
+  <div id="footer-placeholder"></div>
   <script>
     fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
+      .then(r => r.text())
+      .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
   </script>
-  
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+          crossorigin="anonymous"></script>
 
-    <div class="cursor-circle"></div>
-<script>
-  const cursor = document.querySelector(".cursor-circle");
-  let mouseX = 0, mouseY = 0;
-  let currentX = 0, currentY = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animate() {
-    currentX += (mouseX - currentX) * 0.15;
-    currentY += (mouseY - currentY) * 0.15;
-
-    cursor.style.left = currentX + "px";
-    cursor.style.top = currentY + "px";
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-</script>
+  <div class="cursor-circle"></div>
+  <script>
+    const cursor = document.querySelector(".cursor-circle");
+    let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+    document.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
+    (function animate() {
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      cursor.style.left = currentX + "px";
+      cursor.style.top  = currentY + "px";
+      requestAnimationFrame(animate);
+    })();
+  </script>
+<script src="userjs/loader.js"></script>
 </body>
 </html>

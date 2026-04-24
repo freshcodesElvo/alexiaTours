@@ -12,12 +12,15 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
-
     <!-- Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
+  type="module">
+</script>
     <style>
         .page-heading {
             font-family: 'Arial Black', sans-serif;
@@ -33,7 +36,7 @@
             bottom: 25px;
             right: 25px;
             background-color: #000;
-            color: #25D366; /* official WhatsApp green */
+            color: #25D366;
             border-radius: 50%;
             font-size: 28px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -67,6 +70,49 @@
             70% { transform: scale(1.5); opacity: 0; }
             100% { transform: scale(1); opacity: 0; }
         }
+
+        /* Email hover */
+        .contact-detail a:hover {
+            color: #FFD700 !important;
+        }
+
+        /* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
     </style>
 </head>
 
@@ -81,18 +127,25 @@ fetch('navbar.html')
     document.getElementById('navbar-placeholder').innerHTML = data;
   });
 </script>
+<div id="preloader">
+  <dotlottie-wc
+    src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
+    
+    style="width: 340px; height:340px"
+    autoplay
+    loop>
+  </dotlottie-wc>
 
+</div>
 <section class="contact-section py-5">
     <div class="container">
 
-        <!-- Header -->
         <div class="row text-center mb-5">
             <div class="col-lg-8 mx-auto">
                 <h1 class="page-heading fw-bold">Let's Get In Touch</h1>
             </div>
         </div>
 
-        <!-- Contact Details -->
         <div class="row text-center justify-content-center mb-5">
 
             <!-- Phone -->
@@ -110,7 +163,12 @@ fetch('navbar.html')
                 <div class="contact-detail p-4 rounded-4 shadow-sm">
                     <i class="ri-mail-line ri-3x text-warning mb-3"></i>
                     <h5 class="fw-bold mb-1">Email Addresses</h5>
-                    <p class="small text-muted mb-0">booking@alexiastours.co.ke</p>
+
+                    <a href="mailto:booking@alexiastours.co.ke?subject=Tour%20Inquiry&body=Hello%20Alexia%20Tours,%20I%20would%20like%20to%20ask%20about..."
+                       class="small text-muted mb-0 d-block text-decoration-none">
+                       booking@alexiastours.co.ke
+                    </a>
+
                 </div>
             </div>
 
@@ -125,14 +183,12 @@ fetch('navbar.html')
 
         </div>
 
-        <!-- Form Header -->
         <div class="row text-center my-5">
             <div class="col">
                 <h2 class="fw-bold">Or fill out the form below</h2>
             </div>
         </div>
 
-        <!-- Contact Form -->
         <form id="contactForm" class="needs-validation" novalidate>
             <div class="row g-4">
 
@@ -185,7 +241,6 @@ fetch('footer.html')
    <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
 
@@ -215,6 +270,8 @@ animate();
 </script>
 
 <script src="userjs/contact.js"></script>
+<script src="userjs/loader.js"></script>
 
 </body>
 </html>
+

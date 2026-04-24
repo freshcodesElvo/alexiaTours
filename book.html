@@ -13,7 +13,11 @@
     
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script
+    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
+    type="module">
+    </script>
     <style>
         .page-heading {
             font-family: 'Arial Black', sans-serif;
@@ -21,6 +25,43 @@
             line-height: 1.2;
             color: #000;
         }
+        /* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
     </style>
 </head>
 <body>
@@ -33,7 +74,16 @@
             document.getElementById('navbar-placeholder').innerHTML = data;
           });
     </script>
+    <div id="preloader">
+  <dotlottie-wc
+    src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
+    
+    style="width: 340px; height:340px"
+    autoplay
+    loop>
+  </dotlottie-wc>
 
+</div>
     <section class="book-tour-section py-5">
         <div class="container">
             <div class="row text-center mb-5">
@@ -173,5 +223,6 @@
     </script>
 
     <script src="userjs/booking.js"></script>
+    <script src="userjs/loader.js"></script>
 </body>
 </html>

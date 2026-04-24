@@ -1,0 +1,38 @@
+/* PRELOADER */
+@use "../custom" as *;
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}

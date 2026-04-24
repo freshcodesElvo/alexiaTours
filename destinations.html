@@ -1,168 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tour Packages | Alexia's Tours</title>
-    <meta name="description" content="Explore our expertly crafted tour packages, including safari, beach, cultural, and hiking adventures in Kenya.">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <style>
-      .horizontal-scroll {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE/Edge */
-    }
-    .horizontal-scroll::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Packages | Alexia's Tours</title>
+  <meta name="description" content="Explore our expertly crafted tour packages, including safari, beach, cultural, and hiking adventures in Kenya.">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
+  type="module">
+</script>
+  <style>
+    .horizontal-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+    .horizontal-scroll::-webkit-scrollbar { display: none; }
 
     .line-clamp {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;  
-        overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    .tour-card-wrapper {
-        transition: transform 0.3s ease;
-    }
+    .tour-card-wrapper { transition: transform 0.3s ease; }
+    .tour-card-wrapper:hover { transform: translateY(-10px); }
 
-    .tour-card-wrapper:hover {
-        transform: translateY(-10px);
-    }
-      .destination-card img {
-    transition: transform 0.5s ease;
-      }
+    .destination-card img { transition: transform 0.5s ease; }
+    .destination-card:hover img { transform: scale(1.1); }
+    .destination-card .stretched-link { z-index: 2; }
 
-      .destination-card:hover img {
-          transform: scale(1.1);
-      }
+    /* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
 
-      .destination-card .stretched-link {
-          z-index: 2;
-      }
-    </style>
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+  </style>
 </head>
 <body>
- <div id="navbar-placeholder"></div>
 
+  <div id="navbar-placeholder"></div>
   <script>
     fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
+      .then(r => r.text())
+      .then(data => { document.getElementById('navbar-placeholder').innerHTML = data; });
   </script>
+<div id="preloader">
+  <dotlottie-wc
+    src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
+    
+    style="width: 340px; height:340px"
+    autoplay
+    loop>
+  </dotlottie-wc>
 
-      
-
-    <section class="destinations-section py-5">
-  <div class="container">
-
-    <div class="row text-center mb-5">
-      <div class="col">
-        <h2 class="display-6 fw-bold mb-2">Select Category</h2>
-        <p class="text-muted">Explore tours tailored to your interests.</p>
-      </div>
-    </div>
-    <div class="row justify-content-center mb-5 pb-5">
-      <div class="col-6 col-md-3 mb-4">
-        <div class="category-card p-4 text-center rounded-4 shadow-sm">
-          <i class="ri-safari-line ri-3x mb-3 text-warning"></i>
-          <h5 class="fw-bold mb-1">Safari Activity</h5>
-          <p class="small text-muted mb-0">Experience the thrill of the wild.</p>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mb-4">
-        <div class="category-card p-4 text-center rounded-4 shadow-sm">
-          <i class="ri-sun-line ri-3x mb-3 text-warning"></i>
-          <h5 class="fw-bold mb-1">Beach Relaxation</h5>
-          <p class="small text-muted mb-0">Unwind on Kenya's pristine coast.</p>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mb-4">
-        <div class="category-card p-4 text-center rounded-4 shadow-sm">
-          <i class="ri-ancient-gate-line ri-3x mb-3 text-warning"></i>
-          <h5 class="fw-bold mb-1">Cultural Insights</h5>
-          <p class="small text-muted mb-0">Immerse yourself in local traditions.</p>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mb-4">
-        <div class="category-card p-4 text-center rounded-4 shadow-sm">
-          <i class="ri-walk-line ri-3x mb-3 text-warning"></i>
-          <h5 class="fw-bold mb-1">Hiking & Trekking</h5>
-          <p class="small text-muted mb-0">Discover breathtaking landscapes on foot.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row text-center mb-4">
-      <div class="col">
-        <h2 class="display-6 fw-bold mb-2">Trending Tours</h2>
-        <p class="text-muted">Our most popular adventures this season.</p>
-      </div>
-    </div>
-
-    <!-- getting destinations from db -->
-    <div class="row">
-    <div class="col">
-        <div id="tour-container" class="tour-carousel d-flex horizontal-scroll overflow-auto pb-4">
-            </div>
-    </div>
-    </div>
-
-   <div class="row mt-5">
-  <div class="col">
-    <h2 class="display-6 fw-bold mb-2">Top Destinations</h2>
-    <p class="text-muted">Where adventure awaits.</p>
-  </div>
 </div>
 
-<div class="row" id="destinations-grid">
-  </div>
-  </div>
-</section>
+  <!-- ── Destinations Section ───────────────────────────────────────────── -->
+  <section class="destinations-section py-5">
+    <div class="container">
+
+      <!-- Category cards (no images — no lazy loading needed) -->
+      <div class="row text-center mb-5">
+        <div class="col">
+          <h2 class="display-6 fw-bold mb-2">Select Category</h2>
+          <p class="text-muted">Explore tours tailored to your interests.</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-6 col-md-3 mb-4">
+          <div class="category-card p-4 text-center rounded-4 shadow-sm">
+            <i class="ri-safari-line ri-3x mb-3 text-warning"></i>
+            <h5 class="fw-bold mb-1">Safari Activity</h5>
+            <p class="small text-muted mb-0">Experience the thrill of the wild.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="category-card p-4 text-center rounded-4 shadow-sm">
+            <i class="ri-sun-line ri-3x mb-3 text-warning"></i>
+            <h5 class="fw-bold mb-1">Beach Relaxation</h5>
+            <p class="small text-muted mb-0">Unwind on Kenya's pristine coast.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="category-card p-4 text-center rounded-4 shadow-sm">
+            <i class="ri-ancient-gate-line ri-3x mb-3 text-warning"></i>
+            <h5 class="fw-bold mb-1">Cultural Insights</h5>
+            <p class="small text-muted mb-0">Immerse yourself in local traditions.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="category-card p-4 text-center rounded-4 shadow-sm">
+            <i class="ri-walk-line ri-3x mb-3 text-warning"></i>
+            <h5 class="fw-bold mb-1">Hiking & Trekking</h5>
+            <p class="small text-muted mb-0">Discover breathtaking landscapes on foot.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trending Tours -->
+      <div class="row text-center mb-4">
+        <div class="col">
+          <h2 class="display-6 fw-bold mb-2">Trending Tours</h2>
+          <p class="text-muted">Our most popular adventures this season.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div id="tour-container" class="tour-carousel d-flex horizontal-scroll overflow-auto pb-4">
+            <!-- Skeleton cards injected by tours.js -->
+          </div>
+        </div>
+      </div>
+
+       <section class="tour-packages py-5">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col">
+          <span class="text-muted fw-bold text-uppercase">Tour Activity</span>
+          <h2 class="display-5 fw-bold mt-2">Our Top Destinations</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="display:flex; justify-content:center; align-items:center;">
+          <div id="index-destinations-container"
+               class="tour-carousel d-flex horizontal-scroll overflow-auto">
+            <!-- Skeleton cards injected by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <div class="row" id="destinations-grid">
+        <!-- Skeleton cards injected by tours.js -->
+      </div>
+
+    </div>
+  </section>
 
 
-
-<div id="footer-placeholder"></div>
-
+  <!-- ── Footer ────────────────────────────────────────────────────────── -->
+  <div id="footer-placeholder"></div>
   <script>
     fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
+      .then(r => r.text())
+      .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
   </script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+          crossorigin="anonymous"></script>
+
   <div class="cursor-circle"></div>
-<script>
-  const cursor = document.querySelector(".cursor-circle");
-  let mouseX = 0, mouseY = 0;
-  let currentX = 0, currentY = 0;
+  <script>
+    const cursor = document.querySelector(".cursor-circle");
+    let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+    document.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
+    (function animate() {
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      cursor.style.left = currentX + "px";
+      cursor.style.top  = currentY + "px";
+      requestAnimationFrame(animate);
+    })();
+  </script>
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animate() {
-    currentX += (mouseX - currentX) * 0.15;
-    currentY += (mouseY - currentY) * 0.15;
-
-    cursor.style.left = currentX + "px";
-    cursor.style.top = currentY + "px";
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-</script>
-<script src="userjs/tours.js"></script>
+  <script src="userjs/tours.js"></script>
+  <script src="userjs/loader.js"></script>
 
 </body>
 </html>

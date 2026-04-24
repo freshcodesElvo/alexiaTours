@@ -12,147 +12,162 @@
   <meta property="og:title" content="Experience the Magic of Kenya | Alexia's Tours">
   <meta property="og:description" content="Bespoke safari, beach, and cultural experiences across Kenya, tailored to your unique desires.">
   <meta property="og:image" content="https://alexiastours.co.ke/uploads/maasaimara.jpg">
+
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
   <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "TourOperator"],
-  "name": "Alexia's Tours",
-  "url": "https://alexiastours.co.ke",
-  "description": "Top-rated safari company in Kenya offering Maasai Mara tours, beach holidays, and airport transfers.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Nairobi",
-    "addressCountry": "KE"
-  },
-  "areaServed": "Kenya",
-  "priceRange": "$$"
-}
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
+  type="module">
 </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "TourOperator"],
+    "name": "Alexia's Tours",
+    "url": "https://alexiastours.co.ke",
+    "description": "Top-rated safari company in Kenya offering Maasai Mara tours, beach holidays, and airport transfers.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    },
+    "areaServed": "Kenya",
+    "priceRange": "$$"
+  }
+  </script>
 </head>
 <body>
 
-       <div id="navbar-placeholder"></div>
 
+  <div id="navbar-placeholder"></div>
   <script>
     fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
+      .then(r => r.text())
+      .then(data => { document.getElementById('navbar-placeholder').innerHTML = data; });
   </script>
 
+<div id="preloader">
+  <dotlottie-wc
+    src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
+    
+    style="width: 340px; height:340px"
+    autoplay
+    loop>
+  </dotlottie-wc>
 
-<section class="hero-safari d-flex align-items-center">
-  <div class="container text-center text-white">
-
-    <h1 class="fw-bold mb-3">
-      DISCOVER KENYA'S MAGIC
-    </h1>
-
-    <p class="lead mb-4">
-      Authentic adventures tailored for you.
-    </p>
-
-    <a href="book.html" class="btn btn-warning btn-lg px-5 rounded-pill">
-      Book Now
-    </a>
-
-  </div>
-</section>
-
-<!-- Slogan -->
-<div class="slogan-bar text-center py-4">
-  <h4 class="mb-0">
-    Alexia's Tours
-  </h4>
-</div>
-
-<div class="slogan-bar py-4">
-  <div class="container text-center">
-    <h2 class="slogan-text">Where every journey Tells a story.</h2>
-  </div>
 </div>
 
 
-<section class="services-section py-5">
-  <div class="container">
-    <div class="row align-items-start mb-5">
-      <div class="col-lg-6">
-        <p class="text-uppercase small  mb-2"> Our Services</p>
-        <h2 class="display-5 fw-bold">Trusted Travel Services</h2>
-      </div>
-      <div class="col-lg-6 text-lg-end">
-        <p class="text-muted mb-2">
-          From smooth visa processing to safari adventures, we’ve got every detail of your journey covered.
-          Choose reliability, choose Alexia’s Tours.
-        </p>
-        <a href="ourServices.html" class="me-4 fw-bold  text-decoration-none">View All Services →</a>
-        <a href="#" class="fw-bold  text-decoration-none">Call For Booking →</a>
-      </div>
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <section class="hero-safari d-flex align-items-center">
+    <div class="container text-center text-white">
+      <h1 class="fw-bold mb-3">DISCOVER KENYA'S MAGIC</h1>
+      <p class="lead mb-4">Authentic adventures tailored for you.</p>
+      <a href="book.html" class="btn btn-warning btn-lg px-5 rounded-pill">Book Now</a>
     </div>
+  </section>
 
-    <div class="row g-4">
-      <!-- Service 1 -->
-      <div class="col-md-6 col-lg-3 service-card-container1" >
-        <div class="service-card position-relative">
-          <img src="./pictures/visapic.jpg" alt="Visa Application" class="img-fluid rounded-4">
-          <div class="overlay">
-            <h6 class="fw-bold text-white">Visa Application</h6>
-            <a href="visaApplication.html" class="btn-circle">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <!-- Service 2 -->
-      <div class="col-md-6 col-lg-3 service-card-container2" >
-        <div class="service-card position-relative">
-          <img src="./pictures/hotel.jpeg" alt="Hotel Booking" class="img-fluid rounded-4">
-          <div class="overlay">
-            <h6 class="fw-bold text-white">Hotel Booking</h6>
-            <a href="hotel-booking.html" class="btn-circle">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="col-md-6 col-lg-3 service-card-container3" >
-        <div class="service-card position-relative">
-          <img src="./pictures/zebra.jpeg" alt="Safari Booking" class="img-fluid rounded-4">
-          <div class="overlay">
-            <h6 class="fw-bold text-white">Safari Booking</h6>
-            <a href="safari-tours.html" class="btn-circle">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="col-md-6 col-lg-3 service-card-container4">
-        <div class="service-card position-relative">
-          <img src="./pictures/airportTransfer.jpeg" alt="Airport Transfers" class="img-fluid rounded-4">
-          <div class="overlay">
-            <h6 class="fw-bold text-white">Airport Transfers</h6>
-            <a href="airport.html" class="btn-circle">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- ── Slogan ────────────────────────────────────────────────────────── -->
+  <div class="slogan-bar text-center py-4">
+    <h4 class="mb-0">Alexia's Tours</h4>
+  </div>
+  <div class="slogan-bar py-4">
+    <div class="container text-center">
+      <h2 class="slogan-text">Where every journey Tells a story.</h2>
     </div>
   </div>
-</section>
 
 
+  <!-- ── Services ──────────────────────────────────────────────────────── -->
+  <section class="services-section py-5">
+    <div class="container">
+      <div class="row align-items-start mb-5">
+        <div class="col-lg-6">
+          <p class="text-uppercase small mb-2">Our Services</p>
+          <h2 class="display-5 fw-bold">Trusted Travel Services</h2>
+        </div>
+        <div class="col-lg-6 text-lg-end">
+          <p class="text-muted mb-2">
+            From smooth visa processing to safari adventures, we've got every detail of your journey covered.
+            Choose reliability, choose Alexia's Tours.
+          </p>
+          <a href="ourServices.html" class="me-4 fw-bold text-decoration-none">View All Services →</a>
+          <a href="#" class="fw-bold text-decoration-none">Call For Booking →</a>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Service 1 -->
+        <div class="col-md-6 col-lg-3 service-card-container1">
+          <div class="service-card position-relative">
+            <img src="./pictures/visapic.jpg" alt="Visa Application"
+                 class="img-fluid rounded-4"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <div class="overlay">
+              <h6 class="fw-bold text-white">Visa Application</h6>
+              <a href="visaApplication.html" class="btn-circle">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-md-6 col-lg-3 service-card-container2">
+          <div class="service-card position-relative">
+            <img src="./pictures/hotel.jpeg" alt="Hotel Booking"
+                 class="img-fluid rounded-4"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <div class="overlay">
+              <h6 class="fw-bold text-white">Hotel Booking</h6>
+              <a href="hotel-booking.html" class="btn-circle">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-md-6 col-lg-3 service-card-container3">
+          <div class="service-card position-relative">
+            <img src="./pictures/zebra.jpeg" alt="Safari Booking"
+                 class="img-fluid rounded-4"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <div class="overlay">
+              <h6 class="fw-bold text-white">Safari Booking</h6>
+              <a href="safari-tours.html" class="btn-circle">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="col-md-6 col-lg-3 service-card-container4">
+          <div class="service-card position-relative">
+            <img src="./pictures/airportTransfer.jpeg" alt="Airport Transfers"
+                 class="img-fluid rounded-4"
+                 loading="lazy" decoding="async" width="400" height="300">
+            <div class="overlay">
+              <h6 class="fw-bold text-white">Airport Transfers</h6>
+              <a href="airport.html" class="btn-circle">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Top Destinations ───────────────────────────────────────────────── -->
   <section class="tour-packages py-5">
     <div class="container">
       <div class="row text-center mb-5">
@@ -161,438 +176,403 @@
           <h2 class="display-5 fw-bold mt-2">Our Top Destinations</h2>
         </div>
       </div>
-
       <div class="row">
-        <div class="col" style="display: flex; justify-content: center; align-items: center;">
-          <div id="index-destinations-container" class="tour-carousel d-flex horizontal-scroll overflow-auto">
-            </div>
+        <div class="col" style="display:flex; justify-content:center; align-items:center;">
+          <div id="index-destinations-container"
+               class="tour-carousel d-flex horizontal-scroll overflow-auto">
+            <!-- Skeleton cards injected by JS -->
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-<section class="packages-section py-5 text-center text-white">
-  <div class="container">
-    <div class="mb-5">
-      <span class="badge rounded-pill bg-light text-dark px-3 py-2">Our Top Packages</span>
-      <h2 class="mt-4 fw-bold">
-        Choose Your Perfect <span class="text-highlight">Package</span> For <br> Memorable Adventure.
-      </h2>
-    </div>
 
-    <div id="index-packages-container" class="row justify-content-center g-4">
-      </div>
-
-  </div>
-</section>
-
-
-
-
-<section class="tour-doc py-5" style="overflow-x: hidden;">
-  <div class="container">
-    <!-- Badge -->
-    <div class="text-center mb-4">
-      <span class="badge rounded-pill bg-light text-dark px-3 py-2">Tour Gallery</span>
-    </div>
-
-    <!-- Headings -->
-    <div class="row align-items-start g-5">
-      <!-- Left Content -->
-      <div class="col-lg-5">
-        <h2 class="fw-bold mb-3">
-          Capture Your <span class="text-highlight">Unforgettable</span> <br> Moments With Us
-        </h2>
-        <p class="mb-4">Mount Bromo's beauty is indescribable, and this tour made it accessible and fun. Our guide's knowledge of the area was so valuable.</p>
-
-        <!-- Customer Review -->
-        <div class="d-flex align-items-center mb-3 ">
-          <div class="customer-review-avater-boundary">
-              <img src="./pictures/aesthetic.jpeg" class="rounded-circle  customer-review-avater" alt="reviewer">
-
-          </div>
-          <div style="margin-left: 2em;">
-            <h6 class="mb-0">Muhammad Ali</h6>
-            <small class="text-muted">Surabaya, Indonesia</small>
-          </div>
-        </div>
-
-        <div class="d-flex gap-2 mb-4 flex-wrap">
-          <span class="badge bg-light text-dark"> <ion-icon name="star"></ion-icon> Rating 5.0</span>
-          <span class="badge bg-light text-dark">Premium Package</span>
-        </div>
-
-        <!-- Tour Features -->
-        <h6 class="fw-semibold mb-2">Our tour to Bromo include:</h6>
-        <div class="d-flex flex-wrap gap-2">
-          <span class="badge bg-light text-dark">Pick-Up and Drop-Off</span>
-          <span class="badge bg-light text-dark">Transportation</span>
-          <span class="badge bg-light text-dark">Jeep Adventure</span>
-          <span class="badge bg-light text-dark">Tour Guide</span>
-          <span class="badge bg-light text-dark">Photographer</span>
-          <span class="badge bg-light text-dark">Breakfast and Lunch</span>
-        </div>
-      </div>
-
-      <!-- Right Content -->
-      <div class="col-lg-7">
-        <div class="d-flex flex-column flex-md-row gap-4">
-
-          <!-- Image Card -->
-          <div class="doc-card flex-fill">
-            <img src="./pictures/pic1.jpeg" class="img-fluid rounded-4" alt="Jeep Adventure">
-            <!-- <div class="doc-overlay">
-              <small>Jeep Adventure</small>
-              <h6 class="fw-semibold">Teletubbies Hills</h6>
-            </div> -->
-          </div>
-
-          <!-- Video Card -->
-          <div class="doc-card flex-fill">
-            <img src="./pictures/zebra.jpeg" class="img-fluid rounded-4" alt="Video Highlights">
-            <div class="doc-video-overlay">
-              <button class="btn btn-light rounded-circle d-flex align-items-center justify-content-center" >
-                 <ion-icon name="play-circle-outline"></ion-icon>
-              </button>
-            </div>
-            <div class="mt-3">
-              <h6 class="fw-semibold">Video Highlights</h6>
-              <p class="small text-muted">Experience the highlights of our Mount Bromo Sunrise Tour through this exciting video compilation.</p>
-              <a href="gallery.html" class="btn btn-primary px-4">
-                Our gallery <i class="bi bi-play-circle ms-2"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="travel-guide" class="travel-guide-section py-5 bg-light">
+  <!-- ── Packages ───────────────────────────────────────────────────────── -->
+  <section class="packages-section py-5 text-center text-white">
     <div class="container">
-        <div class="row mb-5 text-center">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="display-5 fw-bold">Essential Travel Guide</h2>
-                <p class="text-muted">Everything you need to know before you fly to Kenya with Alexia's Tours.</p>
+      <div class="mb-5">
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2">Our Top Packages</span>
+        <h2 class="mt-4 fw-bold">
+          Choose Your Perfect <span class="text-highlight">Package</span> For <br> Memorable Adventure.
+        </h2>
+      </div>
+      <div id="index-packages-container" class="row justify-content-center g-4">
+        <!-- Skeleton cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Tour Gallery ───────────────────────────────────────────────────── -->
+  <section class="tour-doc py-5" style="overflow-x:hidden;">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2">Tour Gallery</span>
+      </div>
+
+      <div class="row align-items-start g-5">
+        <!-- Left Content -->
+        <div class="col-lg-5">
+          <h2 class="fw-bold mb-3">
+            Capture Your <span class="text-highlight">Unforgettable</span> <br> Moments With Us
+          </h2>
+          <p class="mb-4">Mount Bromo's beauty is indescribable, and this tour made it accessible and fun. Our guide's knowledge of the area was so valuable.</p>
+
+          <div class="d-flex align-items-center mb-3">
+            <div class="customer-review-avater-boundary">
+              <img src="./pictures/aesthetic.jpeg"
+                   class="rounded-circle customer-review-avater"
+                   alt="Muhammad Ali reviewer"
+                   loading="lazy" decoding="async" width="60" height="60">
             </div>
+            <div style="margin-left:2em;">
+              <h6 class="mb-0">Muhammad Ali</h6>
+              <small class="text-muted">Surabaya, Indonesia</small>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 mb-4 flex-wrap">
+            <span class="badge bg-light text-dark"><ion-icon name="star"></ion-icon> Rating 5.0</span>
+            <span class="badge bg-light text-dark">Premium Package</span>
+          </div>
+
+          <h6 class="fw-semibold mb-2">Our tour to Bromo include:</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-light text-dark">Pick-Up and Drop-Off</span>
+            <span class="badge bg-light text-dark">Transportation</span>
+            <span class="badge bg-light text-dark">Jeep Adventure</span>
+            <span class="badge bg-light text-dark">Tour Guide</span>
+            <span class="badge bg-light text-dark">Photographer</span>
+            <span class="badge bg-light text-dark">Breakfast and Lunch</span>
+          </div>
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="icon-box mb-3 text-warning fs-1">
-                        <i class="ri-passport-line"></i>
-                    </div>
-                    <h4 class="fw-bold">Entry & Visa</h4>
-                    <p class="text-muted small">Kenya is now visa-free, but you must apply for an <strong>Electronic Travel Authorization (eTA)</strong> at least 3 days before travel.</p>
-                    <a href="https://www.etakenya.go.ke" target="_blank" class="text-warning fw-bold text-decoration-none">Apply Here <i class="ri-arrow-right-up-line"></i></a>
-                </div>
+        <!-- Right Content -->
+        <div class="col-lg-7">
+          <div class="d-flex flex-column flex-md-row gap-4">
+            <div class="doc-card flex-fill">
+              <img src="./pictures/pic1.jpeg"
+                   class="img-fluid rounded-4"
+                   alt="Jeep Adventure"
+                   loading="lazy" decoding="async" width="600" height="400">
             </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="icon-box mb-3 text-warning fs-1">
-                        <i class="ri-briefcase-4-line"></i>
-                    </div>
-                    <h4 class="fw-bold">Packing Essentials</h4>
-                    <ul class="text-muted small ps-3">
-                        <li>Light cotton clothing (neutral colors)</li>
-                        <li>High SPF sunscreen & sunglasses</li>
-                        <li>Type G power adapters (UK style)</li>
-                        <li>Binoculars for wildlife viewing</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="icon-box mb-3 text-warning fs-1">
-                        <i class="ri-heart-pulse-line"></i>
-                    </div>
-                    <h4 class="fw-bold">Health & Safety</h4>
-                    <p class="text-muted small">Consult your doctor for Malaria prophylaxis. We recommend drinking only bottled water, which we provide during all game drives.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="icon-box mb-3 text-warning fs-1">
-                        <i class="ri-money-dollar-circle-line"></i>
-                    </div>
-                    <h4 class="fw-bold">Money Matters</h4>
-                    <p class="text-muted small">The local currency is the <strong>Kenya Shilling (KES)</strong>. Major credit cards and M-Pesa are widely accepted in cities.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="icon-box mb-3 text-warning fs-1">
-                        <i class="ri-sun-cloudy-line"></i>
-                    </div>
-                    <h4 class="fw-bold">Weather & Timing</h4>
-                    <p class="text-muted small">June to October is the "Great Migration" season. January to March is excellent for bird watching and clear skies.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-warning text-dark">
-                    <div class="icon-box mb-3 fs-1">
-                        <i class="ri-questionnaire-line"></i>
-                    </div>
-                    <h4 class="fw-bold">Need Help?</h4>
-                    <p class="small">Questions about your booking or the IntaSend payment process? Our team is available 24/7 via WhatsApp.</p>
-                    <a href="mailto:support@alexiastours.co.ke" class="btn btn-dark btn-sm rounded-pill fw-bold">Contact Support</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="section testimonials" id="testimonials">
-  <div class="container">
-    <div class="text-center mb-5">
-      <p class="section-subtitle">Testimonials</p>
-      <h2 class="h2 section-title">What Our Travelers Say</h2>
-    </div>
-
-    <div id="reviews-container" class="reviews-grid">
-      <p class="text-center py-5">Loading amazing stories...</p>
-    </div>
-  </div>
-</section>
-
-<style>
-  :root {
-    --alexia-gold: #ffb700; /* Adjust to match your exact brand yellow */
-    --alexia-dark: #1a1a1a;
-  }
-
-  .testimonials {
-    background-color: #f8f9fa;
-    padding-block: 80px;
-  }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
-
-  .review-card {
-    background: #ffffff;
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-  /* Hover effect to make it interactive */
-  .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-  }
-
-  /* The Quote Icon aesthetic */
-  .review-card::before {
-    content: '"';
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 80px;
-    color: rgba(0, 0, 0, 0.03);
-    font-family: serif;
-    line-height: 1;
-  }
-
-  .verified-badge {
-    font-size: 0.75rem;
-    color: #0d9488; /* Teal/green for trust */
-    background: #f0fdfa;
-    padding: 4px 10px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 15px;
-    width: fit-content;
-  }
-
-  .review-text {
-    font-style: italic;
-    color: #4a4a4a;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-
-  .reviewer-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-    border-top: 1px solid #f1f1f1;
-    padding-top: 20px;
-  }
-
-  .reviewer-name {
-    font-weight: 700;
-    color: var(--alexia-dark);
-    margin-bottom: 2px;
-    display: block;
-  }
-
-  .review-date {
-    font-size: 0.85rem;
-    color: #888;
-  }
-
-  .stars {
-    color: var(--alexia-gold);
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-  }
-
- 
-</style>
-
-
-<section class="how-to-book py-5">
-  <div class="container">
-    <div class="row text-center mb-5">
-      <div class="col">
-        <h2 class="display-3 fw-bold">How to Book Your Tour</h2>
-      </div>
-    </div>
-
-    <!-- <div class="row text-center mb-5">
-      <div class="col">
-        <ul class="sub-nav d-flex justify-content-center flex-wrap list-unstyled">
-          <li><span>Transportation</span></li>
-          <li><span>Exploration</span></li>
-          <li><span>Tour Guide</span></li>
-          <li><span>Adventure</span></li>
-          <li><span>Sunrise Viewing</span></li>
-        </ul>
-      </div>
-    </div> -->
-
-    <div class="row align-items-center">
-      <div class="col-lg-5 mb-4 mb-lg-0">
-        <h4 class="fw-bold">4 Easy Steps</h4>
-        <p class="text-muted">Booking your unforgettable Kenyan adventure is easy and straightforward. Follow these four simple steps to secure your truly unique tour.</p>
-        <a href="destinations.html" class="btn btn-outline-dark btn-lg fw-bold mt-4">
-          Book Our Tour <i class="ri-arrow-right-line ms-2"></i>
-        </a>
-      </div>
-      
-      <div class="col-lg-7">
-        <div class="row g-4">
-          <div class="col-md-6">
-            <div class="step-card p-4">
-              <h3 class="step-number">01.</h3>
-              <h5 class="step-title fw-bold">Choose Package</h5>
-              <p class="step-description text-muted">Browse our personalized tour packages to find the one that best suits your interests and travel style.</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="step-card p-4">
-              <h3 class="step-number">02.</h3>
-              <h5 class="step-title fw-bold">Confirm Availability</h5>
-              <p class="step-description text-muted">Contact our team to check the availability for your preferred tour dates and get a quick confirmation.</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="step-card p-4">
-              <h3 class="step-number">03.</h3>
-              <h5 class="step-title fw-bold">Make a Reservation</h5>
-              <p class="step-description text-muted">Once confirmed, fill out our online reservation form and we will send you the payment details.</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="step-card p-4">
-              <h3 class="step-number">04.</h3>
-              <h5 class="step-title fw-bold">Receive Confirmation</h5>
-              <p class="step-description text-muted">After payment, you'll receive a booking confirmation email with all necessary details and your personalized itinerary.</p>
+            <div class="doc-card flex-fill">
+              <img src="./pictures/zebra.jpeg"
+                   class="img-fluid rounded-4"
+                   alt="Video Highlights"
+                   loading="lazy" decoding="async" width="600" height="400">
+              <div class="doc-video-overlay">
+                <button class="btn btn-light rounded-circle d-flex align-items-center justify-content-center">
+                  <ion-icon name="play-circle-outline"></ion-icon>
+                </button>
+              </div>
+              <div class="mt-3">
+                <h6 class="fw-semibold">Video Highlights</h6>
+                <p class="small text-muted">Experience the highlights of our Mount Bromo Sunrise Tour through this exciting video compilation.</p>
+                <a href="gallery.html" class="btn btn-primary px-4">
+                  Our gallery <i class="bi bi-play-circle ms-2"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
+  <!-- ── Travel Guide ───────────────────────────────────────────────────── -->
+  <section id="travel-guide" class="travel-guide-section py-5 bg-light">
+    <div class="container">
+      <div class="row mb-5 text-center">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="display-5 fw-bold">Essential Travel Guide</h2>
+          <p class="text-muted">Everything you need to know before you fly to Kenya with Alexia's Tours.</p>
+        </div>
+      </div>
 
-<div id="footer-placeholder"></div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="icon-box mb-3 text-warning fs-1"><i class="ri-passport-line"></i></div>
+            <h4 class="fw-bold">Entry & Visa</h4>
+            <p class="text-muted small">Kenya is now visa-free, but you must apply for an <strong>Electronic Travel Authorization (eTA)</strong> at least 3 days before travel.</p>
+            <a href="https://www.etakenya.go.ke" target="_blank" class="text-warning fw-bold text-decoration-none">Apply Here <i class="ri-arrow-right-up-line"></i></a>
+          </div>
+        </div>
 
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="icon-box mb-3 text-warning fs-1"><i class="ri-briefcase-4-line"></i></div>
+            <h4 class="fw-bold">Packing Essentials</h4>
+            <ul class="text-muted small ps-3">
+              <li>Light cotton clothing (neutral colors)</li>
+              <li>High SPF sunscreen & sunglasses</li>
+              <li>Type G power adapters (UK style)</li>
+              <li>Binoculars for wildlife viewing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="icon-box mb-3 text-warning fs-1"><i class="ri-heart-pulse-line"></i></div>
+            <h4 class="fw-bold">Health & Safety</h4>
+            <p class="text-muted small">Consult your doctor for Malaria prophylaxis. We recommend drinking only bottled water, which we provide during all game drives.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="icon-box mb-3 text-warning fs-1"><i class="ri-money-dollar-circle-line"></i></div>
+            <h4 class="fw-bold">Money Matters</h4>
+            <p class="text-muted small">The local currency is the <strong>Kenya Shilling (KES)</strong>. Major credit cards and M-Pesa are widely accepted in cities.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="icon-box mb-3 text-warning fs-1"><i class="ri-sun-cloudy-line"></i></div>
+            <h4 class="fw-bold">Weather & Timing</h4>
+            <p class="text-muted small">June to October is the "Great Migration" season. January to March is excellent for bird watching and clear skies.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-warning text-dark">
+            <div class="icon-box mb-3 fs-1"><i class="ri-questionnaire-line"></i></div>
+            <h4 class="fw-bold">Need Help?</h4>
+            <p class="small">Questions about your booking or the IntaSend payment process? Our team is available 24/7 via WhatsApp.</p>
+            <a href="mailto:support@alexiastours.co.ke" class="btn btn-dark btn-sm rounded-pill fw-bold">Contact Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Testimonials ───────────────────────────────────────────────────── -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-subtitle">Testimonials</p>
+        <h2 class="h2 section-title">What Our Travelers Say</h2>
+      </div>
+      <div id="reviews-container" class="reviews-grid">
+        <p class="text-center py-5">Loading amazing stories...</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* PAGE TRANSITIONS */
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Page fully loaded */
+body.loaded {
+  opacity: 1;
+}
+
+/* Fade out when leaving */
+body.fade-out {
+  opacity: 0;
+}
+    :root {
+      --alexia-gold: #ffb700;
+      --alexia-dark: #1a1a1a;
+    }
+    .testimonials { background-color: #f8f9fa; padding-block: 80px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .review-card {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+      border: 1px solid rgba(0,0,0,.05);
+      transition: transform .3s ease, box-shadow .3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,.08); }
+    .review-card::before {
+      content: '"';
+      position: absolute; top: 10px; right: 25px;
+      font-size: 80px; color: rgba(0,0,0,.03);
+      font-family: serif; line-height: 1;
+    }
+    .verified-badge {
+      font-size: .75rem; color: #0d9488; background: #f0fdfa;
+      padding: 4px 10px; border-radius: 50px;
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-bottom: 15px; width: fit-content;
+    }
+    .review-text { font-style: italic; color: #4a4a4a; line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
+    .reviewer-info {
+      display: flex; align-items: center; gap: 15px;
+      margin-top: 20px; border-top: 1px solid #f1f1f1; padding-top: 20px;
+    }
+    .reviewer-name { font-weight: 700; color: var(--alexia-dark); margin-bottom: 2px; display: block; }
+    .review-date { font-size: .85rem; color: #888; }
+    .stars { color: var(--alexia-gold); letter-spacing: 2px; font-size: .9rem; margin-bottom: 10px; }
+    /* PRELOADER */
+/* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+  </style>
+
+
+  <!-- ── How to Book ────────────────────────────────────────────────────── -->
+  <section class="how-to-book py-5">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col">
+          <h2 class="display-3 fw-bold">How to Book Your Tour</h2>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <h4 class="fw-bold">4 Easy Steps</h4>
+          <p class="text-muted">Booking your unforgettable Kenyan adventure is easy and straightforward. Follow these four simple steps to secure your truly unique tour.</p>
+          <a href="destinations.html" class="btn btn-outline-dark btn-lg fw-bold mt-4">
+            Book Our Tour <i class="ri-arrow-right-line ms-2"></i>
+          </a>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="step-card p-4">
+                <h3 class="step-number">01.</h3>
+                <h5 class="step-title fw-bold">Choose Package</h5>
+                <p class="step-description text-muted">Browse our personalized tour packages to find the one that best suits your interests and travel style.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="step-card p-4">
+                <h3 class="step-number">02.</h3>
+                <h5 class="step-title fw-bold">Confirm Availability</h5>
+                <p class="step-description text-muted">Contact our team to check the availability for your preferred tour dates and get a quick confirmation.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="step-card p-4">
+                <h3 class="step-number">03.</h3>
+                <h5 class="step-title fw-bold">Make a Reservation</h5>
+                <p class="step-description text-muted">Once confirmed, fill out our online reservation form and we will send you the payment details.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="step-card p-4">
+                <h3 class="step-number">04.</h3>
+                <h5 class="step-title fw-bold">Receive Confirmation</h5>
+                <p class="step-description text-muted">After payment, you'll receive a booking confirmation email with all necessary details and your personalized itinerary.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Footer ────────────────────────────────────────────────────────── -->
+  <div id="footer-placeholder"></div>
   <script>
     fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
+      .then(r => r.text())
+      .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
   </script>
-<script>
-document.querySelectorAll(".image-slider").forEach(slider => {
-  const images = slider.querySelectorAll("img");
-  let index = 0;
-  const interval = slider.dataset.interval || 3000;
-
-  setInterval(() => {
-    images[index].classList.remove("active");
-    index = (index + 1) % images.length;
-    images[index].classList.add("active");
-  }, interval);
-});
-</script>
 
 
+  <!-- ── Scripts ───────────────────────────────────────────────────────── -->
+  <script>
+    document.querySelectorAll(".image-slider").forEach(slider => {
+      const images = slider.querySelectorAll("img");
+      let index = 0;
+      const interval = slider.dataset.interval || 3000;
+      setInterval(() => {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+      }, interval);
+    });
+  </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+          crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
   <script src="play.js"></script>
-  <div class="cursor-circle" style="z-index: 10000000;" ></div>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cursor = document.querySelector(".cursor-circle");
 
-  if (!cursor) return;
+  <div class="cursor-circle" style="z-index:10000000;"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cursor = document.querySelector(".cursor-circle");
+      if (!cursor) return;
+      let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+      document.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
+      (function animate() {
+        currentX += (mouseX - currentX) * 0.1;
+        currentY += (mouseY - currentY) * 0.1;
+        cursor.style.left = currentX + "px";
+        cursor.style.top  = currentY + "px";
+        requestAnimationFrame(animate);
+      })();
+    });
+  </script>
 
-  let mouseX = 0, mouseY = 0;
-  let currentX = 0, currentY = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animate() {
-    currentX += (mouseX - currentX) * 0.1;
-    currentY += (mouseY - currentY) * 0.1;
-
-    cursor.style.left = currentX + "px";
-    cursor.style.top = currentY + "px";
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-});
-</script>
-<script src="userjs/index.js"></script>
-<script src="assets/js/load-reviews.js"></script>
-
-
+  <!-- index.js must come before load-reviews.js so the observer is ready -->
+  <script src="userjs/index.js"></script>
+  <script src="assets/js/load-reviews.js"></script>
+  <script src="userjs/loader.js"></script>
 
 </body>
 </html>
