@@ -1,4 +1,3 @@
-// 1. IMMEDIATE KILL SWITCH (Put this at the VERY top)
 if (window.location.href.includes('refresh=true')) {
     console.error("Manual override: Stopping potential loop.");
 } else {
@@ -7,46 +6,45 @@ if (window.location.href.includes('refresh=true')) {
         const urlParams = new URLSearchParams(window.location.search);
         const pkgId = urlParams.get('id');
 
-        // 2. LOGGING FOR DEBUGGING (Check your console on the live site)
-        console.log("Checking Package ID:", pkgId);
-
-        if (!pkgId) {
-            console.warn("No ID found. Displaying UI message instead of redirecting.");
-            const container = document.querySelector('.container.py-5');
-            if (container) {
-                container.innerHTML = `
-                    <div class="text-center py-5">
-                        <h2>No Tour Selected</h2>
-                        <p>Please browse our <a href="./">home page</a> to find a tour.</p>
-                    </div>`;
-            }
-            return; 
-        }
+        if (!pkgId) return; 
 
         try {
-            // Use HTTPS explicitly
             const res = await fetch(`https://alexia-tours-backend-production.up.railway.app/api/packages/${pkgId}`);
             if (!res.ok) throw new Error("Backend returned error");
             
             const pkg = await res.json();
             
-            // Standard UI updates
+            // 1. Update Title
             document.title = `${pkg.title} | Alexia's Tours`;
-            if(document.getElementById("tour-title")) document.getElementById("tour-title").innerText = pkg.title;
+            if(document.getElementById("tour-title")) {
+                document.getElementById("tour-title").innerText = pkg.title;
+            }
+
+            // 2. Update Description (Overview)
+            if(document.getElementById("tour-description")) {
+                document.getElementById("tour-description").innerText = pkg.description;
+            }
             
+            // 3. Update ALL Price elements (Sticky Bar + Summary Card)
             document.querySelectorAll("#tour-price").forEach(el => {
                 el.innerText = `USD ${Number(pkg.price).toLocaleString()}`;
             });
 
+            // 4. Update ALL Duration elements (Sticky Bar + Summary Card)
+            // Using duration_days and duration_nights from your backend log
+            const durationText = `${pkg.duration_days} Days / ${pkg.duration_nights} Nights`;
+            document.querySelectorAll("#tour-duration").forEach(el => {
+                el.innerText = durationText;
+            });
+
+            // 5. Update Hero Image
             const hero = document.getElementById("tour-hero-bg");
-            if (hero && pkg.image) {
-                hero.style.backgroundImage = `url('https://alexia-tours-backend-production.up.railway.app/uploads/${pkg.image}')`;
+            if (pkg.image && hero) {
+                hero.style.backgroundImage = `url('${pkg.image}')`;
             }
 
-            console.log("Page loaded successfully without loops.");
-
         } catch (err) {
-            console.error("Production Fetch Error:", err);
+            console.error("Fetch Error:", err);
         }
     })();
 }
