@@ -27,7 +27,7 @@ async function loadPackages() {
                     </div>
                 </td>
                 <td class="align-middle">${pkg.destination_name || '<span class="text-muted small">Not Set</span>'}</td>
-                <td class="align-middle text-success fw-bold">KSH ${Number(pkg.price).toLocaleString()}</td>
+                <td class="align-middle text-success fw-bold">USD ${Number(pkg.price).toLocaleString()}</td>
                 <td class="align-middle">${pkg.duration_days}D / ${pkg.duration_nights}N</td>
                 <td class="align-middle text-nowrap">
                     <button onclick="editPackage(${pkg.id})" 

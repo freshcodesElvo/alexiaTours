@@ -38,7 +38,7 @@ async function loadTours() {
                 <td><img src="${imageSrc}" class="tour-img-preview" style="width:70px; height:50px; object-fit:cover; border-radius:5px;"></td>
                 <td><strong>${t.title}</strong></td>
                 <td><span class="badge bg-info text-dark">${t.category}</span></td>
-                <td>KSH ${Number(t.price).toLocaleString()}</td>
+                <td>USD ${Number(t.price).toLocaleString()}</td>
                 <td>${t.duration || "-"}</td>
                 <td>
                     <button onclick="editTour(${t.id})" class="btn btn-icon" style="color: blue; border:none; background:none;">

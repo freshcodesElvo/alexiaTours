@@ -27,7 +27,7 @@ async function loadHotelDetails() {
         }
 
         // 2. Price and Booking Link
-        document.getElementById("hotel-price").innerText = `KSH ${Number(hotel.price).toLocaleString()}`;
+        document.getElementById("hotel-price").innerText = `USD ${Number(hotel.price).toLocaleString()}`;
         document.getElementById("book-link").href = `book.html?hotel_id=${hotel.id}`;
 
         // 3. Description (Paragraphs)

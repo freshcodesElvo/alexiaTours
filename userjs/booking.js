@@ -14,7 +14,7 @@
 
 //     // Simple pricing: 5000 per adult, 2500 per child
 //     const total = (adults * 5000) + (children * 2500);
-//     document.getElementById('sumTotal').innerText = `KSH ${total.toLocaleString()}`;
+//     document.getElementById('sumTotal').innerText = `USD ${total.toLocaleString()}`;
 // };
 
 // // Attach listeners to update summary on any input change
@@ -86,7 +86,7 @@ const updateSummary = () => {
 
     // Simple pricing: 5000 per adult, 2500 per child
     const total = (adults * 5000) + (children * 2500);
-    document.getElementById('sumTotal').innerText = `KSH ${total.toLocaleString()}`;
+    document.getElementById('sumTotal').innerText = `USD ${total.toLocaleString()}`;
     return total; 
 };
 
@@ -154,7 +154,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
             });
 
             if (res.ok) {
-                alert(`Asante! Payment of KSH ${totalAmount} confirmed. Your booking is secured.`);
+                alert(`Asante! Payment of USD ${totalAmount} confirmed. Your booking is secured.`);
                 this.reset();
                 this.classList.remove('was-validated');
                 updateSummary();

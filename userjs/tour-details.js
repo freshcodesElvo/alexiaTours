@@ -22,7 +22,7 @@ async function loadTourDetails() {
         document.getElementById('tour-title').innerText = tour.title;
         document.getElementById('tour-category').innerText = tour.category;
         document.getElementById('tour-duration').innerText = tour.duration || "Contact for info";
-        document.getElementById('tour-price').innerText = `KSH ${Number(tour.price).toLocaleString()}`;
+        document.getElementById('tour-price').innerText = `USD ${Number(tour.price).toLocaleString()}`;
         
         // Handle Description Paragraphs
         const descContainer = document.getElementById('tour-description');

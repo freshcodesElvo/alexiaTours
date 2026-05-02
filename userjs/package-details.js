@@ -35,7 +35,7 @@ if (window.location.href.includes('refresh=true')) {
             if(document.getElementById("tour-title")) document.getElementById("tour-title").innerText = pkg.title;
             
             document.querySelectorAll("#tour-price").forEach(el => {
-                el.innerText = `KSH ${Number(pkg.price).toLocaleString()}`;
+                el.innerText = `USD ${Number(pkg.price).toLocaleString()}`;
             });
 
             const hero = document.getElementById("tour-hero-bg");

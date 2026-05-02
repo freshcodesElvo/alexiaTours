@@ -19,7 +19,7 @@ async function initBooking() {
         document.getElementById('hotel-id').value = hotel.id;
         document.getElementById('summary-hotel-name').innerText = hotel.name;
         document.getElementById('summary-location').innerText = hotel.location;
-        document.getElementById('summary-price').innerText = `Ksh ${Number(hotel.price_per_night).toLocaleString()}`;
+        document.getElementById('summary-price').innerText = `USD ${Number(hotel.price_per_night).toLocaleString()}`;
     } catch (e) {
         console.error("Error loading summary", e);
     }

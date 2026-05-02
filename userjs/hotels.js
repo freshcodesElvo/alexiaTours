@@ -22,7 +22,7 @@ async function loadHotels() {
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h5 class="fw-bold mb-0">${hotel.name}</h5>
-                                <span class="badge bg-success">Ksh ${Number(hotel.price).toLocaleString()}</span>
+                                <span class="badge bg-success">USD ${Number(hotel.price).toLocaleString()}</span>
                             </div>
                             <p class="text-muted small mb-3">
                                 <ion-icon name="location-outline"></ion-icon> ${hotel.location || 'Global'}

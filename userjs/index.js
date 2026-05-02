@@ -202,7 +202,7 @@ async function loadHomePackages() {
       body.innerHTML = `
         <h5 class="fw-bold text-truncate">${pkg.title}</h5>
         <p class="price text-warning">
-          From Ksh ${formattedPrice} <span>Per Person</span>
+          From USD ${formattedPrice} <span>Per Person</span>
         </p>
         <div class="tour-meta">
           <a href="package-details.html?id=${pkg.id}" class="btn explore-btn">Explore</a>

@@ -118,7 +118,7 @@ async function displayTrendingTours() {
       body.innerHTML = `
         <h5 class="fw-bold">${tour.title}</h5>
         <p class="text-muted small">${tour.duration}</p>
-        <h6 class="text-warning fw-bold">KSH ${Number(tour.price).toLocaleString()}</h6>
+        <h6 class="text-warning fw-bold">USD ${Number(tour.price).toLocaleString()}</h6>
         <a href="tour-details.html?id=${tour.id}"
            class="btn btn-sm btn-outline-warning rounded-pill mt-2">Details</a>
       `;
