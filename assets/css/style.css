@@ -12782,7 +12782,6 @@ img {
   height: 250px;
   object-fit: cover;
   border-radius: 1rem;
-  filter: grayscale(50%);
   transition: all 0.3s ease;
 }
 .services-section .service-card:hover img {
@@ -12790,20 +12789,27 @@ img {
   transform: scale(1.05);
 }
 .services-section .service-card .overlay {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
+  
+  text-align: left;
+  left: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  bottom: 0;
+  align-items: flex-start;
+  top: 8em;
+  padding-left: 1em;
 }
 .services-section .service-card .overlay h6, .services-section .service-card .overlay a {
   z-index: 1;
 }
-.services-section .service-card h6 {
-  margin: 0;
+.services-section .service-card .overlay h6{
+  margin-top: 1em;
+  position: absolute;
 }
+.services-section .service-card .overlay a{
+  margin-top: 2em;
+  position: absolute;
+}
+
 .services-section .service-card .btn-circle {
   background: #ffc107;
   color: #000;
@@ -12996,6 +13002,44 @@ img {
   font-size: 1rem;
 }
 
+/* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000; /* black background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Center content */
+.loader-content {
+  text-align: center;
+  color: #FFD700;
+  font-family: Arial, sans-serif;
+}
+
+/* Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 215, 0, 0.2);
+  border-top: 4px solid #FFD700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+/* Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* ===== GENERAL BACKGROUND ===== */
 body {
   background: linear-gradient(to bottom, #f8f9fa, #eef2f7);
@@ -13060,20 +13104,19 @@ header p {
   transform: scale(1.1);
 }
 
-/* ===== OVERLAY (CINEMATIC) ===== */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2), transparent);
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 20px;
-  opacity: 0;
+  opacity: 1;
   transition: 0.4s ease;
+  flex-direction: column;
 }
 
-.overlay i {
+.overlay a {
   transform: translateY(20px);
   transition: 0.4s ease;
 }
@@ -13086,7 +13129,6 @@ header p {
   transform: translateY(0);
 }
 
-/* ===== CAPTION TEXT ===== */
 .caption {
   position: absolute;
   bottom: 15px;
@@ -13104,7 +13146,6 @@ header p {
   opacity: 0.85;
 }
 
-/* ===== VIDEO BADGE ===== */
 .video-badge {
   position: absolute;
   top: 15px;
@@ -13116,14 +13157,12 @@ header p {
   font-weight: bold;
 }
 
-/* ===== CARD LOAD ANIMATION ===== */
 .gallery-card {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 0.6s ease forwards;
 }
 
-/* stagger effect */
 .gallery-card:nth-child(2) {
   animation-delay: 0.1s;
 }
@@ -13150,7 +13189,7 @@ header p {
     transform: translateY(0);
   }
 }
-/* ===== MASONRY LAYOUT ===== */
+
 .masonry-grid {
   column-count: 3;
   column-gap: 1.5rem;
@@ -13166,13 +13205,11 @@ header p {
     column-count: 1;
   }
 }
-/* IMPORTANT: prevent breaking */
 .gallery-card {
   break-inside: avoid;
   margin-bottom: 1.5rem;
 }
 
-/* RANDOM HEIGHTS FOR PINTEREST LOOK */
 .gallery-item {
   height: auto;
 }
@@ -13189,6 +13226,48 @@ header p {
 
 .gallery-card:nth-child(4n) .gallery-item {
   height: 250px;
+}
+
+/* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Lottie container (optional control) */
+#preloader dotlottie-wc {
+  width: 140px;
+  height: 140px;
+}
+
+/* Text */
+.loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  animation: fadePulse 1.5s infinite;
+}
+
+/* Smooth pulsing text */
+@keyframes fadePulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
