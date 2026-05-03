@@ -1,4 +1,35 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .navbar-nav .nav-link.active {
+  color: #FFC107 !important;
+  font-weight: 600;
+  border-bottom: 2px solid #FFC107;}
+
+  ul{
+    display: flex;
+    gap: 1em;
+  }
+  ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ul li ion-icon{
+    font-size: 20px;
+    color: #333;
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
 
     <!-- LEFT: Logo -->
@@ -22,7 +53,7 @@
       <!-- RIGHT: Navigation -->
       <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link " href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ourServices.html">Our Services</a>
@@ -36,6 +67,16 @@
         <li class="nav-item">
           <a class="nav-link" href="contact-us.html">Contact Us</a>
         </li>
+        <li style="padding: 0 2em 0 1em;"> |</li>
+        <li style="border: 2px solid #FFC107; padding: 4px 10px; border-radius: 4px; " class="nav-item d-none d-lg-block">
+          <a style="text-decoration: 0; color: black; " href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
+            target="_blank">
+            <ion-icon name="call-outline"></ion-icon>
+            +254 728 085 007
+
+
+          </a>
+        </li>
         <li class="nav-item d-none d-lg-block">
           <a class="btn btn-primary ms-3" href="book.html">Book Now</a>
         </li>
@@ -46,3 +87,6 @@
 </nav>
 
 
+
+</body>
+</html>

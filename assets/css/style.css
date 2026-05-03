@@ -12782,6 +12782,7 @@ img {
   height: 250px;
   object-fit: cover;
   border-radius: 1rem;
+  filter: grayscale(50%);
   transition: all 0.3s ease;
 }
 .services-section .service-card:hover img {
@@ -12789,27 +12790,20 @@ img {
   transform: scale(1.05);
 }
 .services-section .service-card .overlay {
-  
-  text-align: left;
-  left: 0;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
   display: flex;
-  bottom: 0;
-  align-items: flex-start;
-  top: 8em;
-  padding-left: 1em;
+  justify-content: space-between;
+  align-items: center;
 }
 .services-section .service-card .overlay h6, .services-section .service-card .overlay a {
   z-index: 1;
 }
-.services-section .service-card .overlay h6{
-  margin-top: 1em;
-  position: absolute;
+.services-section .service-card h6 {
+  margin: 0;
 }
-.services-section .service-card .overlay a{
-  margin-top: 2em;
-  position: absolute;
-}
-
 .services-section .service-card .btn-circle {
   background: #ffc107;
   color: #000;
@@ -13104,19 +13098,20 @@ header p {
   transform: scale(1.1);
 }
 
+/* ===== OVERLAY (CINEMATIC) ===== */
 .overlay {
   position: absolute;
   inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2), transparent);
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 20px;
-  opacity: 1;
+  opacity: 0;
   transition: 0.4s ease;
-  flex-direction: column;
 }
 
-.overlay a {
+.overlay i {
   transform: translateY(20px);
   transition: 0.4s ease;
 }
@@ -13129,6 +13124,7 @@ header p {
   transform: translateY(0);
 }
 
+/* ===== CAPTION TEXT ===== */
 .caption {
   position: absolute;
   bottom: 15px;
@@ -13146,6 +13142,7 @@ header p {
   opacity: 0.85;
 }
 
+/* ===== VIDEO BADGE ===== */
 .video-badge {
   position: absolute;
   top: 15px;
@@ -13157,12 +13154,14 @@ header p {
   font-weight: bold;
 }
 
+/* ===== CARD LOAD ANIMATION ===== */
 .gallery-card {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 0.6s ease forwards;
 }
 
+/* stagger effect */
 .gallery-card:nth-child(2) {
   animation-delay: 0.1s;
 }
@@ -13189,7 +13188,7 @@ header p {
     transform: translateY(0);
   }
 }
-
+/* ===== MASONRY LAYOUT ===== */
 .masonry-grid {
   column-count: 3;
   column-gap: 1.5rem;
@@ -13205,11 +13204,13 @@ header p {
     column-count: 1;
   }
 }
+/* IMPORTANT: prevent breaking */
 .gallery-card {
   break-inside: avoid;
   margin-bottom: 1.5rem;
 }
 
+/* RANDOM HEIGHTS FOR PINTEREST LOOK */
 .gallery-item {
   height: auto;
 }
@@ -13267,6 +13268,56 @@ header p {
   }
   50% {
     opacity: 1;
+  }
+}
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #000;
+  color: #25D366;
+  border-radius: 50%;
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #FFD700;
+  color: #000;
+  transform: scale(1.1);
+}
+
+.whatsapp-float::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.4);
+  animation: pulse 1.5s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
   }
 }
 

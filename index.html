@@ -12,6 +12,7 @@
   <meta property="og:title" content="Experience the Magic of Kenya | Alexia's Tours">
   <meta property="og:description" content="Bespoke safari, beach, and cultural experiences across Kenya, tailored to your unique desires.">
   <meta property="og:image" content="https://alexiastours.co.ke/uploads/maasaimara.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -19,6 +20,7 @@
 
   <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script
   src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
@@ -44,12 +46,24 @@
 <body>
 
 
-  <div id="navbar-placeholder"></div>
-  <script>
-    fetch('navbar.html')
-      .then(r => r.text())
-      .then(data => { document.getElementById('navbar-placeholder').innerHTML = data; });
-  </script>
+ <div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(r => r.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    });
+</script>
 
 <!-- <div id="preloader">
   <dotlottie-wc
@@ -424,8 +438,6 @@ body.fade-out {
     .reviewer-name { font-weight: 700; color: var(--alexia-dark); margin-bottom: 2px; display: block; }
     .review-date { font-size: .85rem; color: #888; }
     .stars { color: var(--alexia-gold); letter-spacing: 2px; font-size: .9rem; margin-bottom: 10px; }
-    /* PRELOADER */
-/* PRELOADER */
 #preloader {
   position: fixed;
   top: 0;
@@ -442,13 +454,11 @@ body.fade-out {
   transition: opacity 0.5s ease;
 }
 
-/* Lottie container (optional control) */
 #preloader dotlottie-wc {
   width: 140px;
   height: 140px;
 }
 
-/* Text */
 .loader-text {
   color: #FFD700;
   font-size: 24px;
@@ -457,7 +467,6 @@ body.fade-out {
   animation: fadePulse 1.5s infinite;
 }
 
-/* Smooth pulsing text */
 @keyframes fadePulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
@@ -518,6 +527,7 @@ body.fade-out {
       </div>
     </div>
   </section>
+
   <!-- Floating Language Toggle -->
 <div id="alexia-lang-wrapper">
     <div id="alexia-lang-btn" onclick="toggleLangMenu()">
@@ -672,9 +682,15 @@ body.fade-out {
         border-radius: 10px; 
         border: 2px solid #fff;
     }
+    
 </style>
 
-
+<!-- WhatsApp -->
+<a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
+   class="whatsapp-float"
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
   <!-- Footer -->
   <div id="footer-placeholder"></div>
   <script>
@@ -705,7 +721,7 @@ body.fade-out {
           integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
           crossorigin="anonymous"></script>
 
-  <script src="play.js"></script>
+  <!-- <script src="play.js"></script> -->
 
   <div class="cursor-circle" style="z-index:10000000;"></div>
   <script>
@@ -724,7 +740,7 @@ body.fade-out {
     });
   </script>
 
-  <!-- index.js must come before load-reviews.js so the observer is ready -->
+   <script src="userjs/config.js"></script>
   <script src="userjs/index.js"></script>
   <script src="assets/js/load-reviews.js"></script>
   <script src="userjs/loader.js"></script>

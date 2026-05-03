@@ -15,7 +15,6 @@
 </script>
 
 <style>
-    /* PRELOADER */
 #preloader {
   position: fixed;
   top: 0;
@@ -32,13 +31,11 @@
   transition: opacity 0.5s ease;
 }
 
-/* Lottie container (optional control) */
 #preloader dotlottie-wc {
   width: 140px;
   height: 140px;
 }
 
-/* Text */
 .loader-text {
   color: #FFD700;
   font-size: 14px;
@@ -47,7 +44,6 @@
   animation: fadePulse 1.5s infinite;
 }
 
-/* Smooth pulsing text */
 @keyframes fadePulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
@@ -157,6 +153,157 @@
 
     </div>
 </div>
+
+  <!-- Floating Language Toggle -->
+<div id="alexia-lang-wrapper">
+    <div id="alexia-lang-btn" onclick="toggleLangMenu()">
+        <span class="country-code">GB</span>
+        <span class="lang-text">EN</span>
+        <i class="ri-arrow-up-s-fill"></i>
+    </div>
+
+    <div id="alexia-lang-menu">
+        <!-- English -->
+        <div class="lang-item" onclick="changeLanguage('en', 'GB', 'EN')">
+            <span class="code">GB</span> <span class="name">English</span>
+        </div>
+        <!-- German (NEW) -->
+        <div class="lang-item" onclick="changeLanguage('de', 'DE', 'DE')">
+            <span class="code">DE</span> <span class="name">Deutsch</span>
+        </div>
+        <!-- Swahili -->
+        <div class="lang-item" onclick="changeLanguage('sw', 'KE', 'SW')">
+            <span class="code">KE</span> <span class="name">Swahili</span>
+        </div>
+        <!-- Arabic -->
+        <div class="lang-item" onclick="changeLanguage('ar', 'SA', 'AR')">
+            <span class="code">SA</span> <span class="name">Arabic</span>
+        </div>
+        <!-- Chinese -->
+        <div class="lang-item" onclick="changeLanguage('zh-CN', 'CN', 'ZH')">
+            <span class="code">CN</span> <span class="name">Chinese (Simplified)</span>
+        </div>
+        <!-- Dutch -->
+        <div class="lang-item" onclick="changeLanguage('nl', 'NL', 'NL')">
+            <span class="code">NL</span> <span class="name">Dutch</span>
+        </div>
+    </div>
+
+    <div id="google_translate_element" style="display:none;"></div>
+</div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    function toggleLangMenu() {
+        document.getElementById('alexia-lang-menu').classList.toggle('show');
+        const icon = document.querySelector('#alexia-lang-btn i');
+        icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    function changeLanguage(langCode, country, display) {
+        document.querySelector('#alexia-lang-btn .country-code').innerText = country;
+        document.querySelector('#alexia-lang-btn .lang-text').innerText = display;
+
+        var selectField = document.querySelector("#google_translate_element select");
+        if(selectField) {
+            selectField.value = langCode;
+            selectField.dispatchEvent(new Event('change'));
+        }
+        
+        toggleLangMenu();
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest('#alexia-lang-wrapper')) {
+            document.getElementById('alexia-lang-menu').classList.remove('show');
+            document.querySelector('#alexia-lang-btn i').style.transform = 'rotate(0deg)';
+        }
+    }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+    #alexia-lang-wrapper {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 999999;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #alexia-lang-btn {
+        background: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        border: 1px solid #e0e0e0;
+        min-width: 120px;
+    }
+
+    #alexia-lang-btn .country-code { font-size: 16px; color: #333; }
+    #alexia-lang-btn .lang-text { font-size: 16px; color: #333; }
+    #alexia-lang-btn i { font-size: 10px; color: #666; transition: 0.3s; }
+
+    #alexia-lang-menu {
+        position: absolute;
+        bottom: 65px;
+        left: 0;
+        background: white;
+        width: 260px;
+        max-height: 320px;
+        overflow-y: auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        display: none;
+        border: 1px solid #eee;
+    }
+
+    #alexia-lang-menu.show { display: block; }
+
+    .lang-item {
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        cursor: pointer;
+        border-bottom: 1px solid #f9f9f9;
+    }
+
+    .lang-item:last-child { border-bottom: none; }
+    .lang-item:hover { background: #f8f9fa; }
+
+    .lang-item .code {
+        font-weight: 700;
+        font-size: 16px;
+        color: #000;
+        width: 30px;
+    }
+
+    .lang-item .name {
+        font-size: 16px;
+        color: #444;
+    }
+
+    #alexia-lang-menu::-webkit-scrollbar { width: 8px; }
+    #alexia-lang-menu::-webkit-scrollbar-track { background: #fff; }
+    #alexia-lang-menu::-webkit-scrollbar-thumb { 
+        background: #bbb; 
+        border-radius: 10px; 
+        border: 2px solid #fff;
+    }
+</style>
 
     <div id="footer-placeholder"></div>
 
