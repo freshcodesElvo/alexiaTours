@@ -1,10 +1,22 @@
 // --- CONFIGURATION ---
-const token = sessionStorage.getItem('adminToken')
-// Toggle these between localhost and Railway as needed
-const API = "http://localhost:5000/api/tours"; 
-const IMAGE_BASE = "http://localhost:5000/uploads/";
+const token = sessionStorage.getItem('adminToken');
 
-// Update modal ID to match the one in your new HTML
+/**
+ * DYNAMIC API ROUTING
+ * This automatically detects if you are running locally or in production.
+ * Replace 'alexia-tours-backend-production.up.railway.app' with your actual Railway domain.
+ */
+const LIVE_URL = "https://alexia-tours-backend-production.up.railway.app";
+const LOCAL_URL = "http://localhost:5000";
+
+const BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? LOCAL_URL
+    : LIVE_URL;
+
+const API = `${BASE_URL}/api/tours`; 
+const IMAGE_BASE = `${BASE_URL}/uploads/`;
+
+// Update modal ID to match the one in your HTML
 let modal = new bootstrap.Modal(document.getElementById("tourModal"));
 
 // --- 1. PREVIEW IMAGE LOGIC ---
@@ -28,8 +40,9 @@ async function loadTours() {
         table.innerHTML = "";
 
         data.forEach(t => {
+            // Clean up image path formatting
             const imageSrc = t.image_path 
-                ? `${IMAGE_BASE}${t.image_path.replace('./uploads/', '')}` 
+                ? `${IMAGE_BASE}${t.image_path.replace('./uploads/', '').replace('uploads/', '')}` 
                 : "https://placehold.co/70x50?text=No+Image";
 
             table.innerHTML += `
@@ -51,8 +64,11 @@ async function loadTours() {
             </tr>`;
         });
     } catch (error) {
-        console.error(error);
-        alert("Failed to load tours");
+        console.error("Load Error:", error);
+        // Silently fail if the table isn't on the current page, otherwise alert
+        if (document.getElementById("toursTable")) {
+            alert("Connection error: Could not reach the server.");
+        }
     }
 }
 
@@ -77,7 +93,7 @@ function clearForm() {
     preview.style.display = "none";
 }
 
-// --- 4. SAVE TOUR (Protected with Token) ---
+// --- 4. SAVE TOUR (Protected) ---
 async function saveTour() {
     const id = document.getElementById("tourId").value;
     
@@ -103,8 +119,7 @@ async function saveTour() {
         const res = await fetch(url, {
             method: method,
             headers: {
-                'Authorization': `Bearer ${token}` // SECURITY TOKEN ADDED
-                // Note: Don't set Content-Type header when using FormData
+                'Authorization': `Bearer ${token}` 
             },
             body: formData 
         });
@@ -121,12 +136,12 @@ async function saveTour() {
         loadTours();
         alert(id ? "Tour Updated!" : "Tour Added!");
     } catch (error) {
-        console.error(error);
-        alert("Error saving tour");
+        console.error("Save Error:", error);
+        alert("Error saving tour. Check your internet connection or server logs.");
     }
 }
 
-// --- 5. EDIT TOUR (Public) ---
+// --- 5. EDIT TOUR ---
 async function editTour(id) {
     try {
         const res = await fetch(`${API}/${id}`);
@@ -143,7 +158,7 @@ async function editTour(id) {
 
         const preview = document.getElementById("preview");
         if (t.image_path) {
-            const fileName = t.image_path.replace('./uploads/', '');
+            const fileName = t.image_path.replace('./uploads/', '').replace('uploads/', '');
             preview.src = `${IMAGE_BASE}${fileName}`;
             preview.style.display = "block";
         }
@@ -151,12 +166,12 @@ async function editTour(id) {
         document.getElementById("modalTitle").innerText = "Edit Tour";
         modal.show();
     } catch (error) {
-        console.error(error);
+        console.error("Edit Error:", error);
         alert("Failed to load tour details");
     }
 }
 
-// --- 6. DELETE TOUR (Protected with Token) ---
+// --- 6. DELETE TOUR ---
 async function deleteTour(id) {
     if (!confirm("Are you sure you want to delete this tour?")) return;
 
@@ -164,7 +179,7 @@ async function deleteTour(id) {
         const res = await fetch(`${API}/${id}`, { 
             method: "DELETE",
             headers: {
-                'Authorization': `Bearer ${token}` // SECURITY TOKEN ADDED
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -179,7 +194,7 @@ async function deleteTour(id) {
         loadTours();
         alert("Tour Deleted!");
     } catch (error) {
-        console.error(error);
+        console.error("Delete Error:", error);
         alert("Error deleting tour");
     }
 }
