@@ -6,7 +6,7 @@
   padding: 5rem 0;
 
   .container-fluid {
-    padding: 0 2rem; // tighter padding on mobile
+    padding: 0 2rem; 
   }
 
   .about-heading {
@@ -22,25 +22,23 @@
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
   }
 
-  // ✅ Mobile styles
   @media (max-width: 991.98px) {
     .row.left {
-      flex-direction: column; // stack columns
-      // ❌ remove text-align: center;
+      flex-direction: column; 
     }
 
     .about-us-head {
-      align-items: flex-start; // keep left alignment
+      align-items: flex-start; 
       margin-bottom: 2rem;
 
       h1 {
         font-size: 2.5rem; 
-        max-width: 100%;   // allow full width
+        max-width: 100%;   
       }
 
       p {
-        max-width: 100%;   // stretch text across width
-        margin: 0 0 1rem;  // no auto-centering
+        max-width: 100%;   
+        margin: 0 0 1rem;  
       }
     }
 
@@ -62,7 +60,6 @@
     }
   }
 
-  // ✅ Very small screens
   @media (max-width: 575.98px) {
     .about-heading {
       font-size: 2rem;
@@ -80,57 +77,7 @@
 }
 
 
- // _values.scss
 
-// .values-section {
-//   background-color: #f8f9fa;
-
-//   .numbered-point {
-//     h3 {
-//       color: #000;
-//       line-height: 1;
-//     }
-//   }
-
-//   .image-gallery-container {
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: auto;
-//     img:nth-child(1) {
-//       grid-column: 1;
-//       grid-row: 1 / span 2;
-//     }
-//     img:nth-child(2) {
-//       grid-column: 2;
-//       grid-row: 1 / span 1;
-//     }
-//     img:nth-child(3) {
-//       grid-column: 2;
-//       grid-row: 2 / span 1;
-//     }
-//     img:nth-child(4) {
-//       grid-column: 1;
-//       grid-row: 3 / span 2;
-//     }
-//   }
-
-//   .learn-more-btn {
-//     writing-mode: vertical-rl;
-//     text-orientation: mixed;
-//     transform: rotate(180deg);
-//     background-color: #000;
-//     color: #fff;
-//     padding: 1.5rem 0.5rem;
-//     border-top-left-radius: 1rem;
-//     border-bottom-left-radius: 1rem;
-//     text-decoration: none;
-//     transition: all 0.3s ease;
-
-//     &:hover {
-//       background-color: #FFC107;
-//       color: #000;
-//     }
-//   }
-// }
 
 
 .values-section {
@@ -181,7 +128,6 @@
     }
   }
 }
-// _why-travel.scss
 
 .why-travel-section {
   background-color: #f8f9fa;

@@ -17,16 +17,36 @@
 
        <div id="navbar-placeholder"></div>
 
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
-  </script>
-  <!-- hotel-booking.html -->
+ <script>
+  fetch('navbar.html')
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
 
-<!-- Hero Section -->
+    let currentPage = window.location.pathname;
+
+    if (currentPage === "/" || currentPage === "") {
+      currentPage = "index.html";
+    } else {
+      currentPage = currentPage.split("/").pop();
+    }
+
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+      let linkPage = link.getAttribute("href");
+
+      if (linkPage === "/" || linkPage === "") {
+        linkPage = "index.html";
+      }
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
+
 <section class=" bg-dark text-white text-center py-5" style="background: linear-gradient(
     rgba(0, 0, 0, 0.5),   /* top color with opacity */
     rgba(0, 0, 0, 0.5)    /* bottom color with opacity */
@@ -38,7 +58,6 @@
   </div>
 </section>
 
-<!-- Highlights -->
 <section class="highlights py-5">
   <div class="container text-center">
     <div class="row g-4">
@@ -74,7 +93,9 @@
   </div>
 </section>
 
-<!-- About Hotel Booking -->
+
+
+
 <section class="about-hotel py-5 bg-light">
   <div class="container">
     <div class="row align-items-center">
@@ -148,7 +169,10 @@
     <a href="#book" class="btn btn-primary btn-lg">Book Now</a>
   </div>
 </section>
-  <!-- Floating Language Toggle -->
+
+
+
+
 <div id="alexia-lang-wrapper">
     <div id="alexia-lang-btn" onclick="toggleLangMenu()">
         <span class="country-code">GB</span>

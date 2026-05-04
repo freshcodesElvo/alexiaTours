@@ -7,20 +7,16 @@ const translations = {
     zh: { overview: "行程概览", price: "起价", duration: "持续时间", book: "立即预订" }
 };
 
-// Function to get current lang from URL
 const getLang = () => new URLSearchParams(window.location.search).get('lang') || 'en';
 
 function applyTranslations() {
     const lang = getLang();
     const t = translations[lang] || translations.en;
 
-    // Update UI elements by ID
     if(document.getElementById("heading-overview")) document.getElementById("heading-overview").innerText = t.overview;
     
-    // Update labels in the sticky bar
     document.querySelectorAll(".label-duration").forEach(el => el.innerText = t.duration);
     document.querySelectorAll(".label-price").forEach(el => el.innerText = t.price);
     
-    // Update all "Book Now" buttons
     document.querySelectorAll(".btn-book").forEach(el => el.innerText = t.book);
 }

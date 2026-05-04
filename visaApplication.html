@@ -17,13 +17,35 @@
 
        <div id="navbar-placeholder"></div>
 
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
-  </script>
+ <script>
+  fetch('navbar.html')
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
+
+    let currentPage = window.location.pathname;
+
+    if (currentPage === "/" || currentPage === "") {
+      currentPage = "index.html";
+    } else {
+      currentPage = currentPage.split("/").pop();
+    }
+
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+      let linkPage = link.getAttribute("href");
+
+      if (linkPage === "/" || linkPage === "") {
+        linkPage = "index.html";
+      }
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
 
 
 

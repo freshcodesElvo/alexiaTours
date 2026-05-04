@@ -14,30 +14,24 @@ if (window.location.href.includes('refresh=true')) {
             
             const pkg = await res.json();
             
-            // 1. Update Title
             document.title = `${pkg.title} | Alexia's Tours`;
             if(document.getElementById("tour-title")) {
                 document.getElementById("tour-title").innerText = pkg.title;
             }
 
-            // 2. Update Description (Overview)
             if(document.getElementById("tour-description")) {
                 document.getElementById("tour-description").innerText = pkg.description;
             }
             
-            // 3. Update ALL Price elements (Sticky Bar + Summary Card)
             document.querySelectorAll("#tour-price").forEach(el => {
                 el.innerText = `USD ${Number(pkg.price).toLocaleString()}`;
             });
 
-            // 4. Update ALL Duration elements (Sticky Bar + Summary Card)
-            // Using duration_days and duration_nights from your backend log
             const durationText = `${pkg.duration_days} Days / ${pkg.duration_nights} Nights`;
             document.querySelectorAll("#tour-duration").forEach(el => {
                 el.innerText = durationText;
             });
 
-            // 5. Update Hero Image
             const hero = document.getElementById("tour-hero-bg");
             if (pkg.image && hero) {
                 hero.style.backgroundImage = `url('${pkg.image}')`;

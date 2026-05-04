@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const customerName = urlParams.get('name');
     const bookingId = urlParams.get('booking');
 
-    // 1. Personalize the welcome message
     if (customerName) {
         document.getElementById("welcome-msg").innerText = `Welcome Back, ${customerName}!`;
     }
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             customer_name: customerName || "Verified Guest",
             rating: document.getElementById("rating").value,
             review_text: document.getElementById("reviewText").value,
-            booking_id: bookingId // Optional: helps you track which booking this is for
+            booking_id: bookingId 
         };
 
         try {

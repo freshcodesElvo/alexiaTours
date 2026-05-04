@@ -3,7 +3,6 @@ const API_DESTINATIONS = `${BASE_URL}/api/destinations`;
 const IMAGE_BASE = `${BASE_URL}/uploads/`;
 
 async function fetchDestinationDetails() {
-    // 1. Get ID from URL query string
     const urlParams = new URLSearchParams(window.location.search);
     const destId = urlParams.get('id');
 
@@ -18,15 +17,12 @@ async function fetchDestinationDetails() {
         
         const dest = await res.json();
 
-        // 2. Update the DOM
         document.title = `${dest.name} | Alexia's Tours`;
         document.getElementById('dest-name').innerText = dest.name;
         const descriptionContainer = document.getElementById('dest-description');
         if (dest.description) {
-            // Split text by new lines and filter out empty strings
             const paragraphs = dest.description.split('\n').filter(p => p.trim() !== "");
             
-            // Map each string to a <p> tag with a nice bottom margin
             descriptionContainer.innerHTML = paragraphs
                 .map(p => `<p class="mb-4">${p.trim()}</p>`)
                 .join('');

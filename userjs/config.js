@@ -4,7 +4,6 @@ const API_DESTINATIONS = `${BASE_URL}/api/destinations`;
 const API_PACKAGES = `${BASE_URL}/api/packages`;
 const IMAGE_BASE = `${BASE_URL}/uploads/`;
 
-/* ─── Skeleton CSS ──────────────────────────────────────────────────────── */
 (function injectSkeletonStyles() {
   if (document.getElementById("skeleton-styles")) return;
   const style = document.createElement("style");
@@ -30,7 +29,11 @@ const IMAGE_BASE = `${BASE_URL}/uploads/`;
   document.head.appendChild(style);
 })();
 
-/* ─── IntersectionObserver ──────────────────────────────────────────────── */
+
+
+
+
+
 const imageObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -47,7 +50,11 @@ const imageObserver = new IntersectionObserver(
   { rootMargin: "200px 0px" }
 );
 
-/* ─── Lazy img helper ───────────────────────────────────────────────────── */
+
+
+
+
+
 function lazyImg(src, alt, extraStyle = "") {
   const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E";
   const img = document.createElement("img");

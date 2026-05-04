@@ -1,4 +1,3 @@
-/* PRELOADER */
 @use "../custom" as *;
 #preloader {
   position: fixed;
@@ -16,13 +15,11 @@
   transition: opacity 0.5s ease;
 }
 
-/* Lottie container (optional control) */
 #preloader dotlottie-wc {
   width: 140px;
   height: 140px;
 }
 
-/* Text */
 .loader-text {
   color: #FFD700;
   font-size: 14px;
@@ -31,7 +28,6 @@
   animation: fadePulse 1.5s infinite;
 }
 
-/* Smooth pulsing text */
 @keyframes fadePulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }

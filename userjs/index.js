@@ -1,4 +1,3 @@
-/* ─── Skeleton helpers ──────────────────────────────────────────────────── */
 function showDestinationSkeletons(container, count = 4) {
   container.innerHTML = "";
   for (let i = 0; i < count; i++) {
@@ -18,7 +17,10 @@ function showPackageSkeletons(container, count = 4) {
   }
 }
 
-/* ─── Load Destinations ─────────────────────────────────────────────────── */
+
+
+
+
 async function loadIndexDestinations() {
   const container = document.getElementById("index-destinations-container");
   if (!container) return;
@@ -70,7 +72,9 @@ async function loadIndexDestinations() {
   }
 }
 
-/* ─── Load Packages ─────────────────────────────────────────────────────── */
+
+
+
 async function loadHomePackages() {
   const container = document.getElementById("index-packages-container");
   if (!container) return;
@@ -123,7 +127,9 @@ async function loadHomePackages() {
   }
 }
 
-/* ─── Init ──────────────────────────────────────────────────────────────── */
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   loadIndexDestinations();
   loadHomePackages();

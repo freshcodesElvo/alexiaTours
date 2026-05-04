@@ -55,7 +55,6 @@
 
     let currentPage = window.location.pathname;
 
-    // Normalize homepage
     if (currentPage === "/" || currentPage === "") {
       currentPage = "index.html";
     } else {
@@ -65,7 +64,6 @@
     document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
       let linkPage = link.getAttribute("href");
 
-      // Normalize link too
       if (linkPage === "/" || linkPage === "") {
         linkPage = "index.html";
       }

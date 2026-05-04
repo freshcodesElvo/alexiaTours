@@ -1,8 +1,5 @@
 
-  /* =========================
-     PRELOADER (with min time)
-  ========================= */
-  const MIN_LOADING_TIME = 1700; // adjust: 1000–2000 is ideal
+  const MIN_LOADING_TIME = 1700; 
   const startTime = Date.now();
 
   window.addEventListener("load", () => {
@@ -23,17 +20,12 @@
   });
 
 
-  /* =========================
-     PAGE FADE IN
-  ========================= */
+
   window.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded");
   });
 
 
-  /* =========================
-     PAGE FADE OUT ON CLICK
-  ========================= */
   document.querySelectorAll("a").forEach(link => {
     const url = link.getAttribute("href");
 

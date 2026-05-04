@@ -5,7 +5,6 @@
   color: #000;
 }
 
-// Horizontal sub-nav
 .sub-nav {
   li {
     margin: 0 1.5rem;
@@ -17,7 +16,7 @@
     }
 
     &:not(:last-child)::after {
-      content: "⭐"; // You can use a star or any other character
+      content: "⭐"; 
       position: absolute;
       right: -1.5rem;
       top: 50%;
@@ -27,7 +26,6 @@
   }
 }
 
-// Left column button
 .btn-outline-dark {
   color: #000;
   border-color: #000;
@@ -37,7 +35,6 @@
   }
 }
 
-// Right column step cards
 .step-card {
   border: 1px solid #ddd;
   height: 100%;

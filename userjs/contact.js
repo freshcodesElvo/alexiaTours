@@ -1,17 +1,14 @@
 const API = "https://alexia-tours-backend-production.up.railway.app/api/messages";
 
 document.getElementById('contactForm').addEventListener('submit', async function (e) {
-    // 1. STOP the page from refreshing (Fixes the 405 error)
     e.preventDefault();
 
-    // 2. Validate with Bootstrap
     if (!this.checkValidity()) {
         e.stopPropagation();
         this.classList.add("was-validated");
         return;
     }
 
-    // 3. Collect data using the IDs from your HTML
     const formData = {
         name: document.getElementById('fullName').value,
         email: document.getElementById('email').value,
@@ -19,7 +16,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
         message: document.getElementById('message').value
     };
 
-    // Optional: Visual feedback on the button
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.disabled = true;
@@ -44,7 +40,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
         console.error("Submission Error:", error);
         alert("Something went wrong. Please ensure the backend server is running on port 5000.");
     } finally {
-        // Restore button state
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
     }

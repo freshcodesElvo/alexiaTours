@@ -1,4 +1,3 @@
-// Replace with your local IP
 const BASE_URL = "https://alexia-tours-backend-production.up.railway.app"; 
 const API_TOURS = `${BASE_URL}/api/tours`;
 const IMAGE_BASE = `${BASE_URL}/uploads/`;
@@ -18,13 +17,13 @@ async function loadTourDetails() {
         
         const tour = await res.json();
 
-        // Update Text Fields
+        //  Text Fields
         document.getElementById('tour-title').innerText = tour.title;
         document.getElementById('tour-category').innerText = tour.category;
         document.getElementById('tour-duration').innerText = tour.duration || "Contact for info";
         document.getElementById('tour-price').innerText = `USD ${Number(tour.price).toLocaleString()}`;
         
-        // Handle Description Paragraphs
+        //  Description Paragraphs
         const descContainer = document.getElementById('tour-description');
         if (tour.description) {
             descContainer.innerHTML = tour.description
@@ -34,7 +33,7 @@ async function loadTourDetails() {
                 .join('');
         }
 
-        // Update Background Image
+        //  Background Image
         const imgPath = tour.image_path ? tour.image_path.replace('./uploads/', '').replace('uploads/', '') : '';
         const imageSrc = imgPath ? `${IMAGE_BASE}${imgPath}` : 'assets/img/placeholder.jpg';
         document.getElementById('tour-hero-bg').style.backgroundImage = `url('${imageSrc}')`;

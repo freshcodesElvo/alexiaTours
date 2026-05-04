@@ -11,7 +11,6 @@ async function initBooking() {
         return;
     }
 
-    // Load Summary Info
     try {
         const res = await fetch(`${API_HOTELS}/${hotelId}`);
         const hotel = await res.json();
@@ -25,7 +24,6 @@ async function initBooking() {
     }
 }
 
-// Handle Form Submission
 document.getElementById('hotel-booking-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

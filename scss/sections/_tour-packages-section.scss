@@ -16,7 +16,6 @@ $highlight: #FFC107;
   background: transparent;
 }
 
-/* CARD */
 .package-card {
   overflow: hidden;
   height: 100%;
@@ -25,12 +24,10 @@ $highlight: #FFC107;
   border: none;
 }
 
-/* HOVER EFFECT */
 .package-card:hover {
   transform: translateY(-6px);
 }
 
-/* IMAGE */
 .package-card img {
   width: 100%;
   height: 200px;
@@ -38,7 +35,6 @@ $highlight: #FFC107;
   border-radius: 1em;
 }
 
-/* BODY */
 .packages-card-body {
   margin-top: 1em;
   background-color: #111;
@@ -52,7 +48,6 @@ $highlight: #FFC107;
   width: 80%;
 }
 
-/* PRICE */
 .price {
   font-size: 0.9rem;
   font-weight: 500;
@@ -64,7 +59,6 @@ $highlight: #FFC107;
   color: #8a8a8a;
 }
 
-/* BUTTON */
 .explore-btn {
   background: $highlight;
   color: #000;
@@ -79,7 +73,6 @@ $highlight: #FFC107;
   color: #fff;
 }
 
-/* META */
 .tour-meta {
   display: flex;
   gap: 16px;

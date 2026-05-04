@@ -34,7 +34,6 @@
     .destination-card:hover img { transform: scale(1.1); }
     .destination-card .stretched-link { z-index: 2; }
 
-    /* PRELOADER */
 #preloader {
   position: fixed;
   top: 0;
@@ -51,13 +50,11 @@
   transition: opacity 0.5s ease;
 }
 
-/* Lottie container (optional control) */
 #preloader dotlottie-wc {
   width: 140px;
   height: 140px;
 }
 
-/* Text */
 .loader-text {
   color: #FFD700;
   font-size: 14px;
@@ -66,7 +63,6 @@
   animation: fadePulse 1.5s infinite;
 }
 
-/* Smooth pulsing text */
 @keyframes fadePulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
@@ -78,20 +74,32 @@
   <div id="navbar-placeholder"></div>
 <script>
   fetch('navbar.html')
-    .then(r => r.text())
-    .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
 
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
-        const linkPage = link.getAttribute("href");
-        if (linkPage === currentPage) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
-      });
+    let currentPage = window.location.pathname;
+
+    if (currentPage === "/" || currentPage === "") {
+      currentPage = "index.html";
+    } else {
+      currentPage = currentPage.split("/").pop();
+    }
+
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+      let linkPage = link.getAttribute("href");
+
+      if (linkPage === "/" || linkPage === "") {
+        linkPage = "index.html";
+      }
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
     });
+  });
 </script>
 <!-- <div id="preloader">
   <dotlottie-wc
