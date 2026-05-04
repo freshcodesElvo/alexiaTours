@@ -1,8 +1,6 @@
 @use "../custom" as *;
 
-/* =========================
-   HERO SECTION
-========================= */
+
 .hero-safari {
   position: relative;
   min-height: 100vh;
@@ -67,9 +65,7 @@
     background: linear-gradient(transparent, #ffffffab);
   }
 }
-/* =========================
-   ZOOM ANIMATION (SAFE)
-========================= */
+
 @keyframes zoomBg {
   from {
     background-size: 120%;
@@ -79,9 +75,7 @@
   }
 }
 
-/* =========================
-   SLOGAN BAR
-========================= */
+
 .slogan-bar {
   background: #111;
   color: #fff;
@@ -92,7 +86,6 @@
 
 
 
-/* GLOBAL FIXES */
 html, body {
   margin: 0;
   padding: 0;
@@ -105,7 +98,6 @@ img {
   display: block;
 }
 
-/* Fix horizontal scroll sections */
 .horizontal-scroll {
   overflow-x: auto;
   overflow-y: hidden;
@@ -115,7 +107,6 @@ img {
   display: none;
 }
 
-/* Prevent Bootstrap overflow bugs */
 .row {
   margin-left: 0;
   margin-right: 0;

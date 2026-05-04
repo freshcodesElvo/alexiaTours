@@ -11866,9 +11866,6 @@ textarea.form-control-lg {
   margin-top: 5.6px;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
 .hero-safari {
   position: relative;
   min-height: 100vh;
@@ -11928,9 +11925,6 @@ textarea.form-control-lg {
   background: linear-gradient(transparent, rgba(255, 255, 255, 0.6705882353));
 }
 
-/* =========================
-   ZOOM ANIMATION (SAFE)
-========================= */
 @keyframes zoomBg {
   from {
     background-size: 120%;
@@ -11939,9 +11933,6 @@ textarea.form-control-lg {
     background-size: 140%;
   }
 }
-/* =========================
-   SLOGAN BAR
-========================= */
 .slogan-bar {
   background: #111;
   color: #fff;
@@ -11950,7 +11941,6 @@ textarea.form-control-lg {
   text-align: center;
 }
 
-/* GLOBAL FIXES */
 html, body {
   margin: 0;
   padding: 0;
@@ -11963,7 +11953,6 @@ img {
   display: block;
 }
 
-/* Fix horizontal scroll sections */
 .horizontal-scroll {
   overflow-x: auto;
   overflow-y: hidden;
@@ -11973,7 +11962,6 @@ img {
   display: none;
 }
 
-/* Prevent Bootstrap overflow bugs */
 .row {
   margin-left: 0;
   margin-right: 0;
@@ -12358,16 +12346,16 @@ img {
   color: #9e9e9e;
   opacity: 1;
 }
-.form-control::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+.form-control::-webkit-input-placeholder {
   color: #9e9e9e;
 }
-.form-control:-moz-placeholder { /* Firefox 18- */
+.form-control:-moz-placeholder {
   color: #9e9e9e;
 }
-.form-control::-moz-placeholder { /* Firefox 19+ */
+.form-control::-moz-placeholder {
   color: #9e9e9e;
 }
-.form-control:-ms-input-placeholder { /* Internet Explorer 10+ */
+.form-control:-ms-input-placeholder {
   color: #9e9e9e;
 }
 .form-control:focus {
@@ -12796,7 +12784,7 @@ img {
   filter: grayscale(0%);
   transform: scale(1.05);
 }
-.services-section .service-card .overlay {
+.services-section .service-card .overlayCoreServices {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
@@ -12804,9 +12792,10 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 100em;
 }
-.services-section .service-card .overlay h6, .services-section .service-card .overlay a {
-  z-index: 1;
+.services-section .service-card .overlayCoreServices h6, .services-section .service-card .overlayCoreServices a {
+  z-index: 10000;
 }
 .services-section .service-card h6 {
   margin: 0;
@@ -13003,7 +12992,6 @@ img {
   font-size: 1rem;
 }
 
-/* PRELOADER */
 #preloader {
   position: fixed;
   top: 0;
@@ -13017,14 +13005,12 @@ img {
   z-index: 9999;
 }
 
-/* Center content */
 .loader-content {
   text-align: center;
   color: #FFD700;
   font-family: Arial, sans-serif;
 }
 
-/* Spinner */
 .spinner {
   width: 50px;
   height: 50px;
@@ -13035,7 +13021,6 @@ img {
   margin: 0 auto 15px;
 }
 
-/* Animation */
 @keyframes spin {
   to {
     transform: rotate(360deg);

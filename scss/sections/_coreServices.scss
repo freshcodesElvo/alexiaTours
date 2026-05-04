@@ -26,7 +26,7 @@
       transform: scale(1.05);
     }
 
-    .overlay {
+    .overlayCoreServices {
       position: absolute;
       bottom: 1rem;
       left: 1rem;
@@ -34,8 +34,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 100em;
       h6, a{
-        z-index: 1;
+        z-index: 10000;
       }
     }
 
@@ -143,7 +144,7 @@
     }
 
     &:hover i {
-      color: #0d6efd; // highlight icon on hover
+      color: #0d6efd; 
     }
   }
 }
