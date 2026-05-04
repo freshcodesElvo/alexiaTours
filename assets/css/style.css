@@ -12309,6 +12309,13 @@ img {
 .main-footer h5 {
   color: #fff;
 }
+.main-footer ul {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .main-footer ul li {
   margin-bottom: 0.5rem;
 }
