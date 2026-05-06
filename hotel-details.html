@@ -52,31 +52,27 @@
 </head>
 <body>
     <div id="navbar-placeholder"></div>
-    <script>
+   <script>
   fetch('navbar.html')
   .then(r => r.text())
   .then(data => {
     document.getElementById('navbar-placeholder').innerHTML = data;
 
-    let currentPage = window.location.pathname;
+    const normalize = (path) => {
+      return path
+        .replace(/\.html$/, "")   
+        .replace(/\/$/, "")       
+        .split("/")
+        .pop();                  
+    };
 
-    if (currentPage === "/" || currentPage === "") {
-      currentPage = "index.html";
-    } else {
-      currentPage = currentPage.split("/").pop();
-    }
+    const currentPage = normalize(window.location.pathname);
 
     document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
-      let linkPage = link.getAttribute("href");
-
-      if (linkPage === "/" || linkPage === "") {
-        linkPage = "index.html";
-      }
+      const linkPage = normalize(link.getAttribute("href"));
 
       if (linkPage === currentPage) {
         link.classList.add("active");
-      } else {
-        link.classList.remove("active");
       }
     });
   });

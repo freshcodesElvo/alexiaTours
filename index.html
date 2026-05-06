@@ -55,10 +55,10 @@
 
     const normalize = (path) => {
       return path
-        .replace(/\.html$/, "")   // remove .html
-        .replace(/\/$/, "")       // remove trailing slash
+        .replace(/\.html$/, "")   
+        .replace(/\/$/, "")       
         .split("/")
-        .pop();                  // get last part
+        .pop();                  
     };
 
     const currentPage = normalize(window.location.pathname);

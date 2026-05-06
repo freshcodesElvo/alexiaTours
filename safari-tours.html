@@ -16,13 +16,31 @@
 
   <div id="navbar-placeholder"></div>
 
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
-  </script>
+ <script>
+  fetch('navbar.html')
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
+
+    const normalize = (path) => {
+      return path
+        .replace(/\.html$/, "")   
+        .replace(/\/$/, "")       
+        .split("/")
+        .pop();                  
+    };
+
+    const currentPage = normalize(window.location.pathname);
+
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+      const linkPage = normalize(link.getAttribute("href"));
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 
 <!-- safari.html -->
 <section class="bg-dark text-white text-center py-5" style="background: linear-gradient(
