@@ -1,92 +1,66 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
- 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+    <div class="container-fluid">
+      <!-- LEFT: Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="pictures/Logo-removebg-preview.png" alt="Alexia's Tours Logo" width="100">
+      </a>
 
-    <!-- LEFT: Logo -->
-    <a class="navbar-brand" href="#">
-      <img src="pictures/Logo-removebg-preview.png" alt="Alexia's Tours Logo" width="100">
-    </a>
+      <!-- TOGGLER -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- TOGGLER -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNav" aria-controls="navbarNav"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- CENTER + RIGHT -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ourServices.html">Our Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about-us.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="destinations.html">Tours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact-us.html">Contact Us</a>
+          </li>
 
-    <!-- CENTER + RIGHT -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+          <li class="d-none d-lg-block" style="padding: 0 2em 0 1em;">|</li>
 
+          <li class="nav-item secondary-call-to-action">
+            <a class="nav-link d-flex align-items-center gap-1"
+              href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
+              target="_blank" style="color: black;">
+              <ion-icon name="call-outline"></ion-icon>
+              +254 728 085 007
+            </a>
+          </li>
 
-
-
-      <!-- RIGHT: Navigation -->
-      <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item">
-          <a class="nav-link " href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="ourServices.html">Our Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about-us.html">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="destinations.html">Tours</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact-us.html">Contact Us</a>
-        </li>
-        <li style="padding: 0 2em 0 1em;"> |</li>
-        <li style="border: 2px solid #FFC107; padding: 4px 10px; border-radius: 4px; " class="nav-item d-none d-lg-block">
-          <a style="text-decoration: 0; color: black; " href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
-            target="_blank">
-            <ion-icon name="call-outline"></ion-icon>
-            +254 728 085 007
-
-
-          </a>
-        </li>
-        <li class="nav-item d-none d-lg-block">
-          <a class="btn btn-primary ms-3" href="book.html">Book Now</a>
-        </li>
-      </ul>
-
+          <li class="nav-item mt-2 mt-lg-0">
+            <a class="btn btn-primary ms-lg-3" href="book.html">Book Now</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
- <style>
-    .navbar-nav .nav-link.active {
-  color: #FFC107 !important;
-  font-weight: 600;
-  border-bottom: 2px solid #FFC107;}
-
-  ul{
-    display: flex;
-    gap: 1em;
-  }
-  ul li{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  ul li ion-icon{
-    font-size: 20px;
-    color: #333;
-  }
-  </style>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>

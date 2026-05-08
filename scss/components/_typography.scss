@@ -1,0 +1,30 @@
+
+@use "../custom" as *;
+
+.mainHeading {
+    color: $mainHeadingColor;
+}
+.subHeading {
+    color: $subHeadingColor;
+    font-size: 1.8rem;
+}
+  .nav-link{
+    color: $navlinkColor;
+    font-weight: 500;
+    transition: 0.3s;
+    a{
+        ion-icon{
+           
+        }
+    }
+  }
+  .slogan-text{
+    color: $primary;
+    font-size: 1.2rem;
+}
+
+.apply-here-link{
+    color: $primary;
+   
+
+}

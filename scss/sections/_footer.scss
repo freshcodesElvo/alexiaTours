@@ -2,18 +2,18 @@
 @use "../custom" as*;
 
 
-$footer-bg: #111;
-$footer-link-color: #aaa;
+$footer-bg: $bg-dark;
+$footer-link-color: $whitenavlinkColor;
 $footer-text-color: #999;
 $border-color: #333;
-$primary-color: #FFC107;
+$primary-color: $primary;
 
 .main-footer {
   background-color: $footer-bg;
   color: $footer-text-color;
 
   .form-control, .btn {
-    border-radius: 50px;
+    border-radius: $btns-border-radius;
     border: none;
   }
   .form-control {
@@ -26,7 +26,7 @@ $primary-color: #FFC107;
   }
   .btn-primary {
     background-color: $primary-color;
-    color: #000;
+    color: $text-black;
     font-weight: bold;
   }
 
@@ -35,10 +35,10 @@ $primary-color: #FFC107;
     text-decoration: none;
   }
   h3 {
-    color: #fff;
+    color: $text-white;
   }
   h5 {
-    color: #fff;
+    color: $text-white;
   }
 
   ul {
@@ -52,7 +52,7 @@ $primary-color: #FFC107;
       a {
         transition: color 0.3s ease;
         &:hover {
-          color: #fff;
+          color: $text-white;
         }
       }
     }
@@ -70,7 +70,7 @@ $primary-color: #FFC107;
     height: 40px;
     border-radius: 50%;
     background-color: $border-color;
-    color: #fff;
+    color: $text-white;
     margin-right: 1rem;
     transition: background-color 0.3s ease;
     ion-icon{
@@ -83,29 +83,29 @@ $primary-color: #FFC107;
 }
 
 .form-control {
-    background-color: #333;
-    border-radius: 50px;
+    background-color: $border-color;
+    border-radius: $btns-border-radius;
     border: none;
-    color: #fff;
+    color: $text-white;
     padding: 1em;
 
     &::placeholder { 
-      color: #9e9e9e; 
+      color: $dark-placeholder; 
       opacity: 1; 
     }
 
     
     &::-webkit-input-placeholder { 
-      color: #9e9e9e;
+      color: $dark-placeholder;
     }
     &:-moz-placeholder { 
-      color: #9e9e9e;
+      color: $dark-placeholder;
     }
     &::-moz-placeholder { 
-      color: #9e9e9e;
+      color: $dark-placeholder;
     }
     &:-ms-input-placeholder { 
-      color: #9e9e9e;
+      color: $dark-placeholder;
     }
 
     &:focus {

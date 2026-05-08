@@ -3,7 +3,7 @@
 
 .visa-section {
     background-color: #fff;
-    color: #000;
+    color: $text-black;
 }
 
 .contact-card {
@@ -13,7 +13,7 @@
     transition: all 0.3s ease;
     
     i {
-        color: #FFC107;
+        color: $primary-brand;
     }
 
     &:hover {
@@ -26,17 +26,17 @@
     background-color: #f8f9fa;
     border-color: #dee2e6;
     &:focus {
-      border-color: #FFC107;
-      box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+      border-color: $primary-brand;
+      box-shadow: 0 0 0 0.25rem rgba($primary-brand, 0.25);
     }
 }
 
 .btn-warning {
-    background-color: #FFC107;
-    color: #000;
-    border-color: #FFC107;
+    background-color: $primary-brand;
+    color: $text-black;
+    border-color: $primary-brand;
     &:hover {
-      background-color: darken(#FFC107, 10%);
-      border-color: darken(#FFC107, 10%);
+      background-color: darken($primary-brand, 10%);
+      border-color: darken($primary-brand, 10%);
     }
 }

@@ -1,3 +1,6 @@
+
+@use "../custom" as *;
+
 .start-journey-btn {
   width: 70%;
   padding: 14px 0 14px 0px;
@@ -12,3 +15,62 @@
     
   }
 }
+.call-to-action-btn{
+  background-color: $primary;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  ion-icon{
+  }
+
+  &:hover {
+    background-color: #e6b800;
+    color: #fff;
+  }
+}
+
+.secondary-call-to-action {
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: $btns-border-radius;
+  a{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+        ion-icon{
+      margin-top: 2px;
+    }
+  }
+
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+  }
+}
+
+.btn-circle {
+      background: $primary;
+      color: $icon-color;
+      width: 40px;
+      border-radius: $btns-border-radius;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #e0a800;
+      }
+    }

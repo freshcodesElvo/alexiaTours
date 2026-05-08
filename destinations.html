@@ -16,58 +16,7 @@
   src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
   type="module">
 </script>
-  <style>
-    .horizontal-scroll { scrollbar-width: none; -ms-overflow-style: none; }
-    .horizontal-scroll::-webkit-scrollbar { display: none; }
 
-    .line-clamp {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .tour-card-wrapper { transition: transform 0.3s ease; }
-    .tour-card-wrapper:hover { transform: translateY(-10px); }
-
-    .destination-card img { transition: transform 0.5s ease; }
-    .destination-card:hover img { transform: scale(1.1); }
-    .destination-card .stretched-link { z-index: 2; }
-
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-}
-
-#preloader dotlottie-wc {
-  width: 140px;
-  height: 140px;
-}
-
-.loader-text {
-  color: #FFD700;
-  font-size: 14px;
-  letter-spacing: 1px;
-  font-family: Arial, sans-serif;
-  animation: fadePulse 1.5s infinite;
-}
-
-@keyframes fadePulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-  </style>
 </head>
 <body>
 

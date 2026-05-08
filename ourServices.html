@@ -7,8 +7,9 @@
   <meta property="og:description" content="We create bespoke safari, beach, and cultural experiences across Kenya, tailored to your unique desires.">
   <meta property="og:url" content="https://www.alexiastours.com">
   <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
-  <title>Alexia's Tours | Personalized Safari & Beach Vacations in Kenya</title>
+  <title>Alexia's Tours - Safari & Beach Vacations in Kenya</title>
   <link rel="stylesheet" href="assets/css/style.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -120,7 +121,7 @@
           <div class="row g-4">
             <div class="col-6">
               <div class="service-box p-4 border rounded shadow-sm h-100">
-                <ion-icon name="document-text-sharp"></ion-icon>
+                <ion-icon class="top-ion-icon top-ion-icon" name="document-text-sharp"></ion-icon>
                 <h5 class="fw-bold">Visa Application</h5>
                 <p class="small">Fast, reliable, and stress-free visa processing.</p>
                 <a href="visaApplication.html" class="btn-circle">
@@ -130,7 +131,7 @@
             </div>
             <div class="col-6">
               <div class="service-box p-4 border rounded shadow-sm h-100">
-                <ion-icon name="bed-sharp"></ion-icon>
+                <ion-icon  name="bed-sharp" class="top-ion-icon"></ion-icon>
                 <h5 class="fw-bold">Hotel Booking</h5>
                 <p class="small">Handpicked hotels that fit your budget & style.</p>
                 <a href="hotel-booking.html" class="btn-circle">
@@ -140,7 +141,7 @@
             </div>
             <div class="col-6">
               <div class="service-box p-4 border rounded shadow-sm h-100">
-                <ion-icon name="car-sharp"></ion-icon>
+                <ion-icon  name="car-sharp" class="top-ion-icon"></ion-icon>
                 <h5 class="fw-bold">Safari Tours</h5>
                 <p class="small">Unique safari experiences with expert guides.</p>
                 <a href="safari-tours.html" class="btn-circle">
@@ -150,7 +151,7 @@
             </div>
             <div class="col-6">
               <div class="service-box p-4 border rounded shadow-sm h-100">
-                <span class="material-symbols-outlined">travel</span>
+                <span  class="material-symbols-outlined top-ion-icon top-ion-icon">travel</span>
                 <h5 class="fw-bold">Airport Transfers</h5>
                 <p class="small">Safe and punctual transfers from airport to hotel.</p>
                 <a href="safari-tours.html" class="btn-circle">
@@ -192,7 +193,6 @@
   </section>
 
 
-  <!-- ── Why Choose Us ──────────────────────────────────────────────────── -->
   <section class="why-us py-5">
     <div class="container">
       <div class="row align-items-center">
@@ -237,11 +237,11 @@
   </section>
 
 
-  <section class="cta py-5 bg-dark text-white text-center">
+  <section class="  py-5 text-black text-center">
     <div class="container">
       <h3 class="fw-bold mb-3">Ready To Start Your Journey With Us?</h3>
       <p class="mb-4">Book your trip today and let us handle the rest!</p>
-      <a href="book.html" class="btn btn-primary btn-lg">Get Started</a>
+      <a href="book.html" class="btn call-to-action-btn btn-lg">Get Started</a>
     </div>
   </section>
 
@@ -328,81 +328,7 @@
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<style>
-    #alexia-lang-wrapper {
-        position: fixed;
-        bottom: 30px;
-        left: 30px;
-        z-index: 999999;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
 
-    #alexia-lang-btn {
-        background: white;
-        padding: 10px 18px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        font-weight: 600;
-        border: 1px solid #e0e0e0;
-        min-width: 120px;
-    }
-
-    #alexia-lang-btn .country-code { font-size: 16px; color: #333; }
-    #alexia-lang-btn .lang-text { font-size: 16px; color: #333; }
-    #alexia-lang-btn i { font-size: 10px; color: #666; transition: 0.3s; }
-
-    #alexia-lang-menu {
-        position: absolute;
-        bottom: 65px;
-        left: 0;
-        background: white;
-        width: 260px;
-        max-height: 320px;
-        overflow-y: auto;
-        border-radius: 8px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-        display: none;
-        border: 1px solid #eee;
-    }
-
-    #alexia-lang-menu.show { display: block; }
-
-    .lang-item {
-        padding: 12px 20px;
-        display: flex;
-        align-items: center;
-        gap: 25px;
-        cursor: pointer;
-        border-bottom: 1px solid #f9f9f9;
-    }
-
-    .lang-item:last-child { border-bottom: none; }
-    .lang-item:hover { background: #f8f9fa; }
-
-    .lang-item .code {
-        font-weight: 700;
-        font-size: 16px;
-        color: #000;
-        width: 30px;
-    }
-
-    .lang-item .name {
-        font-size: 16px;
-        color: #444;
-    }
-
-    #alexia-lang-menu::-webkit-scrollbar { width: 8px; }
-    #alexia-lang-menu::-webkit-scrollbar-track { background: #fff; }
-    #alexia-lang-menu::-webkit-scrollbar-thumb { 
-        background: #bbb; 
-        border-radius: 10px; 
-        border: 2px solid #fff;
-    }
-</style>
   <div id="footer-placeholder"></div>
   <script>
     fetch('footer.html')

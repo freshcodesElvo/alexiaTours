@@ -1,14 +1,14 @@
 // _packages.scss
 @use "../custom" as *;
 
-$bg-dark: #111;
+
 $highlight: #FFC107;
 
 .packages-section {
   background: $bg-dark;
 
   .text-highlight {
-    color: $highlight;
+    color: $primary;
   }
 }
 

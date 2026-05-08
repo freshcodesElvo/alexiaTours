@@ -6,6 +6,7 @@
 @use 'components/animations';
 @use 'components/buttons';
 @use 'components/mixins';
+@use 'components/typography';
 
 
 //IMPORT SECTIONS
@@ -29,3 +30,5 @@
 @use 'sections/gallery';
 @use 'sections/loader';
 @use 'sections/_whatsapp';
+@use 'sections/_reviews';
+@use 'sections/_whyalexiaTours';

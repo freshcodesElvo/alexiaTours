@@ -4,13 +4,14 @@
   background: #fdfdfd;
 }
 
-.visa-application .step-card {
+.index-step-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: $btns-border-radius;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   transition: transform 0.3s;
+  border: 1px solid $black-border-color;
 }
 
-.visa-application .step-card:hover {
+.index-step-card:hover {
   transform: translateY(-5px);
 }

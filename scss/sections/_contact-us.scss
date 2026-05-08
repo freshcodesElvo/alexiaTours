@@ -5,8 +5,8 @@
   color: #000;
   
   .contact-detail {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background-color: #fff;
+    border: 1px solid $primary;
   }
   
   .form-label {
@@ -15,20 +15,25 @@
 
   .form-control {
     background-color: #f8f9fa;
-    border-color: #0080ff;
-    color: #000;
+    border: 1px solid $primary;
+    border-color: $primary;
+    color: $text-black;
+    border-radius: $btns-border-radius;
     &:focus {
-      border-color: #FFC107;
+      border-color: $primary;
       box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+    }
+    &::placeholder {
+      color: #64646450;
     }
   }
 
   .btn-dark {
-    background-color: #000;
+    background-color: $text-black;
     color: #fff;
     border-color: #000;
     &:hover {
-      background-color: lighten(#000, 10%);
+      background-color: lighten($text-black, 10%);
     }
   }
 }

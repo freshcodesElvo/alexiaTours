@@ -69,11 +69,31 @@ $highlight: #000;
 }
 
 .travel-guide-section .icon-box i {
-    background: #fff3cd;
+    background: $primary;
     padding: 10px;
     border-radius: 12px;
+    color: $icon-color;
 }
 
 .travel-guide-section .bg-warning .icon-box i {
     background: rgba(0,0,0,0.1);
+    
+}
+
+.need-help{
+  border: 2px solid $primary;
+}
+.contact-us-btn{
+  background-color: $primary;
+  color: $text-black;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: .8em 1.2em;
+  border-radius: $btns-border-radius;
+
+  &:hover {
+    background-color: #e6b800;
+    color: #000;
+  }
 }
