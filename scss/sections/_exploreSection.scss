@@ -1,0 +1,14 @@
+@use "../custom" as *;
+
+.explore-text{
+    font-size: 1rem;
+    color: $whitenavlinkColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.explore-meta{
+    gap: 1.5rem;
+    display: flex;
+}

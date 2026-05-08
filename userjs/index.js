@@ -57,7 +57,7 @@ async function loadIndexDestinations() {
         <h5 class="card-title fw-bold">${dest.name}</h5>
         <p class="card-text text-muted">${shortDesc}</p>
         <a href="destination-details.html?id=${dest.id}"
-           class="btn btn-sm btn-warning rounded-circle shadow-sm">
+           class="btn btn-sm btn-warning  shadow-sm">
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </a>
       `;
@@ -108,10 +108,10 @@ async function loadHomePackages() {
         <h5 class="fw-bold text-truncate">${pkg.title}</h5>
         <p class="price text-warning">From USD ${Number(pkg.price).toLocaleString()} <span>Per Person</span></p>
         <div class="tour-meta">
-          <a href="package-details.html?id=${pkg.id}" class="btn explore-btn">Explore</a>
-          <div class="text-white-50 small">
-            <span><ion-icon name="sunny-outline"></ion-icon> ${pkg.duration_days} Days</span>
-            <span><ion-icon name="moon-outline"></ion-icon> ${pkg.duration_nights} Nights</span>
+          <a href="package-details.html?id=${pkg.id}" class="call-to-action-btn btn ">Explore</a>
+          <div class="text-white-50 explore-meta">
+            <span class="explore-text"><ion-icon name="sunny-outline"></ion-icon> ${pkg.duration_days} Days</span>
+            <span class="explore-text"><ion-icon name="moon-outline"></ion-icon> ${pkg.duration_nights} Nights</span>
           </div>
         </div>
       `;

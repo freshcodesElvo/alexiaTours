@@ -69,14 +69,14 @@ $highlight: #000;
 }
 
 .travel-guide-section .icon-box i {
-    background: $primary;
+    //background: $primary;
     padding: 10px;
-    border-radius: 12px;
+    border-radius: $btns-border-radius;
     color: $icon-color;
 }
 
 .travel-guide-section .bg-warning .icon-box i {
-    background: rgba(0,0,0,0.1);
+    background: rgba(139, 4, 4, 0.1)
     
 }
 

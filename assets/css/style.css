@@ -11888,7 +11888,6 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 12px;
   border-radius: 5px;
 }
 .secondary-call-to-action a {
@@ -12304,14 +12303,13 @@ img {
 }
 
 .travel-guide-section .icon-box i {
-  background: #FFC107;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 5px;
   color: #202020;
 }
 
 .travel-guide-section .bg-warning .icon-box i {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(139, 4, 4, 0.1);
 }
 
 .need-help {
@@ -13722,6 +13720,19 @@ body.fade-out {
   background-color: #FFC107;
   border-radius: 20px;
   margin-bottom: 1rem;
+}
+
+.explore-text {
+  font-size: 1rem;
+  color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-meta {
+  gap: 1.5rem;
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */
