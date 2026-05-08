@@ -47,18 +47,18 @@ async function displayTrendingTours() {
       wrapper.style.minWidth = "300px";
 
       const card = document.createElement("div");
-      card.className = "card border-0 shadow-sm rounded-4 overflow-hidden h-100";
+      card.className = "card border-0 shadow-sm  overflow-hidden h-100";
 
       const img = lazyImg(imageSrc, tour.title, "height:200px; object-fit:cover; width:100%;");
 
       const body = document.createElement("div");
       body.className = "card-body";
       body.innerHTML = `
-        <h5 class="fw-bold">${tour.title}</h5>
-        <p class="text-muted small">${tour.duration}</p>
-        <h6 class="text-warning fw-bold">USD ${Number(tour.price).toLocaleString()}</h6>
+        <h5 class="tour-tag">${tour.title}</h5>
+        <p class="text-muted ">${tour.duration}</p>
+        <h6 class="price-tag fw-bold">USD ${Number(tour.price).toLocaleString()}</h6>
         <a href="tour-details.html?id=${tour.id}"
-           class="btn btn-sm btn-outline-warning rounded-pill mt-2">Details</a>
+           class=" call-to-action-btn btn  btn-outline-warning  mt-2">Details <i class="ri-arrow-right-up-line"></i></a>
       `;
 
       card.appendChild(img);
@@ -98,7 +98,7 @@ async function displayDestinations() {
       const shortDesc = dest.description ? dest.description.substring(0, 40) + "..." : "";
 
       const wrapper = document.createElement("div");
-      wrapper.className = "destination-card position-relative overflow-hidden rounded-4 shadow-sm me-3 flex-shrink-0";
+      wrapper.className = "destination-card position-relative overflow-hidden  shadow-sm me-3 flex-shrink-0";
       wrapper.style.cssText = "width: 260px; height: 250px;";
 
       const img = lazyImg(imageSrc, dest.name, "width:100%; height:100%; object-fit:cover; transition:0.5s;");

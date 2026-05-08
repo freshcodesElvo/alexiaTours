@@ -1,5 +1,7 @@
 @use "../custom" as *;
-
+body{
+  padding-top: 80px;
+}
 .destinations-section {
   background-color: #f8f9fa;
   color: $text-black;
@@ -11,7 +13,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
   border: 1px solid #dee2e6; 
-  border-radius: 1rem; 
+  border-radius: $btns-border-radius;
   
   &:hover {
     transform: translateY(-8px); 

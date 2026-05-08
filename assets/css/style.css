@@ -11943,6 +11943,16 @@ textarea.form-control-lg {
   color: #FFC107;
 }
 
+.price-tag {
+  color: #000000;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.tour-tag {
+  color: rgb(27, 27, 27);
+}
+
 .navbar-nav .nav-link.active {
   color: #FFC107 !important;
   font-weight: 600;
@@ -12690,6 +12700,10 @@ img {
   background-color: rgb(211, 158.25, 0);
 }
 
+body {
+  padding-top: 80px;
+}
+
 .destinations-section {
   background-color: #f8f9fa;
   color: #000000;
@@ -12700,7 +12714,7 @@ img {
   transition: all 0.3s ease;
   cursor: pointer;
   border: 1px solid #dee2e6;
-  border-radius: 1rem;
+  border-radius: 5px;
 }
 .category-card:hover {
   transform: translateY(-8px);
