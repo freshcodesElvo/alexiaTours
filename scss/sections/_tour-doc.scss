@@ -11,7 +11,7 @@ $highlight: #000;
     position: relative;
 
     img {
-      border-radius: 1.5rem;
+      border-radius: $btns-border-radius;
       width: 100%;
       object-fit: cover;
     }

@@ -68,7 +68,7 @@ $primary-color: $primary;
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: $btns-border-radius;
     background-color: $border-color;
     color: $text-white;
     margin-right: 1rem;

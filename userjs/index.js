@@ -49,7 +49,7 @@ async function loadIndexDestinations() {
       card.style.minWidth = "300px";
 
       const img = lazyImg(imageSrc, dest.name,
-        "height:250px; object-fit:cover; width:100%; border-radius:12px 12px 0 0;");
+        "height:250px; object-fit:cover; width:100%; ");
 
       const body = document.createElement("div");
       body.className = "card-body";
@@ -100,7 +100,7 @@ async function loadHomePackages() {
       pkgCard.className = "package-card";
 
       const img = lazyImg(pkg.image || "https://placehold.co/400x300", pkg.title,
-        "height:200px; object-fit:cover; width:100%;");
+        "height:200px; object-fit:cover; width:100%; ");
 
       const body = document.createElement("div");
       body.className = "packages-card-body";
