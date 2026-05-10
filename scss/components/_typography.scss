@@ -7,6 +7,12 @@
 .subHeading {
     color: $subHeadingColor;
     font-size: 1.8rem;
+
+    @include media-breakpoint-down(sm) {
+        position: absolute;
+    font-size: 1.2rem;
+    top: 15em;
+    }
 }
   .nav-link{
     color: $navlinkColor;
@@ -37,4 +43,11 @@
     color: $paragraphColors;
 
     
+}
+.meet-the-founder{
+    color: $primary;
+}
+.cant-wait{
+    color: $primary;
+    font-style: italic;
 }

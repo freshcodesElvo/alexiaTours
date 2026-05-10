@@ -11877,6 +11877,11 @@ textarea.form-control-lg {
   background-color: #e6b800;
   color: #fff;
 }
+@media (max-width: 575.98px) {
+  .call-to-action-btn {
+    margin-top: 4em;
+  }
+}
 
 .secondary-call-to-action {
   background-color: transparent;
@@ -11925,8 +11930,15 @@ textarea.form-control-lg {
 }
 
 .subHeading {
-  color: #e0e0e0;
+  color: #b9b9b9;
   font-size: 1.8rem;
+}
+@media (max-width: 575.98px) {
+  .subHeading {
+    position: absolute;
+    font-size: 1.2rem;
+    top: 15em;
+  }
 }
 
 .nav-link {
@@ -11951,6 +11963,15 @@ textarea.form-control-lg {
 
 .tour-tag {
   color: rgb(27, 27, 27);
+}
+
+.meet-the-founder {
+  color: #FFC107;
+}
+
+.cant-wait {
+  color: #FFC107;
+  font-style: italic;
 }
 
 .navbar-nav .nav-link.active {
