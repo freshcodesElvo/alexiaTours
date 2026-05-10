@@ -11877,10 +11877,19 @@ textarea.form-control-lg {
   background-color: #e6b800;
   color: #fff;
 }
-@media (max-width: 575.98px) {
-  .call-to-action-btn {
-    margin-top: 4em;
-  }
+
+.call-to-action-btn-hero {
+  background-color: #FFC107;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  margin-top: 1em;
+  padding: 1em 2em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.call-to-action-btn-hero:hover {
+  background-color: #e6b800;
+  color: #fff;
 }
 
 .secondary-call-to-action {
@@ -11932,12 +11941,11 @@ textarea.form-control-lg {
 .subHeading {
   color: #b9b9b9;
   font-size: 1.8rem;
+  margin-top: 1em;
 }
 @media (max-width: 575.98px) {
   .subHeading {
-    position: absolute;
     font-size: 1.2rem;
-    top: 15em;
   }
 }
 
@@ -12003,64 +12011,96 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url("../../pictures/thomas-bennie-1jlJrr4XGkU-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #fff;
   overflow: hidden;
 }
-.hero-safari h1 {
+.hero-safari::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8));
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-safari::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.6705882353));
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-safari .hero-bg-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-safari .hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: crossfade 30s ease-in-out infinite;
+}
+.hero-safari .hero-bg-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.hero-safari .hero-bg-slide:nth-child(2) {
+  animation-delay: 5s;
+}
+.hero-safari .hero-bg-slide:nth-child(3) {
+  animation-delay: 10s;
+}
+.hero-safari .hero-bg-slide:nth-child(4) {
+  animation-delay: 15s;
+}
+.hero-safari .hero-bg-slide:nth-child(5) {
+  animation-delay: 20s;
+}
+.hero-safari .hero-bg-slide:nth-child(6) {
+  animation-delay: 25s;
+}
+.hero-safari .intros {
+  position: relative;
+  z-index: 3;
+}
+.hero-safari .mainHeading {
   font-size: 3.5rem;
   text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
 @media (max-width: 767.98px) {
-  .hero-safari h1 {
+  .hero-safari .mainHeading {
     font-size: 2.5rem;
   }
 }
 @media (max-width: 575.98px) {
-  .hero-safari h1 {
+  .hero-safari .mainHeading {
     font-size: 2rem;
-  }
-}
-.hero-safari p {
-  max-width: 600px;
-  margin: 0 auto;
-}
-.hero-safari .btn-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-@media (min-width: 768px) {
-  .hero-safari {
-    animation: zoomBg 20s ease-in-out infinite alternate;
   }
 }
 @media (max-width: 575.98px) {
   .hero-safari {
     min-height: 70vh;
-    background-position: center top;
-    animation: none;
   }
-}
-.hero-safari::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(transparent, rgba(255, 255, 255, 0.6705882353));
 }
 
-@keyframes zoomBg {
-  from {
-    background-size: 120%;
+@keyframes crossfade {
+  0% {
+    opacity: 1;
   }
-  to {
-    background-size: 140%;
+  13.33% {
+    opacity: 1;
+  }
+  16.66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
 .slogan-bar {
@@ -12101,7 +12141,7 @@ img {
   position: fixed;
   width: 50px;
   height: 50px;
-  border: 2px solid #ffb700;
+  border: 2px solid #FFC107;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);

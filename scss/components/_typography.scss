@@ -7,6 +7,7 @@
 .subHeading {
     color: $subHeadingColor;
     font-size: 1.8rem;
+    margin-top: 1em;
 
     @include media-breakpoint-down(sm) {
     font-size: 1.2rem;

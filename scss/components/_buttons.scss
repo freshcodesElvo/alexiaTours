@@ -29,10 +29,25 @@
     background-color: #e6b800;
     color: #fff;
   }
-  @include media-breakpoint-down(sm) {
-   
-    margin-top: 4em;
+
+}
+.call-to-action-btn-hero{
+  background-color: $primary;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  margin-top: 1em;
+  padding: 1em 2em;
+  
+  transition: background-color 0.3s ease, color 0.3s ease;
+  ion-icon{
   }
+
+  &:hover {
+    background-color: #e6b800;
+    color: #fff;
+  }
+
 }
 
 .secondary-call-to-action {

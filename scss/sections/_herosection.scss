@@ -1,80 +1,91 @@
 @use "../custom" as *;
 
+// === Slideshow config ===
+$slide-count: 6;
+$slide-duration: 5s;
+$fade-duration: 1s;
+$total: ($slide-count * $slide-duration); // 30s
 
 .hero-safari {
   position: relative;
   min-height: 100vh;
   padding: 4rem 1rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background:
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
-    url("../../pictures/thomas-bennie-1jlJrr4XGkU-unsplash.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
   color: #fff;
   overflow: hidden;
-
-  h1 {
-    font-size: 3.5rem;
-    text-shadow: 0 5px 20px rgba(0,0,0,0.6);
-
-    @include media-breakpoint-down(md) {
-      font-size: 2.5rem;
-    }
-
-    @include media-breakpoint-down(sm) {
-      font-size: 2rem;
-    }
-  }
-
-  p {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .btn-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  @include media-breakpoint-up(md) {
-    animation: zoomBg 20s ease-in-out infinite alternate;
-  }
-
-  @include media-breakpoint-down(sm) {
-    min-height: 70vh;
-    background-position: center top;
-    animation: none;
-  }
 
   &::after {
     content: "";
     position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.80));
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
     bottom: -1px;
+    left: 0;
     width: 100%;
     height: 120px;
     background: linear-gradient(transparent, #ffffffab);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero-bg-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: crossfade 30s ease-in-out infinite;
+
+    @for $i from 1 through $slide-count {
+      &:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * $slide-duration};
+      }
+    }
+  }
+
+  .intros {
+    position: relative;
+    z-index: 3;
+  }
+
+  .mainHeading {
+    font-size: 3.5rem;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.6);
+    @include media-breakpoint-down(md) { font-size: 2.5rem; }
+    @include media-breakpoint-down(sm) { font-size: 2rem; }
+  }
+
+ 
+
+  @include media-breakpoint-down(sm) {
+    min-height: 70vh;
   }
 }
 
-@keyframes zoomBg {
-  from {
-    background-size: 120%;
-  }
-  to {
-    background-size: 140%;
-  }
+// 6 slides × 5s = 30s total
+// Each slide: hold for 4s (13.33%), fade out over 1s (16.66%), hidden the rest
+@keyframes crossfade {
+  0%     { opacity: 1; }
+  13.33% { opacity: 1; }
+  16.66% { opacity: 0; }
+  100%   { opacity: 0; }
 }
-
 
 .slogan-bar {
   background: #111;
@@ -83,8 +94,6 @@
   letter-spacing: 1px;
   text-align: center;
 }
-
-
 
 html, body {
   margin: 0;
@@ -112,13 +121,13 @@ img {
   margin-right: 0;
 }
 
- .cursor-circle {
+.cursor-circle {
   position: fixed;
   width: 50px;
   height: 50px;
-  border: 2px solid #ffb700; 
+  border: 2px solid $primary;
   border-radius: 50%;
-  pointer-events: none; 
+  pointer-events: none;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease;
   top: 0;
@@ -126,6 +135,4 @@ img {
   @include media-breakpoint-down(sm) {
     display: none;
   }
-
 }
-
