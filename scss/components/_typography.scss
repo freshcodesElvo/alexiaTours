@@ -9,9 +9,7 @@
     font-size: 1.8rem;
 
     @include media-breakpoint-down(sm) {
-        position: absolute;
     font-size: 1.2rem;
-    top: 15em;
     }
 }
   .nav-link{
