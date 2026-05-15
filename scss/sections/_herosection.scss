@@ -1,6 +1,5 @@
 @use "../custom" as *;
 
-// === Slideshow config ===
 $slide-count: 6;
 $slide-duration: 5s;
 $fade-duration: 1s;
@@ -78,8 +77,7 @@ $total: ($slide-count * $slide-duration); // 30s
   }
 }
 
-// 6 slides × 5s = 30s total
-// Each slide: hold for 4s (13.33%), fade out over 1s (16.66%), hidden the rest
+
 @keyframes crossfade {
   0%     { opacity: 1; }
   13.33% { opacity: 1; }
