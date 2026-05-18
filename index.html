@@ -85,7 +85,6 @@
 <!-- </div> -->
 
 
-  <!-- Hero section -->
 <section class="hero-safari d-flex align-items-center">
 
   <div class="hero-bg-slider">
@@ -118,7 +117,6 @@
   </div>
 
 
-  <!-- Services  hero sec-->
   <section class="services-section py-5">
     <div class="container">
       <div class="row align-items-start mb-5">
@@ -137,7 +135,6 @@
       </div>
 
       <div class="row g-4">
-        <!-- visa application  service-->
         <div class="col-md-6 col-lg-3 service-card-container  service-card-container1">
           <div class="service-card position-relative">
             <img src="./pictures/visapic.jpg" alt="Visa/passport picture"
@@ -152,7 +149,6 @@
           </div>
         </div>
 
-        <!-- Service 2 -->
         <div class="col-md-6 col-lg-3 service-card-container  service-card-container2">
           <div class="service-card position-relative">
             <img src="./pictures/hotel.jpeg" alt="Hotel Booking"
@@ -167,7 +163,6 @@
           </div>
         </div>
 
-        <!-- Service 3 -->
         <div class="col-md-6 col-lg-3 service-card-container  service-card-container3">
           <div class="service-card position-relative">
             <img src="./pictures/zebra.jpeg" alt="Safari Booking"
@@ -182,7 +177,6 @@
           </div>
         </div>
 
-        <!-- Service 4 -->
         <div class="col-md-6 col-lg-3 service-card-container  service-card-container4">
           <div class="service-card position-relative">
             <img src="./pictures/airportTransfer.jpeg" alt="Airport Transfers"
@@ -201,7 +195,6 @@
   </section>
 
 
-  <!--Top Destinations section -->
   <section class="tour-packages py-5">
     <div class="container">
       <div class="row text-center mb-5">
@@ -222,7 +215,6 @@
   </section>
 
 
-  <!-- Packages -->
   <section class="packages-section py-5 text-center text-white">
     <div class="container">
       <div class="mb-5">
@@ -372,7 +364,6 @@
   </section>
 
 
-  <!--Testimonials  -->
   <section class="section testimonials" id="testimonials">
     <div class="container">
       <div class="text-center mb-5">
@@ -388,7 +379,6 @@
 
 
 
-  <!--How to Book -->
   <section class="how-to-book py-5">
     <div class="container">
       <div class="row text-center mb-5">
@@ -442,7 +432,6 @@
     </div>
   </section>
 
-  <!-- Floating Language Toggle -->
 <div id="alexia-lang-wrapper">
     <div id="alexia-lang-btn" onclick="toggleLangMenu()">
         <span class="country-code">GB</span>
@@ -477,7 +466,6 @@
         </div>
     </div>
 
-    <!-- Hidden Google Widget -->
     <div id="google_translate_element" style="display:none;"></div>
 </div>
 
@@ -491,17 +479,14 @@
 
     function toggleLangMenu() {
         document.getElementById('alexia-lang-menu').classList.toggle('show');
-        // Toggle arrow icon direction if you want to get fancy
         const icon = document.querySelector('#alexia-lang-btn i');
         icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
     function changeLanguage(langCode, country, display) {
-        // Update Button Labels
         document.querySelector('#alexia-lang-btn .country-code').innerText = country;
         document.querySelector('#alexia-lang-btn .lang-text').innerText = display;
 
-        // Trigger Google Translate Engine
         var selectField = document.querySelector("#google_translate_element select");
         if(selectField) {
             selectField.value = langCode;
@@ -598,7 +583,6 @@
     
 </style>
 
-<!-- WhatsApp -->
 <a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
    class="whatsapp-float"
    target="_blank">
@@ -613,7 +597,6 @@
   </script>
 
 
-  <!-- Scripts -->
   <script>
     document.querySelectorAll(".image-slider").forEach(slider => {
       const images = slider.querySelectorAll("img");
