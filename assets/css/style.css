@@ -4,7 +4,7 @@
  * Copyright 2011-2025 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import "../node_modules/remixicon/fonts/remixicon.css";
+@import url("https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -11868,6 +11868,7 @@ textarea.form-control-lg {
 
 .call-to-action-btn {
   background-color: #FFC107;
+  padding: 9px 14px 9px 14px;
   color: #000;
   font-weight: bold;
   border: none;
@@ -12029,7 +12030,7 @@ textarea.form-control-lg {
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(transparent, rgba(255, 255, 255, 0.6705882353));
+  background: linear-gradient(transparent, #111);
   z-index: 2;
   pointer-events: none;
 }
@@ -13652,7 +13653,6 @@ header p {
   }
 }
 body {
-  opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -13812,6 +13812,33 @@ body.fade-out {
 .explore-meta {
   gap: 1.5rem;
   display: flex;
+}
+
+.about-visa {
+  background-color: red;
+}
+
+.form-control {
+  background-color: #f8f9fa;
+  border: 1px solid #FFC107;
+  border-color: #FFC107;
+  color: #000000;
+  border-radius: 5px;
+}
+.form-control:focus {
+  border-color: #FFC107;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+  background-color: transparent;
+}
+.form-control::placeholder {
+  color: rgba(100, 100, 100, 0.3137254902);
+}
+
+.book-summary {
+  background: black;
+  color: #fff;
+  border-color: #FFC107;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

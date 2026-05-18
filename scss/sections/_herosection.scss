@@ -31,7 +31,7 @@ $total: ($slide-count * $slide-duration); // 30s
     left: 0;
     width: 100%;
     height: 120px;
-    background: linear-gradient(transparent, #ffffffab);
+    background: linear-gradient(transparent, #111);
     z-index: 2;
     pointer-events: none;
   }

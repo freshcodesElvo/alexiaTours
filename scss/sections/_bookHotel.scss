@@ -1,0 +1,24 @@
+@use "../custom" as *;
+
+.form-control {
+    background-color: #f8f9fa;
+    border: 1px solid $primary;
+    border-color: $primary;
+    color: $text-black;
+    border-radius: $btns-border-radius;
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+      background-color: transparent;
+    }
+    &::placeholder {
+      color: #64646450;
+    }
+  }
+
+.book-summary {
+    background: black;
+    color: #fff;
+    border-color: $primary;
+    border-radius: $btns-border-radius;
+}

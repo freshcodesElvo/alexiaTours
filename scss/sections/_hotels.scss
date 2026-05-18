@@ -1,0 +1,9 @@
+@use "../custom" as *;
+
+.hotelPriceTag {
+  color: #111;
+  border: 2px solid $primary;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: $btns-border-radius;
+}
