@@ -29,7 +29,7 @@
   }
 
   &:hover {
-    background-color: #e6b800;
+    background-color: $hover-yellow;
     color: #fff;
   }
 
@@ -47,7 +47,7 @@
   }
 
   &:hover {
-    background-color: #e6b800;
+    background-color: $hover-yellow;
     color: #fff;
   }
 
@@ -94,6 +94,6 @@
       transition: all 0.3s ease;
 
       &:hover {
-        background: #e0a800;
+        background: $hover-yellow;
       }
     }
