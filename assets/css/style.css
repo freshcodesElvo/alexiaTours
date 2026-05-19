@@ -11983,6 +11983,31 @@ textarea.form-control-lg {
   font-style: italic;
 }
 
+.african-canvas {
+  color: #F99E1C;
+}
+@media (max-width: 575.98px) {
+  .african-canvas {
+    font-size: 2rem;
+  }
+}
+
+.out-of-africa {
+  color: #F99E1C;
+}
+
+.shadow-sm {
+  color: #F99E1C;
+}
+
+.campig-paragraph {
+  color: rgb(27, 27, 27);
+}
+
+.secondary-h4s {
+  color: #000000;
+}
+
 .navbar-nav .nav-link.active {
   color: #F99E1C !important;
   font-weight: 600;
@@ -12348,7 +12373,6 @@ img {
 .tour-doc .badge {
   font-size: 0.85rem;
   padding: 0.5rem 0.9rem;
-  border-radius: 20px;
 }
 
 .customer-review-avater-boundary {
@@ -13790,17 +13814,6 @@ body.fade-out {
     opacity: 1;
   }
 }
-.badge-why-alexia-tours {
-  display: inline-block;
-  padding: 0.5em 1em;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #F99E1C;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-}
-
 .explore-text {
   font-size: 1rem;
   color: #aaa;
@@ -13835,6 +13848,22 @@ body.fade-out {
   color: #fff;
   border-color: #F99E1C;
   border-radius: 5px;
+}
+
+.camping-section .btn:hover {
+  background-color: #FFD51F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+.camping-section img {
+  transition: transform 0.5s ease;
+}
+.camping-section img:hover {
+  transform: scale(1.02);
+}
+
+.tracking-wider {
+  letter-spacing: 2px;
 }
 
 /*# sourceMappingURL=style.css.map */

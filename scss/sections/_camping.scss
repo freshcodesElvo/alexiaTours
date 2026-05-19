@@ -1,0 +1,19 @@
+@use "../custom" as *;
+.camping-section {
+  .btn:hover {
+    background-color: $hover-yellow;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  }
+  
+  img {
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.tracking-wider {
+  letter-spacing: 2px;
+}

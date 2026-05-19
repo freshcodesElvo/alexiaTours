@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-    <script>
+     <div id="navbar-placeholder"></div>
+<script>
   fetch('navbar.html')
   .then(r => r.text())
   .then(data => {
@@ -39,7 +39,7 @@
     <div class="tour-hero" id="tour-hero-bg" style="height: 50vh; background-size: cover; background-position: center; position: relative;">
         <div class="overlay" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
         <div class="container h-100 d-flex flex-column justify-content-end pb-4" style="position: relative; z-index: 2;">
-            <span class="badge bg-warning text-dark mb-2 px-3 py-2 rounded-pill" id="tour-category" style="width: fit-content;"></span>
+            <span class="call-to-action-btn badge  text-dark mb-2 px-3 py-2 " id="tour-category" style="width: fit-content;"></span>
             <h1 class="display-4 fw-bold text-white" id="tour-title">Loading Tour...</h1>
         </div>
     </div>
@@ -83,13 +83,13 @@
                     <form id="booking-form">
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Full Name</label>
-                            <input type="text" class="form-control rounded-pill" required>
+                            <input type="text" class="form-control " required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Email</label>
-                            <input type="email" class="form-control rounded-pill" required>
+                            <input type="email" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-warning w-100 fw-bold py-3 rounded-pill mt-2">Check Availability</button>
+                        <button type="submit" class="btn call-to-action-btn w-100 fw-bold py-3  mt-2">Check Availability</button>
                     </form>
                 </div>
             </div>

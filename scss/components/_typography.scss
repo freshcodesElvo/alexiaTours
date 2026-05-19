@@ -50,3 +50,21 @@
     color: $primary;
     font-style: italic;
 }
+.african-canvas{
+    color: $primary;
+    @include media-breakpoint-down(sm) {
+        font-size: 2rem;
+    }
+}
+.out-of-africa{
+    color: $primary;
+}
+.shadow-sm{
+    color: $primary;
+}
+.campig-paragraph{
+    color: $paragraphColors;
+}
+.secondary-h4s{
+    color: $text-black;
+}
