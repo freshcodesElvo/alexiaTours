@@ -26,7 +26,6 @@
         .main-content.expanded { margin-left: 0; }
         .search-container { width: 100%; max-width: 380px; }
 
-        /* Custom Thumbnail Image Fit Adjustments */
         .blog-thumb {
             width: 65px;
             height: 45px;
@@ -35,7 +34,6 @@
             border: 1px solid #e0e0e0;
         }
 
-        /* Responsive Table Hiding */
         @media (max-width: 767.98px) {
             .blogs-table th:nth-child(2), .blogs-table td:nth-child(2),
             .blogs-table th:nth-child(4), .blogs-table td:nth-child(4) { display: none; }
@@ -45,7 +43,7 @@
             #sidebar { transform: translateX(-100%); }
             #sidebar.visible { transform: translateX(0); }
             .main-content { margin-left: 0 !important; padding: 20px 16px; }
-            .btn-create-txt { display: none; } /* Hide text on mobile layout profiles */
+            .btn-create-txt { display: none; }
         }
     </style>
 </head>
@@ -72,9 +70,9 @@
                             <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Search articles or slugs...">
                         </div>
                     </div>
-                    <a href="add-blog.html" class="btn text-white fw-semibold d-flex align-items-center gap-2 px-3" style="background-color: #F99E1C; border-radius: 5px;">
+                    <button type="button" class="btn text-white fw-semibold d-flex align-items-center gap-2 px-3" data-bs-toggle="modal" data-bs-target="#addBlogModal" style="background-color: #F99E1C; border-radius: 5px;">
                         <i class="bi bi-plus-circle-fill"></i> <span class="btn-create-txt">Write Article</span>
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -94,7 +92,7 @@
                         <tbody id="blogsTableBody">
                             <tr>
                                 <td colspan="6" class="text-center py-5 text-muted">
-                                    <div class="spinner-border text-warning spinner-border-sm me-2" role="status"></div>
+                                    <div class="spinner-border text-secondary opacity-50 spinner-border-sm me-2" role="status"></div>
                                     Syncing operational journal records...
                                 </td>
                             </tr>
@@ -103,6 +101,67 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <div class="modal fade" id="addBlogModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="addBlogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 5px;">
+                <div class="modal-header bg-light border-0 py-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-pencil-square fs-4" style="color: #F99E1C;"></i>
+                        <h5 class="modal-title fw-bold" id="addBlogModalLabel">Publish Journal Entry</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <form id="blog-creation-form" enctype="multipart/form-data">
+                    <div class="modal-body p-4">
+                        <div id="form-alert" class="alert d-none" style="border-radius: 5px;"></div>
+                        
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Article Title</label>
+                                <input type="text" name="title" id="blog-title" class="form-control" placeholder="e.g., The Ultimate Guide to the Great Wildebeest Migration" style="border-radius: 5px;" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Journal Category</label>
+                                <select name="category" id="blog-category" class="form-select text-dark" style="border-radius: 5px;" required>
+                                    <option value="Safari Tips">Safari Tips</option>
+                                    <option value="Packing Guide">Packing Guide</option>
+                                    <option value="Cultural Insights">Cultural Insights</option>
+                                    <option value="Beach Relaxation">Beach Relaxation</option>
+                                    <option value="General Travel">General Travel</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Cover Image Banner</label>
+                                <input type="file" name="blog_image" id="blog-image" class="form-control" accept="image/*" style="border-radius: 5px;" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">SEO Summary Snippet</label>
+                                <textarea name="summary" id="blog-summary" class="form-control" rows="2" maxlength="450" placeholder="A brief snippet that displays on the preview cards to hook the traveler..." style="border-radius: 5px;" required></textarea>
+                                <div class="form-text text-end small text-muted" id="char-counter">0 / 450 characters</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Complete Narrative Body Content</label>
+                                <textarea name="content" id="blog-content" class="form-control" rows="8" placeholder="Write your full story details here..." style="border-radius: 5px; line-height: 1.6;" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 bg-light py-3">
+                        <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal" style="border-radius: 5px;">Cancel</button>
+                        <button type="submit" id="submit-btn" class="btn fw-bold text-white px-4" style="background-color: #F99E1C; border-radius: 5px;">
+                            <span id="btn-text">Publish Post Live</span>
+                            <span id="btn-spinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -133,6 +192,6 @@
     </script>
 
     <script src="../userjs/config.js"></script>
-    <script src="./add-blog.js"></script>
+    <script src="add-blog.js"></script>
 </body>
 </html>

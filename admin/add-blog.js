@@ -1,5 +1,6 @@
-// Post Composition Form Pipeline Handler for Alexia Tours Management Dashboard
 document.addEventListener("DOMContentLoaded", () => {
+    const tableBody = document.getElementById("blogsTableBody");
+    const searchInput = document.getElementById("searchInput");
     const form = document.getElementById("blog-creation-form");
     const summaryInput = document.getElementById("blog-summary");
     const charCounter = document.getElementById("char-counter");
@@ -8,60 +9,142 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnText = document.getElementById("btn-text");
     const btnSpinner = document.getElementById("btn-spinner");
 
-    // Dynamic length tracking counter event
+    let loadedBlogs = [];
+
+    // Character Counter
     if (summaryInput) {
         summaryInput.addEventListener("input", (e) => {
             charCounter.innerText = `${e.target.value.length} / 450 characters`;
         });
     }
 
-    if (!form) return;
+    // 1. FETCH & RENDER ENTRIES
+    async function fetchJournalEntries() {
+        try {
+            const res = await fetch(`${BASE_URL}/api/blogs`);
+            if (!res.ok) throw new Error("Could not download list.");
+            
+            loadedBlogs = await res.json();
+            renderTable(loadedBlogs);
+        } catch (err) {
+            console.error(err);
+            tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-danger py-4 fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i> Failed to sync dashboard data feed.</td></tr>`;
+        }
+    }
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    function renderTable(blogs) {
+        if (blogs.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-5">No journal entries found. Click "Write Article" to post your first one!</td></tr>`;
+            return;
+        }
 
-        // Structural visual lock adjustments
-        alertBox.className = "alert d-none";
-        submitBtn.disabled = true;
-        btnText.innerText = "Processing Assets...";
-        btnSpinner.classList.remove("d-none");
+        tableBody.innerHTML = blogs.map(blog => {
+            const date = new Date(blog.created_at).toLocaleDateString('en-GB', {
+                day: '2-digit', month: 'short', year: 'numeric'
+            });
+            const imageSrc = blog.image_path ? `${BASE_URL}/${blog.image_path}` : '../pictures/placeholder.jpg';
+            
+            return `
+                <tr>
+                    <td><img src="${imageSrc}" class="blog-thumb" alt="Cover"></td>
+                    <td><div class="fw-bold text-dark">${blog.title}</div><small class="text-muted text-monospace">${blog.slug}</small></td>
+                    <td><span class="badge bg-secondary opacity-75 px-2.5 py-1.5" style="border-radius:4px;">${blog.category}</span></td>
+                    <td><div class="text-muted small text-truncate" style="max-width: 280px;">${blog.summary}</div></td>
+                    <td class="small text-secondary fw-semibold">${date}</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-danger px-2.5 remove-blog-btn" data-id="${blog.id}" style="border-radius:4px;">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
 
-        // FormData construction safely extracts file payloads matching Multer requirements
-        const formData = new FormData(form);
-        const API_CREATE_BLOG = `${BASE_URL}/api/blogs/create`;
+        // Attach Delete Listeners
+        document.querySelectorAll(".remove-blog-btn").forEach(btn => {
+            btn.addEventListener("click", () => deleteArticle(btn.getAttribute("data-id")));
+        });
+    }
+
+    // 2. SEARCH FILTER LOGIC
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = loadedBlogs.filter(b => 
+                b.title.toLowerCase().includes(term) || 
+                b.slug.toLowerCase().includes(term) ||
+                b.category.toLowerCase().includes(term)
+            );
+            renderTable(filtered);
+        });
+    }
+
+    // 3. REMOVE ARTICLE INTERACTION
+    async function deleteArticle(id) {
+        if (!confirm("Are you absolutely sure you want to completely remove this article entry? This action cannot be undone.")) return;
 
         try {
-            const res = await fetch(API_CREATE_BLOG, {
-                method: "POST",
-                body: formData // Note: Content-Type headers are handled automatically by browser for FormData
-            });
-
+            const res = await fetch(`${BASE_URL}/api/blogs/${id}`, { method: "DELETE" });
             const data = await res.json();
+            if (!res.ok) throw new Error(data.error || "Failed deletion.");
 
-            if (!res.ok) {
-                throw new Error(data.error || "An unexpected asset error occurred.");
-            }
-
-            // Display success alert context layout
-            alertBox.className = "alert alert-success d-block fw-semibold";
-            alertBox.innerHTML = `<i class="ri-checkbox-circle-line me-2"></i> ${data.message || "Entry launched live successfully!"}`;
-            form.reset();
-            if(charCounter) charCounter.innerText = "0 / 450 characters";
-            
-            // Redirect smoothly back to home management feed dashboard after brief delay
-            setTimeout(() => {
-                window.location.href = "dashboard.html";
-            }, 1800);
-
+            fetchJournalEntries();
         } catch (err) {
-            console.error("Dashboard Blog Submission Crash Trace Logs:", err);
-            alertBox.className = "alert alert-danger d-block fw-semibold";
-            alertBox.innerHTML = `<i class="ri-error-warning-line me-2"></i> Error: ${err.message}`;
-            
-            // Unlock button for adjustment retries
-            submitBtn.disabled = false;
-            btnText.innerText = "Publish Post Live";
-            btnSpinner.classList.add("d-none");
+            alert(`Error removing article: ${err.message}`);
         }
-    });
+    }
+
+    // 4. MODAL CREATION SUBMIT ENGINE
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            alertBox.className = "alert d-none";
+            submitBtn.disabled = true;
+            btnText.innerText = "Processing Assets...";
+            btnSpinner.classList.remove("d-none");
+
+            const formData = new FormData(form);
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/blogs/create`, {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await res.json();
+
+                if (!res.ok) throw new Error(data.error || "Submission failed.");
+
+                alertBox.className = "alert alert-success d-block fw-semibold";
+                alertBox.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ${data.message}`;
+                form.reset();
+                if (charCounter) charCounter.innerText = "0 / 450 characters";
+
+                setTimeout(() => {
+                    // Hide modal gracefully using Bootstrap context methods
+                    const modalEl = document.getElementById('addBlogModal');
+                    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+                    if (modalInstance) modalInstance.hide();
+                    
+                    // Reset buttons and reload tables layout views
+                    submitBtn.disabled = false;
+                    btnText.innerText = "Publish Post Live";
+                    btnSpinner.classList.add("d-none");
+                    alertBox.className = "alert d-none";
+                    
+                    fetchJournalEntries();
+                }, 1500);
+
+            } catch (err) {
+                console.error(err);
+                alertBox.className = "alert alert-danger d-block fw-semibold";
+                alertBox.innerHTML = `<i class="bi bi-exclamation-octagon-fill me-2"></i> ${err.message}`;
+                submitBtn.disabled = false;
+                btnText.innerText = "Publish Post Live";
+                btnSpinner.classList.add("d-none");
+            }
+        });
+    }
+
+    // Initial Execution Context Call
+    fetchJournalEntries();
 });
