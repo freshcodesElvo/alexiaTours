@@ -1,44 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login | Alexia Tours</title>
-    <style>
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .login-container h2 { text-align: center; color: #333; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-        .login-btn { width: 100%; padding: 10px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        .error-msg { color: red; text-align: center; margin-top: 10px; display: none; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Alexia Tours</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
+                  url("../pictures/thomas-bennie-1jlJrr4XGkU-unsplash.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 5px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      text-align: center;
+    }
+
+    .brand-logo {
+      font-size: 2.5rem;
+      color: #F99E1C;
+      margin-bottom: 10px;
+      display: inline-block;
+      animation: pulse 3s infinite alternate;
+    }
+
+    .login-container h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 35px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      text-align: left;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #F99E1C;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 15px 14px 45px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #F99E1C;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(249, 158, 28, 0.2);
+    }
+
+    .form-group input:focus + i {
+      color: #F99E1C;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      background: #F99E1C;
+      color: #111;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(249, 158, 28, 0.2);
+    }
+
+    .login-btn:hover {
+      background: #fff;
+      color: #111;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .error-msg {
+      background: rgba(231, 76, 60, 0.2);
+      border: 1px solid #e74c3c;
+      color: #ff6b6b;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      margin-top: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+  </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Admin Portal</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" id="username" required>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="password" required>
-            </div>
-            <button type="submit" class="login-btn">Login</button>
-            <p id="errorMsg" class="error-msg">Invalid Credentials</p>
-        </form>
-    </div>
 
-    <script src="login.js"></script>
+  <div class="login-container">
+    <div class="brand-logo">
+      <i class="ri-shield-user-line"></i>
+    </div>
+    
+    <h2>Alexia Tours</h2>
+    <p class="subtitle">Management Control Center</p>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-wrapper">
+          <input type="text" id="username" placeholder="Enter admin user" required autocomplete="username">
+          <i class="ri-user-3-line"></i>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+          <i class="ri-lock-password-line"></i>
+        </div>
+      </div>
+      
+      <button type="submit" class="login-btn">Authenticate</button>
+      
+      <p id="errorMsg" class="error-msg">
+        <i class="ri-error-warning-line"></i> Access Denied. Invalid Credentials.
+      </p>
+    </form>
+  </div>
+
+  <script src="login.js"></script>
 </body>
 </html>
