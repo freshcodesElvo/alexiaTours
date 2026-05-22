@@ -3,29 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Journal - Alexia's Tours</title>
+  <title>Travel Journals & Stories | Alexia's Tours</title>
+  <meta name="description" content="Discover expert travel guides, safari tips, and cultural insights from our experienced team in Kenya.">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
       <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+ 
+  <style>
+    /* Clean interactive focus states for category filter chips */
+    .filter-chip {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      border: 1px solid #e0e0e0;
+      background-color: #fff;
+      color: #555;
+    }
+    .filter-chip:hover {
+      border-color: #F99E1C;
+      color: #F99E1C;
+    }
+    .filter-chip.active {
+      background-color: #F99E1C !important;
+      border-color: #F99E1C !important;
+      color: #fff !important;
+    }
+    .search-wrapper i {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+    .search-wrapper input {
+      padding-left: 45px;
+      border-radius: 5px;
+      border: 1px solid #e0e0e0;
+    }
+    .search-wrapper input:focus {
+      border-color: #F99E1C;
+      box-shadow: 0 0 0 0.2rem rgba(249, 158, 28, 0.15);
+    }
+  </style>
 </head>
 <body style="padding-top: 80px; background-color: #fdfdfd;">
 
-  
-    <div id="navbar-placeholder"></div>
-   <script>
+ <div id="navbar-placeholder"></div>
+<script>
   fetch('navbar.html')
   .then(r => r.text())
   .then(data => {
     document.getElementById('navbar-placeholder').innerHTML = data;
 
     const normalize = (path) => {
-      return path
-        .replace(/\.html$/, "")   
-        .replace(/\/$/, "")       
-        .split("/")
-        .pop();                  
+        return path
+          .replace(/\.html$/, "")   
+          .replace(/\/$/, "")       
+          .split("/")
+          .pop();                  
     };
 
     const currentPage = normalize(window.location.pathname);
@@ -40,51 +77,53 @@
   });
 </script>
 
-  <article class="py-5">
-    <div class="container" style="max-width: 850px;">
-      
-      <div class="mb-4">
-        <a href="destinations.html" class="text-decoration-none fw-bold small d-inline-flex align-items-center gap-1" style="color: #F99E1C;">
-          <i class="ri-arrow-left-line"></i> Back to Destinations
-        </a>
-      </div>
+  <section class="py-5 text-center bg-light border-bottom">
+    <div class="container py-4">
+      <span class="text-uppercase fw-bold small tracking-wider" style="color: #F99E1C; letter-spacing: 2px;">The Travel Log</span>
+      <h1 class="display-4 fw-bold text-dark mt-2 mb-3">Stories from the Savannah & Beyond</h1>
+      <p class="text-muted mx-auto fs-5" style="max-width: 600px;">Expert insights, wildlife tracking updates, and coastal inspiration curated by the Alexia Tours travel desk.</p>
+    </div>
+  </section>
 
-      <div id="article-loader" class="text-center py-5">
-        <div class="spinner-border text-secondary opacity-50 mb-2" role="status" style="width: 2rem; height: 2rem;"></div>
-        <p class="text-muted small text-uppercase tracking-wider">Unfolding narrative layers...</p>
-      </div>
-
-      <div id="article-content" class="d-none">
+  <section class="py-4 bg-white sticky-top shadow-sm" style="top: 80px; z-index: 100;">
+    <div class="container">
+      <div class="row g-3 align-items-center">
         
-        <div class="d-flex align-items-center gap-3 mb-3">
-          <span id="article-category" class="badge text-white fw-semibold px-3 py-2" style="background-color: #F99E1C; border-radius: 4px; font-size: 0.75rem;"></span>
-          <span id="article-date" class="text-muted small"><i class="ri-calendar-todo-line me-1"></i></span>
-        </div>
-
-        <h1 id="article-title" class="display-5 fw-bold text-dark mb-4 lh-sm"></h1>
-
-        <div class="shadow-sm mb-5 overflow-hidden" style="border-radius: 6px; height: 420px; width: 100%;">
-          <img id="article-banner" src="" class="w-100 h-100" style="object-fit: cover;" alt="Cover Banner">
-        </div>
-
-        <div id="article-body" class="text-secondary lh-lg fs-5" style="white-space: pre-line; letter-spacing: -0.01em;">
+        <div class="col-lg-4">
+          <div class="position-relative search-wrapper">
+            <i class="ri-search-line fs-5"></i>
+            <input type="text" id="publicSearchInput" class="form-control form-control-lg fs-6" placeholder="Search articles or keywords...">
           </div>
+        </div>
 
+        <div class="col-lg-8">
+          <div class="d-flex flex-wrap gap-2 justify-content-lg-end" id="filterContainer">
+            <button class="btn filter-chip active px-4 py-2 small fw-semibold" data-category="all" style="border-radius: 4px;">All Journals</button>
+            <button class="btn filter-chip px-4 py-2 small fw-semibold" data-category="Safari Tips" style="border-radius: 4px;">Safari Tips</button>
+            <button class="btn filter-chip px-4 py-2 small fw-semibold" data-category="Beach Relaxation" style="border-radius: 4px;">Beach Relaxation</button>
+            <button class="btn filter-chip px-4 py-2 small fw-semibold" data-category="Cultural Insights" style="border-radius: 4px;">Cultural Insights</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      
+      <div class="row g-4" id="blog-grid">
+        <div class="col-12 text-center text-muted py-5">
+          <div class="spinner-border text-secondary opacity-50 mb-2" role="status" style="width: 2rem; height: 2rem;"></div>
+          <p class="small text-uppercase tracking-wider mb-0">Assembling full journal catalog...</p>
+        </div>
       </div>
 
     </div>
-  </article>
+  </section>
 
-  <div id="footer-placeholder"></div>
-    <script>
-        fetch('footer.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-          });
-    </script>
-
-    <a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
+  
+<a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
    class="whatsapp-float"
    target="_blank">
    <i class="fab fa-whatsapp"></i>
@@ -176,7 +215,7 @@
     #alexia-lang-btn {
         background: white;
         padding: 10px 18px;
-        border-radius: 5px;
+        border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         display: flex;
         align-items: center;
@@ -199,7 +238,7 @@
         width: 260px;
         max-height: 320px;
         overflow-y: auto;
-        border-radius: 5px;
+        border-radius: 8px;
         box-shadow: 0 8px 24px rgba(0,0,0,0.18);
         display: none;
         border: 1px solid #eee;
@@ -240,34 +279,38 @@
     }
 </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
+  </script>
 
-    <div class="cursor-circle"></div>
-    <script>
-        const cursor = document.querySelector(".cursor-circle");
-        let mouseX = 0, mouseY = 0;
-        let currentX = 0, currentY = 0;
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+          crossorigin="anonymous"></script>
 
-        document.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+  <div class="cursor-circle"></div>
+  <script>
+    const cursor = document.querySelector(".cursor-circle");
+    let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+    document.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
+    (function animate() {
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      cursor.style.left = currentX + "px";
+      cursor.style.top  = currentY + "px";
+      requestAnimationFrame(animate);
+    })();
+  </script>
 
-        function animate() {
-            currentX += (mouseX - currentX) * 0.15;
-            currentY += (mouseY - currentY) * 0.15;
-            cursor.style.left = currentX + "px";
-            cursor.style.top = currentY + "px";
-            requestAnimationFrame(animate);
-        }
-        animate();
-    </script>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
   <script src="userjs/config.js"></script>
-  <script src="userjs/loader.js"></script> 
-  <script src="userjs/blog-single.js"></script>
-</body>
+  <script src="userjs/loader.js"></script>
+  <script src="userjs/blog-hub.js"></script> </body>
 </html>
