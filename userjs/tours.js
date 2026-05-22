@@ -44,24 +44,48 @@ async function displayTrendingTours() {
 
       const wrapper = document.createElement("div");
       wrapper.className = "tour-card-wrapper me-4";
-      wrapper.style.minWidth = "300px";
 
       const card = document.createElement("div");
-      card.className = "card border-0 shadow-sm  overflow-hidden h-100";
+      card.className = "card tour-premium-card h-100";
 
-      const img = lazyImg(imageSrc, tour.title, "height:200px; object-fit:cover; width:100%;");
+      const imgContainer = document.createElement("div");
+      imgContainer.className = "tour-img-container";
+      
+      const img = lazyImg(imageSrc, tour.title, "");
+      imgContainer.appendChild(img);
+
+      const badge = document.createElement("div");
+      badge.className = "tour-img-badge";
+      badge.innerHTML = `<i class="ri-time-line me-1"></i> ${tour.duration || 'Flexible'}`;
+      imgContainer.appendChild(badge);
 
       const body = document.createElement("div");
-      body.className = "card-body";
+      body.className = "card-body d-flex flex-column justify-content-between p-3";
       body.innerHTML = `
-        <h5 class="tour-tag">${tour.title}</h5>
-        <p class="text-muted ">${tour.duration}</p>
-        <h6 class="price-tag fw-bold">USD ${Number(tour.price).toLocaleString()}</h6>
-        <a href="tour-details.html?id=${tour.id}"
-           class=" call-to-action-btn btn  btn-outline-warning  mt-2">Details <i class="ri-arrow-right-up-line"></i></a>
+        <div>
+          <h5 class="tour-premium-title mb-2">${tour.title}</h5>
+          <div class="d-flex align-items-center gap-1 mb-3 text-warning small">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <span class="text-muted small ms-1">(5.0)</span>
+          </div>
+        </div>
+        
+        <div class="d-flex align-items-center justify-content-between pt-3 mt-2 border-top border-light">
+          <div>
+            <span class="text-uppercase text-muted d-block tracking-wider" style="font-size: 0.7rem; font-weight: 600;">From</span>
+            <span class="fw-bold text-dark fs-5">USD ${Number(tour.price).toLocaleString()}</span>
+          </div>
+          <a href="tour-details.html?id=${tour.id}" class="btn tour-premium-btn btn-outline-warning">
+            Details <i class="ri-arrow-right-line ms-1"></i>
+          </a>
+        </div>
       `;
 
-      card.appendChild(img);
+      card.appendChild(imgContainer);
       card.appendChild(body);
       wrapper.appendChild(card);
       container.appendChild(wrapper);
@@ -83,8 +107,6 @@ async function displayDestinations() {
     const res = await fetch(API_DESTINATIONS);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const destinations = await res.json();
-    console.log("Sample dest image value:", destinations[0]?.image);
-
 
     destGrid.innerHTML = "";
     if (!destinations.length) {
@@ -94,24 +116,24 @@ async function displayDestinations() {
 
     destinations.forEach(dest => {
       const imageSrc = dest.image || "https://placehold.co/600x400";
-
-      const shortDesc = dest.description ? dest.description.substring(0, 40) + "..." : "";
+      const shortDesc = dest.description ? dest.description.substring(0, 45) + "..." : "";
 
       const wrapper = document.createElement("div");
-      wrapper.className = "destination-card position-relative overflow-hidden  shadow-sm me-3 flex-shrink-0";
-      wrapper.style.cssText = "width: 260px; height: 250px;";
+      wrapper.className = "destination-premium-card position-relative overflow-hidden me-3 flex-shrink-0";
 
-      const img = lazyImg(imageSrc, dest.name, "width:100%; height:100%; object-fit:cover; transition:0.5s;");
+      const img = lazyImg(imageSrc, dest.name, "width:100%; height:100%; object-fit:cover; transition: transform 0.4s ease;");
 
       const overlay = document.createElement("div");
-      overlay.className = "position-absolute bottom-0 start-0 w-100 p-3 text-white";
-      overlay.style.background = "linear-gradient(transparent, rgba(0,0,0,0.8))";
+      overlay.className = "position-absolute bottom-0 start-0 w-100 p-3 text-white d-flex flex-column justify-content-end";
+      overlay.style.background = "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%, transparent 100%)";
+      overlay.style.height = "100%";
       overlay.innerHTML = `
-        <h5 class="fw-bold mb-0">${dest.name}</h5>
-        <p class="small mb-0 opacity-75">${shortDesc}</p>
+        <h5 class="fw-bold mb-1 text-white">${dest.name}</h5>
+        <p class="small mb-0 text-white-50 opacity-75 line-clamp-desc">${shortDesc}</p>
         <a href="destination-details.html?id=${dest.id}" class="stretched-link">
-          <ion-icon style="font-size:1.5em; color:white; position:absolute; bottom:15px; right:15px;"
-                    name="arrow-forward-outline"></ion-icon>
+          <div class="dest-arrow-box">
+            <i class="ri-arrow-right-line"></i>
+          </div>
         </a>
       `;
 

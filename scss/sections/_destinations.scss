@@ -1,24 +1,26 @@
 @use "../custom" as *;
-body{
+
+body {
   padding-top: 80px;
 }
+
 .destinations-section {
-  background-color: #f8f9fa;
+  background-color: $gray-100;
   color: $text-black;
   padding: 5rem 0; 
 }
 
-
 .category-card {
+  background: $white;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid #dee2e6; 
+  border: 1px solid $gray-300; 
   border-radius: $btns-border-radius;
   
   &:hover {
-    transform: translateY(-8px); 
-    border-color: $primary; 
-    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.1); 
+    transform: translateY(-5px); 
+    border-color: $primary;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05); 
   }
 }
 
@@ -27,87 +29,144 @@ body{
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  padding-bottom: 1.5rem;
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
-.tour-card {
-  min-width: 300px;
+.tour-card-wrapper {
+  min-width: 310px;
   max-width: 320px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+
+    .tour-premium-card {
+      border-color: $primary;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+    }
+
+    .tour-img-container img {
+      transform: scale(1.05);
+    }
+
+    .tour-premium-btn {
+      background-color: $primary !important;
+      color: $white !important;
+    }
+  }
+}
+
+.tour-premium-card {
+  background-color: $white;
+  border: 1px solid $gray-300;
+  border-radius: $btns-border-radius;
   overflow: hidden;
-  border-radius: $btns-border-radius; 
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tour-img-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
 
   img {
-    height: 200px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
   }
-  .ri-star-fill {
-    color: $primary;
-  }
+}
+
+.tour-img-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(32, 32, 32, 0.85);
+  color: $white;
+  padding: 4px 10px;
+  border-radius: $btns-border-radius;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.tour-premium-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: $gray-900;
+  line-height: 1.4;
+}
+
+.tour-premium-btn {
+  border: 1px solid $primary !important;
+  color: $primary !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 6px 14px !important;
+  border-radius: $btns-border-radius !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Top Destinations Premium Style */
+.destination-premium-card {
+  width: 260px;
+  height: 250px;
+  border-radius: $btns-border-radius;
+  border: 1px solid $black-border-color;
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+    border-color: $primary;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+
+    img {
+      transform: scale(1.05);
+    }
+
+    .dest-arrow-box {
+      background: $primary;
+      color: $white;
+    }
   }
 }
 
-.tour-card-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-    .horizontal-scroll { scrollbar-width: none; -ms-overflow-style: none; }
-    .horizontal-scroll::-webkit-scrollbar { display: none; }
-    .line-clamp {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .tour-card-wrapper { transition: transform 0.3s ease; }
-    .tour-card-wrapper:hover { transform: translateY(-10px); }
-
-    .destination-card img { transition: transform 0.5s ease; }
-    .destination-card:hover img { transform: scale(1.1); }
-    .destination-card .stretched-link { z-index: 2; }
-
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
+.dest-arrow-box {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: $btns-border-radius;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
+  color: $white;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  z-index: 3;
 }
 
-#preloader dotlottie-wc {
-  width: 140px;
-  height: 140px;
+.line-clamp-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: $subHeadingColor;
 }
 
-.loader-text {
-  color: $primary;
-  font-size: 14px;
-  letter-spacing: 1px;
-  font-family: Arial, sans-serif;
-  animation: fadePulse 1.5s infinite;
+.horizontal-scroll { 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
-
-@keyframes fadePulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+.horizontal-scroll::-webkit-scrollbar { 
+  display: none; 
 }
-  

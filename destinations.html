@@ -9,58 +9,43 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script
-  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js"
-  type="module">
-</script>
-
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
 </head>
-<body>
+<body style="padding-top: 80px;">
 
   <div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-  .then(r => r.text())
-  .then(data => {
-    document.getElementById('navbar-placeholder').innerHTML = data;
+  <script>
+    fetch('navbar.html')
+    .then(r => r.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
 
-    const normalize = (path) => {
-      return path
-        .replace(/\.html$/, "")   
-        .replace(/\/$/, "")       
-        .split("/")
-        .pop();                  
-    };
+      const normalize = (path) => {
+        return path
+          .replace(/\.html$/, "")   
+          .replace(/\/$/, "")       
+          .split("/")
+          .pop();                  
+      };
 
-    const currentPage = normalize(window.location.pathname);
+      const currentPage = normalize(window.location.pathname);
 
-    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
-      const linkPage = normalize(link.getAttribute("href"));
+      document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+        const linkPage = normalize(link.getAttribute("href"));
 
-      if (linkPage === currentPage) {
-        link.classList.add("active");
-      }
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        }
+      });
     });
-  });
-</script>
-<!-- <div id="preloader">
-  <dotlottie-wc
-    src="https://lottie.host/855292df-2ed9-4f65-9af8-c5cde2b99e84/wFwPToL2x6.lottie"
-    
-    style="width: 340px; height:340px"
-    autoplay
-    loop>
-  </dotlottie-wc> -->
-
-<!-- </div> -->
+  </script>
 
   <section class="destinations-section py-5">
     <div class="container">
 
-      <!-- Category cards (no images — no lazy loading needed) -->
       <div class="row text-center mb-5">
         <div class="col">
           <h2 class="display-6 fw-bold mb-2">Select Category</h2>
@@ -70,36 +55,35 @@
 
       <div class="row justify-content-center mb-5 pb-5">
         <div class="col-6 col-md-3 mb-4">
-          <div class="category-card p-4 text-center rounded-4 shadow-sm">
-            <i class="ri-safari-line ri-3x mb-3 text-warning"></i>
+          <div class="category-card p-4 text-center shadow-sm" style="border-radius: 5px;">
+            <i class="ri-safari-line ri-3x mb-3" style="color: #F99E1C;"></i>
             <h5 class="fw-bold mb-1">Safari Activity</h5>
             <p class="small text-muted mb-0">Experience the thrill of the wild.</p>
           </div>
         </div>
         <div class="col-6 col-md-3 mb-4">
-          <div class="category-card p-4 text-center rounded-4 shadow-sm">
-            <i class="ri-sun-line ri-3x mb-3 text-warning"></i>
+          <div class="category-card p-4 text-center shadow-sm" style="border-radius: 5px;">
+            <i class="ri-sun-line ri-3x mb-3" style="color: #F99E1C;"></i>
             <h5 class="fw-bold mb-1">Beach Relaxation</h5>
             <p class="small text-muted mb-0">Unwind on Kenya's pristine coast.</p>
           </div>
         </div>
         <div class="col-6 col-md-3 mb-4">
-          <div class="category-card p-4 text-center rounded-4 shadow-sm">
-            <i class="ri-ancient-gate-line ri-3x mb-3 text-warning"></i>
+          <div class="category-card p-4 text-center shadow-sm" style="border-radius: 5px;">
+            <i class="ri-ancient-gate-line ri-3x mb-3" style="color: #F99E1C;"></i>
             <h5 class="fw-bold mb-1">Cultural Insights</h5>
             <p class="small text-muted mb-0">Immerse yourself in local traditions.</p>
           </div>
         </div>
         <div class="col-6 col-md-3 mb-4">
-          <div class="category-card p-4 text-center rounded-4 shadow-sm">
-            <i class="ri-walk-line ri-3x mb-3 text-warning"></i>
+          <div class="category-card p-4 text-center shadow-sm" style="border-radius: 5px;">
+            <i class="ri-walk-line ri-3x mb-3" style="color: #F99E1C;"></i>
             <h5 class="fw-bold mb-1">Hiking & Trekking</h5>
             <p class="small text-muted mb-0">Discover breathtaking landscapes on foot.</p>
           </div>
         </div>
       </div>
 
-      <!-- Trending Tours -->
       <div class="row text-center mb-4">
         <div class="col">
           <h2 class="display-6 fw-bold mb-2">Trending Tours</h2>
@@ -107,17 +91,40 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-5">
         <div class="col">
           <div id="tour-container" class="tour-carousel d-flex horizontal-scroll overflow-auto pb-4">
-            <!-- Skeleton cards injected by tours.js -->
-          </div>
+            </div>
         </div>
       </div>
 
-  
+    </div>
+  </section>
 
-  <section class="tour-packages py-5">
+  <section class="blog-section py-5 bg-white">
+    <div class="container">
+      
+      <div class="row align-items-end mb-5">
+        <div class="col-md-8">
+          <span class="text-uppercase fw-bold small tracking-wider" style="color: #F99E1C; letter-spacing: 2px;">Travel Insights</span>
+          <h2 class="display-5 fw-bold mt-2">From Our Safari Experts</h2>
+        </div>
+        <div class="col-md-4 text-md-end d-none d-md-block">
+          <a href="blog.html" class="btn btn-outline-dark px-4" style="border-radius: 5px; font-weight: 600;">Read All Articles</a>
+        </div>
+      </div>
+
+      <div class="row g-4" id="blog-grid">
+        <div class="col-12 text-center text-muted py-4">
+          <div class="spinner-border text-secondary opacity-50 mb-2" role="status" style="width: 1.5rem; height: 1.5rem;"></div>
+          <p class="small text-uppercase tracking-wider mb-0">Loading dynamic updates...</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="tour-packages py-5" style="background-color: #fafafa;">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col">
@@ -127,178 +134,141 @@
       </div>
       <div class="row">
         <div class="col" style="display:flex; justify-content:center; align-items:center;">
-          <div id="index-destinations-container"
-               class="tour-carousel d-flex horizontal-scroll overflow-auto">
-            <!-- Skeleton cards injected by JS -->
-          </div>
+          <div id="index-destinations-container" class="tour-carousel d-flex horizontal-scroll overflow-auto">
+            </div>
         </div>
       </div>
     </div>
   </section>
 
-    </div>
-  </section>
+  <a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-  <a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
-   class="whatsapp-float"
-   target="_blank">
-   <i class="fab fa-whatsapp"></i>
-</a>
-
-<div id="alexia-lang-wrapper">
-    <div id="alexia-lang-btn" onclick="toggleLangMenu()">
-        <span class="country-code">GB</span>
-        <span class="lang-text">EN</span>
-        <i class="ri-arrow-up-s-fill"></i>
+  <div id="alexia-lang-wrapper">
+    <div id="alexia-lang-btn" onclick="toggleLangMenu()" style="border-radius: 5px;">
+      <span class="country-code">GB</span>
+      <span class="lang-text">EN</span>
+      <i class="ri-arrow-up-s-fill"></i>
     </div>
 
-    <div id="alexia-lang-menu">
-        <!-- English -->
-        <div class="lang-item" onclick="changeLanguage('en', 'GB', 'EN')">
-            <span class="code">GB</span> <span class="name">English</span>
-        </div>
-        <!-- German (NEW) -->
-        <div class="lang-item" onclick="changeLanguage('de', 'DE', 'DE')">
-            <span class="code">DE</span> <span class="name">Deutsch</span>
-        </div>
-        <!-- Swahili -->
-        <div class="lang-item" onclick="changeLanguage('sw', 'KE', 'SW')">
-            <span class="code">KE</span> <span class="name">Swahili</span>
-        </div>
-        <!-- Arabic -->
-        <div class="lang-item" onclick="changeLanguage('ar', 'SA', 'AR')">
-            <span class="code">SA</span> <span class="name">Arabic</span>
-        </div>
-        <!-- Chinese -->
-        <div class="lang-item" onclick="changeLanguage('zh-CN', 'CN', 'ZH')">
-            <span class="code">CN</span> <span class="name">Chinese (Simplified)</span>
-        </div>
-        <!-- Dutch -->
-        <div class="lang-item" onclick="changeLanguage('nl', 'NL', 'NL')">
-            <span class="code">NL</span> <span class="name">Dutch</span>
-        </div>
+    <div id="alexia-lang-menu" style="border-radius: 5px;">
+      <div class="lang-item" onclick="changeLanguage('en', 'GB', 'EN')">
+        <span class="code">GB</span> <span class="name">English</span>
+      </div>
+      <div class="lang-item" onclick="changeLanguage('de', 'DE', 'DE')">
+        <span class="code">DE</span> <span class="name">Deutsch</span>
+      </div>
+      <div class="lang-item" onclick="changeLanguage('sw', 'KE', 'SW')">
+        <span class="code">KE</span> <span class="name">Swahili</span>
+      </div>
+      <div class="lang-item" onclick="changeLanguage('ar', 'SA', 'AR')">
+        <span class="code">SA</span> <span class="name">Arabic</span>
+      </div>
+      <div class="lang-item" onclick="changeLanguage('zh-CN', 'CN', 'ZH')">
+        <span class="code">CN</span> <span class="name">Chinese (Simplified)</span>
+      </div>
+      <div class="lang-item" onclick="changeLanguage('nl', 'NL', 'NL')">
+        <span class="code">NL</span> <span class="name">Dutch</span>
+      </div>
     </div>
 
     <div id="google_translate_element" style="display:none;"></div>
-</div>
+  </div>
 
-<script type="text/javascript">
+  <script type="text/javascript">
     function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            autoDisplay: false
-        }, 'google_translate_element');
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false
+      }, 'google_translate_element');
     }
 
     function toggleLangMenu() {
-        document.getElementById('alexia-lang-menu').classList.toggle('show');
-        // Toggle arrow icon direction if you want to get fancy
-        const icon = document.querySelector('#alexia-lang-btn i');
-        icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+      document.getElementById('alexia-lang-menu').classList.toggle('show');
+      const icon = document.querySelector('#alexia-lang-btn i');
+      icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
     function changeLanguage(langCode, country, display) {
-        // Update Button Labels
-        document.querySelector('#alexia-lang-btn .country-code').innerText = country;
-        document.querySelector('#alexia-lang-btn .lang-text').innerText = display;
+      document.querySelector('#alexia-lang-btn .country-code').innerText = country;
+      document.querySelector('#alexia-lang-btn .lang-text').innerText = display;
 
-        // Trigger Google Translate Engine
-        var selectField = document.querySelector("#google_translate_element select");
-        if(selectField) {
-            selectField.value = langCode;
-            selectField.dispatchEvent(new Event('change'));
-        }
-        
-        toggleLangMenu();
+      var selectField = document.querySelector("#google_translate_element select");
+      if(selectField) {
+        selectField.value = langCode;
+        selectField.dispatchEvent(new Event('change'));
+      }
+      toggleLangMenu();
     }
 
     window.onclick = function(event) {
-        if (!event.target.closest('#alexia-lang-wrapper')) {
-            document.getElementById('alexia-lang-menu').classList.remove('show');
-            document.querySelector('#alexia-lang-btn i').style.transform = 'rotate(0deg)';
-        }
+      if (!event.target.closest('#alexia-lang-wrapper')) {
+        document.getElementById('alexia-lang-menu').classList.remove('show');
+        document.querySelector('#alexia-lang-btn i').style.transform = 'rotate(0deg)';
+      }
     }
-</script>
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<style>
+  <style>
     #alexia-lang-wrapper {
-        position: fixed;
-        bottom: 30px;
-        left: 30px;
-        z-index: 999999;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 999999;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     #alexia-lang-btn {
-        background: white;
-        padding: 10px 18px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        font-weight: 600;
-        border: 1px solid #e0e0e0;
-        min-width: 120px;
+      background: white;
+      padding: 10px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      border: 1px solid #e0e0e0;
+      min-width: 120px;
     }
-
     #alexia-lang-btn .country-code { font-size: 16px; color: #333; }
     #alexia-lang-btn .lang-text { font-size: 16px; color: #333; }
     #alexia-lang-btn i { font-size: 10px; color: #666; transition: 0.3s; }
 
     #alexia-lang-menu {
-        position: absolute;
-        bottom: 65px;
-        left: 0;
-        background: white;
-        width: 260px;
-        max-height: 320px;
-        overflow-y: auto;
-        border-radius: 8px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-        display: none;
-        border: 1px solid #eee;
+      position: absolute;
+      bottom: 65px;
+      left: 0;
+      background: white;
+      width: 260px;
+      max-height: 320px;
+      overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      display: none;
+      border: 1px solid #eee;
     }
-
     #alexia-lang-menu.show { display: block; }
-
     .lang-item {
-        padding: 12px 20px;
-        display: flex;
-        align-items: center;
-        gap: 25px;
-        cursor: pointer;
-        border-bottom: 1px solid #f9f9f9;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      cursor: pointer;
+      border-bottom: 1px solid #f9f9f9;
     }
-
     .lang-item:last-child { border-bottom: none; }
     .lang-item:hover { background: #f8f9fa; }
+    .lang-item .code { font-weight: 700; font-size: 16px; color: #000; width: 30px; }
+    .lang-item .name { font-size: 16px; color: #444; }
 
-    .lang-item .code {
-        font-weight: 700;
-        font-size: 16px;
-        color: #000;
-        width: 30px;
-    }
-
-    .lang-item .name {
-        font-size: 16px;
-        color: #444;
-    }
-
-    /* Scrollbar styling matching your image */
     #alexia-lang-menu::-webkit-scrollbar { width: 8px; }
     #alexia-lang-menu::-webkit-scrollbar-track { background: #fff; }
     #alexia-lang-menu::-webkit-scrollbar-thumb { 
-        background: #bbb; 
-        border-radius: 10px; 
-        border: 2px solid #fff;
+      background: #bbb; 
+      border-radius: 5px; 
+      border: 2px solid #fff;
     }
-    
-</style>
+  </style>
 
   <div id="footer-placeholder"></div>
   <script>
@@ -307,12 +277,8 @@
       .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-          crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
-          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
-          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
   <div class="cursor-circle"></div>
   <script>
@@ -327,12 +293,12 @@
       requestAnimationFrame(animate);
     })();
   </script>
-<script src="userjs/config.js"></script>
+
+  <script src="userjs/config.js"></script>
   <script src="userjs/loader.js"></script>
   <script src="userjs/index.js"></script>
-
-    <script src="userjs/tours.js"></script>
-
+  <script src="userjs/tours.js"></script>
+  <script src="userjs/blogs.js"></script>
 
 </body>
 </html>
