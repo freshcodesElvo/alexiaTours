@@ -1,88 +1,150 @@
-// Dynamic Grid Orchestrator Module for Alexia Tours Journal System
-const API_BLOGS = `${BASE_URL}/api/blogs`;
+document.addEventListener("DOMContentLoaded", () => {
+    const tableBody = document.getElementById("blogsTableBody");
+    const searchInput = document.getElementById("searchInput");
+    const form = document.getElementById("blog-creation-form");
+    const summaryInput = document.getElementById("blog-summary");
+    const charCounter = document.getElementById("char-counter");
+    const alertBox = document.getElementById("form-alert");
+    const submitBtn = document.getElementById("submit-btn");
+    const btnText = document.getElementById("btn-text");
+    const btnSpinner = document.getElementById("btn-spinner");
 
-async function displayBlogGrid() {
-  const grid = document.getElementById("blog-grid");
-  if (!grid) return;
+    let loadedBlogs = [];
 
-  try {
-    const res = await fetch(API_BLOGS);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const articles = await res.json();
-
-    grid.innerHTML = "";
-
-    if (!articles.length) {
-      grid.innerHTML = `<div class="col-12 text-center text-muted py-5">No journey entries have been published yet. Check back soon!</div>`;
-      return;
+    // Character Counter
+    if (summaryInput) {
+        summaryInput.addEventListener("input", (e) => {
+            charCounter.innerText = `${e.target.value.length} / 450 characters`;
+        });
     }
 
-    articles.forEach(article => {
-      // Dynamic Asset mapping setup
-      const imageSrc = article.image_path ? `${BASE_URL}/${article.image_path}` : 'assets/img/blog-placeholder.jpg';
-      const postDate = new Date(article.created_at).toLocaleDateString('en-US', {
-        month: 'short', day: 'numeric', year: 'numeric'
-      });
+    // 1. FETCH & RENDER ENTRIES
+    async function fetchJournalEntries() {
+        try {
+            const res = await fetch(`${BASE_URL}/api/blogs`);
+            if (!res.ok) throw new Error("Could not download list.");
+            
+            loadedBlogs = await res.json();
+            renderTable(loadedBlogs);
+        } catch (err) {
+            console.error(err);
+            tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-danger py-4 fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i> Failed to sync dashboard data feed.</td></tr>`;
+        }
+    }
 
-      const col = document.createElement("div");
-      col.className = "col-md-6 col-lg-4 d-flex align-items-stretch";
+    function renderTable(blogs) {
+        if (blogs.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-5">No journal entries found. Click "Write Article" to post your first one!</td></tr>`;
+            return;
+        }
 
-      // Perfectly matches your structural custom configurations ($btns-border-radius: 5px)
-      col.innerHTML = `
-        <div class="card h-100 tour-premium-card w-100" style="border: 1px solid #dee2e6; border-radius: 5px; overflow:hidden; transition: all 0.3s ease; background-color:#fff;">
-          <div style="height: 210px; overflow: hidden; position: relative;" class="tour-img-container">
-            <img src="${imageSrc}" alt="${article.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
-            <span style="position: absolute; top: 12px; left: 12px; background: rgba(32, 32, 32, 0.85); color: #fff; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.5px;">
-              ${article.category}
-            </span>
-          </div>
-          <div class="card-body p-4 d-flex flex-column justify-content-between">
-            <div>
-              <small class="text-muted d-block mb-2"><i class="ri-calendar-line me-1"></i> ${postDate}</small>
-              <h5 class="fw-bold mb-2 text-dark" style="font-size: 1.2rem; line-height: 1.4; transition: color 0.2s ease;">${article.title}</h5>
-              <p class="text-secondary small mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height:1.6;">
-                ${article.summary}
-              </p>
-            </div>
-            <a href="blog-details.html?slug=${article.slug}" class="btn tour-premium-btn mt-2" style="border: 1px solid #F99E1C; color: #F99E1C; width: max-content; border-radius: 5px; font-weight: 600; font-size: 0.85rem; padding: 6px 14px; background: transparent;">
-              Read Article <i class="ri-arrow-right-line ms-1"></i>
-            </a>
-          </div>
-        </div>
-      `;
+        tableBody.innerHTML = blogs.map(blog => {
+            const date = new Date(blog.created_at).toLocaleDateString('en-GB', {
+                day: '2-digit', month: 'short', year: 'numeric'
+            });
+            const imageSrc = blog.image_path ? `${BASE_URL}/${blog.image_path}` : '../pictures/placeholder.jpg';
+            
+            return `
+                <tr>
+                    <td><img src="${imageSrc}" class="blog-thumb" alt="Cover"></td>
+                    <td><div class="fw-bold text-dark">${blog.title}</div><small class="text-muted text-monospace">${blog.slug}</small></td>
+                    <td><span class="badge bg-secondary opacity-75 px-2.5 py-1.5" style="border-radius:4px;">${blog.category}</span></td>
+                    <td><div class="text-muted small text-truncate" style="max-width: 280px;">${blog.summary}</div></td>
+                    <td class="small text-secondary fw-semibold">${date}</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-danger px-2.5 remove-blog-btn" data-id="${blog.id}" style="border-radius:4px;">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
 
-      // Simple mouse-hover transform micro-interactions applied directly for instant responsiveness
-      const cardInner = col.querySelector('.tour-premium-card');
-      col.addEventListener('mouseenter', () => {
-          cardInner.style.transform = 'translateY(-6px)';
-          cardInner.style.borderColor = '#F99E1C';
-          cardInner.style.boxShadow = '0 0.5rem 1.5rem rgba(0, 0, 0, 0.08)';
-          col.querySelector('img').style.transform = 'scale(1.05)';
-          const btn = col.querySelector('.tour-premium-btn');
-          btn.style.backgroundColor = '#F99E1C';
-          btn.style.color = '#fff';
-      });
-      col.addEventListener('mouseleave', () => {
-          cardInner.style.transform = 'translateY(0)';
-          cardInner.style.borderColor = '#dee2e6';
-          cardInner.style.boxShadow = 'none';
-          col.querySelector('img').style.transform = 'scale(1)';
-          const btn = col.querySelector('.tour-premium-btn');
-          btn.style.backgroundColor = 'transparent';
-          btn.style.color = '#F99E1C';
-      });
+        // Attach Delete Listeners
+        document.querySelectorAll(".remove-blog-btn").forEach(btn => {
+            btn.addEventListener("click", () => deleteArticle(btn.getAttribute("data-id")));
+        });
+    }
 
-      grid.appendChild(col);
-    });
+    // 2. SEARCH FILTER LOGIC
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = loadedBlogs.filter(b => 
+                b.title.toLowerCase().includes(term) || 
+                b.slug.toLowerCase().includes(term) ||
+                b.category.toLowerCase().includes(term)
+            );
+            renderTable(filtered);
+        });
+    }
 
-  } catch (err) {
-    console.error("Blog Grid Execution Context Logs Error:", err);
-    grid.innerHTML = `
-      <div class="col-12 text-center text-danger py-5">
-        <i class="ri-error-warning-line display-4 d-block mb-2"></i>
-        Failed to fetch the journal feed data array cleanly. Please try again later.
-      </div>`;
-  }
-}
+    // 3. REMOVE ARTICLE INTERACTION
+    async function deleteArticle(id) {
+        if (!confirm("Are you absolutely sure you want to completely remove this article entry? This action cannot be undone.")) return;
 
-document.addEventListener("DOMContentLoaded", displayBlogGrid);
+        try {
+            const res = await fetch(`${BASE_URL}/api/blogs/${id}`, { method: "DELETE" });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || "Failed deletion.");
+
+            fetchJournalEntries();
+        } catch (err) {
+            alert(`Error removing article: ${err.message}`);
+        }
+    }
+
+    // 4. MODAL CREATION SUBMIT ENGINE
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            alertBox.className = "alert d-none";
+            submitBtn.disabled = true;
+            btnText.innerText = "Processing Assets...";
+            btnSpinner.classList.remove("d-none");
+
+            const formData = new FormData(form);
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/blogs/create`, {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await res.json();
+
+                if (!res.ok) throw new Error(data.error || "Submission failed.");
+
+                alertBox.className = "alert alert-success d-block fw-semibold";
+                alertBox.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ${data.message}`;
+                form.reset();
+                if (charCounter) charCounter.innerText = "0 / 450 characters";
+
+                setTimeout(() => {
+                    // Hide modal gracefully using Bootstrap context methods
+                    const modalEl = document.getElementById('addBlogModal');
+                    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+                    if (modalInstance) modalInstance.hide();
+                    
+                    // Reset buttons and reload tables layout views
+                    submitBtn.disabled = false;
+                    btnText.innerText = "Publish Post Live";
+                    btnSpinner.classList.add("d-none");
+                    alertBox.className = "alert d-none";
+                    
+                    fetchJournalEntries();
+                }, 1500);
+
+            } catch (err) {
+                console.error(err);
+                alertBox.className = "alert alert-danger d-block fw-semibold";
+                alertBox.innerHTML = `<i class="bi bi-exclamation-octagon-fill me-2"></i> ${err.message}`;
+                submitBtn.disabled = false;
+                btnText.innerText = "Publish Post Live";
+                btnSpinner.classList.add("d-none");
+            }
+        });
+    }
+
+    // Initial Execution Context Call
+    fetchJournalEntries();
+});
