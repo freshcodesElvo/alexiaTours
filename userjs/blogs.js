@@ -9,10 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnText = document.getElementById("btn-text");
     const btnSpinner = document.getElementById("btn-spinner");
 
+    // Public element hook (for destinations.html / blog.html)
+    const blogGrid = document.getElementById("blog-grid");
+
     let loadedBlogs = [];
 
-    // Character Counter
-    if (summaryInput) {
+    // Character Counter (Only runs if element exists)
+    if (summaryInput && charCounter) {
         summaryInput.addEventListener("input", (e) => {
             charCounter.innerText = `${e.target.value.length} / 450 characters`;
         });
@@ -25,14 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) throw new Error("Could not download list.");
             
             loadedBlogs = await res.json();
-            renderTable(loadedBlogs);
+            
+            // Route data to the correct renderer depending on which page we are on
+            if (tableBody) {
+                renderTable(loadedBlogs);
+            }
+            if (blogGrid) {
+                renderPublicGrid(loadedBlogs);
+            }
         } catch (err) {
             console.error(err);
-            tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-danger py-4 fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i> Failed to sync dashboard data feed.</td></tr>`;
+            // Defensive guard for admin error message
+            if (tableBody) {
+                tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-danger py-4 fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i> Failed to sync dashboard data feed.</td></tr>`;
+            }
+            // Defensive guard for public error message
+            if (blogGrid) {
+                blogGrid.innerHTML = `<div class="col-12 text-center text-muted py-4"><p class="small text-uppercase tracking-wider mb-0">Failed to load dynamic updates.</p></div>`;
+            }
         }
     }
 
+    // Admin Panel Table Renderer
     function renderTable(blogs) {
+        if (!tableBody) return; // Safety exit
+
         if (blogs.length === 0) {
             tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-5">No journal entries found. Click "Write Article" to post your first one!</td></tr>`;
             return;
@@ -64,6 +84,47 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".remove-blog-btn").forEach(btn => {
             btn.addEventListener("click", () => deleteArticle(btn.getAttribute("data-id")));
         });
+    }
+
+    // Public Website Grid Renderer (for destinations.html / blog.html)
+    function renderPublicGrid(blogs) {
+        if (!blogGrid) return; // Safety exit
+
+        if (blogs.length === 0) {
+            blogGrid.innerHTML = `<div class="col-12 text-center text-muted py-4"><p class="small text-uppercase tracking-wider mb-0">No articles published yet.</p></div>`;
+            return;
+        }
+
+        // Limit to top 3 articles for the destinations preview widget row
+        const displayBlogs = blogs.slice(0, 3);
+
+        blogGrid.innerHTML = displayBlogs.map(blog => {
+            const date = new Date(blog.created_at).toLocaleDateString('en-GB', {
+                day: '2-digit', month: 'short', year: 'numeric'
+            });
+            const imageSrc = blog.image_path ? `${BASE_URL}/${blog.image_path}` : 'assets/images/placeholder.jpg';
+
+            return `
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm" style="border-radius: 5px; overflow: hidden;">
+                        <div style="height: 200px; overflow: hidden; position: relative;">
+                            <img src="${imageSrc}" class="w-100 h-100" style="object-fit: cover;" alt="Cover">
+                            <span class="position-absolute top-0 start-0 badge text-white m-3 px-3 py-2" style="background-color: #F99E1C; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">
+                                ${blog.category}
+                            </span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="text-muted small mb-2"><i class="fa-regular fa-calendar me-1"></i> ${date}</div>
+                            <h4 class="fw-bold h5 text-dark mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${blog.title}</h4>
+                            <p class="text-muted small flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${blog.summary}</p>
+                            <a href="blog-single.html?article=${blog.slug}" class="text-decoration-none fw-bold small mt-3" style="color: #F99E1C;">
+                                Read Full Narrative <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
 
     // 2. SEARCH FILTER LOGIC
@@ -98,10 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            alertBox.className = "alert d-none";
-            submitBtn.disabled = true;
-            btnText.innerText = "Processing Assets...";
-            btnSpinner.classList.remove("d-none");
+            if(alertBox) alertBox.className = "alert d-none";
+            if(submitBtn) submitBtn.disabled = true;
+            if(btnText) btnText.innerText = "Processing Assets...";
+            if(btnSpinner) btnSpinner.classList.remove("d-none");
 
             const formData = new FormData(form);
 
@@ -114,33 +175,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!res.ok) throw new Error(data.error || "Submission failed.");
 
-                alertBox.className = "alert alert-success d-block fw-semibold";
-                alertBox.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ${data.message}`;
+                if (alertBox) {
+                    alertBox.className = "alert alert-success d-block fw-semibold";
+                    alertBox.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ${data.message}`;
+                }
                 form.reset();
                 if (charCounter) charCounter.innerText = "0 / 450 characters";
 
                 setTimeout(() => {
-                    // Hide modal gracefully using Bootstrap context methods
                     const modalEl = document.getElementById('addBlogModal');
-                    const modalInstance = bootstrap.Modal.getInstance(modalEl);
-                    if (modalInstance) modalInstance.hide();
+                    if (modalEl) {
+                        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+                        if (modalInstance) modalInstance.hide();
+                    }
                     
-                    // Reset buttons and reload tables layout views
-                    submitBtn.disabled = false;
-                    btnText.innerText = "Publish Post Live";
-                    btnSpinner.classList.add("d-none");
-                    alertBox.className = "alert d-none";
+                    if(submitBtn) submitBtn.disabled = false;
+                    if(btnText) btnText.innerText = "Publish Post Live";
+                    if(btnSpinner) btnSpinner.classList.add("d-none");
+                    if(alertBox) alertBox.className = "alert d-none";
                     
                     fetchJournalEntries();
                 }, 1500);
 
             } catch (err) {
                 console.error(err);
-                alertBox.className = "alert alert-danger d-block fw-semibold";
-                alertBox.innerHTML = `<i class="bi bi-exclamation-octagon-fill me-2"></i> ${err.message}`;
-                submitBtn.disabled = false;
-                btnText.innerText = "Publish Post Live";
-                btnSpinner.classList.add("d-none");
+                if (alertBox) {
+                    alertBox.className = "alert alert-danger d-block fw-semibold";
+                    alertBox.innerHTML = `<i class="bi bi-exclamation-octagon-fill me-2"></i> ${err.message}`;
+                }
+                if(submitBtn) submitBtn.disabled = false;
+                if(btnText) btnText.innerText = "Publish Post Live";
+                if(btnSpinner) btnSpinner.classList.add("d-none");
             }
         });
     }
