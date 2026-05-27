@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="text-muted small mb-2"><i class="fa-regular fa-calendar me-1"></i> ${date}</div>
                             <h4 class="fw-bold h5 text-dark mb-2 lh-sm" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${blog.title}</h4>
                             <p class="text-muted small flex-grow-1 mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5;">${blog.summary}</p>
-                            <a href="blog-single.html?article=${blog.slug}" class="text-decoration-none fw-bold small mt-auto d-inline-flex align-items-center gap-1" style="color: #F99E1C;">
+                            <a href="blog-single.html?id=${blog.id}" class="text-decoration-none fw-bold small mt-auto d-inline-flex align-items-center gap-1" style="color: #F99E1C;">
                                 Read Full Narrative <i class="ri-arrow-right-line"></i>
                             </a>
                         </div>
