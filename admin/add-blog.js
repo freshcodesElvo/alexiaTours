@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnText = document.getElementById("btn-text");
     const btnSpinner = document.getElementById("btn-spinner");
 
-    let loadedBlogs = [];
+    // Edit Modal Elements
+    const editForm = document.getElementById("edit-blog-form");
 
-    // Character Counter
+    let loadedBlogs = [];
+    let editModalInstance = null;
+
+    // Character Counter for Creation Summary
     if (summaryInput) {
         summaryInput.addEventListener("input", (e) => {
             charCounter.innerText = `${e.target.value.length} / 450 characters`;
@@ -44,23 +48,35 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             const imageSrc = blog.image_path ? `${BASE_URL}/${blog.image_path}` : '../pictures/placeholder.jpg';
             
+            // Fallback unique structural identifier string validation mapping
+            const blogId = blog.id || blog._id;
+
             return `
                 <tr>
                     <td><img src="${imageSrc}" class="blog-thumb" alt="Cover"></td>
-                    <td><div class="fw-bold text-dark">${blog.title}</div><small class="text-muted text-monospace">${blog.slug}</small></td>
+                    <td><div class="fw-bold text-dark">${blog.title}</div><small class="text-muted text-monospace">${blog.slug || ''}</small></td>
                     <td><span class="badge bg-secondary opacity-75 px-2.5 py-1.5" style="border-radius:4px;">${blog.category}</span></td>
-                    <td><div class="text-muted small text-truncate" style="max-width: 280px;">${blog.summary}</div></td>
+                    <td><div class="text-muted small text-truncate" style="max-width: 280px;">${blog.summary || ''}</div></td>
                     <td class="small text-secondary fw-semibold">${date}</td>
                     <td class="text-center">
-                        <button class="btn btn-sm btn-outline-danger px-2.5 remove-blog-btn" data-id="${blog.id}" style="border-radius:4px;">
-                            <i class="bi bi-trash3-fill"></i>
-                        </button>
+                        <div class="d-inline-flex gap-1">
+                            <button class="btn btn-sm btn-outline-secondary px-2.5 edit-blog-trigger-btn" data-id="${blogId}" style="border-radius:4px;" title="Edit Entry">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger px-2.5 remove-blog-btn" data-id="${blogId}" style="border-radius:4px;" title="Delete Entry">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
+                        </div>
                     </td>
                 </tr>
             `;
         }).join('');
 
-        // Attach Delete Listeners
+        // Attach Action Button Click Listeners Dynamically
+        document.querySelectorAll(".edit-blog-trigger-btn").forEach(btn => {
+            btn.addEventListener("click", () => openEditBlogModal(btn.getAttribute("data-id")));
+        });
+
         document.querySelectorAll(".remove-blog-btn").forEach(btn => {
             btn.addEventListener("click", () => deleteArticle(btn.getAttribute("data-id")));
         });
@@ -71,9 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
         searchInput.addEventListener("input", (e) => {
             const term = e.target.value.toLowerCase();
             const filtered = loadedBlogs.filter(b => 
-                b.title.toLowerCase().includes(term) || 
-                b.slug.toLowerCase().includes(term) ||
-                b.category.toLowerCase().includes(term)
+                (b.title && b.title.toLowerCase().includes(term)) || 
+                (b.slug && b.slug.toLowerCase().includes(term)) ||
+                (b.category && b.category.toLowerCase().includes(term))
             );
             renderTable(filtered);
         });
@@ -120,12 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (charCounter) charCounter.innerText = "0 / 450 characters";
 
                 setTimeout(() => {
-                    // Hide modal gracefully using Bootstrap context methods
                     const modalEl = document.getElementById('addBlogModal');
                     const modalInstance = bootstrap.Modal.getInstance(modalEl);
                     if (modalInstance) modalInstance.hide();
                     
-                    // Reset buttons and reload tables layout views
                     submitBtn.disabled = false;
                     btnText.innerText = "Publish Post Live";
                     btnSpinner.classList.add("d-none");
@@ -145,68 +159,88 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Initial Execution Context Call
-    fetchJournalEntries();
-});
-// Initialize Bootstrap Modal instantiation handlers globally
-let editModalInstance = null;
+    // 5. FETCH ACTIVE DATA RECORD FOR REVISION MODAL
+    async function openEditBlogModal(postId) {
+        if (!postId) return;
 
-// 1. Fetch current details from backend and reveal pre-populated modal
-function openEditBlogModal(postId) {
-    // Dynamically retrieve target entry metadata from your backend route
-    fetch(`/api/blog/${postId}`)
-        .then(response => response.json())
-        .then(post => {
-            // Populate form nodes with active database record fields
-            document.getElementById('edit-blog-id').value = post._id;
-            document.getElementById('edit-blog-title').value = post.title;
-            document.getElementById('edit-blog-category').value = post.category || 'Safari Guide';
-            document.getElementById('edit-blog-image').value = post.imageUrl || '';
-            document.getElementById('edit-blog-content').value = post.content;
+        try {
+            // Updated path mapping syntax consistency standard
+            const response = await fetch(`${BASE_URL}/api/blogs/${postId}`);
+            if (!response.ok) throw new Error("Target document record processing dropped.");
+            
+            const data = await response.json();
+            const post = data.data || data; // Safely unpack nested data targets if wrapped
 
-            // Trigger Modal UI visibility toggle safely 
-            if(!editModalInstance) {
+            // Assign raw fields safely back inside structural form nodes
+            document.getElementById('edit-blog-id').value = post.id || post._id || '';
+            document.getElementById('edit-blog-title').value = post.title || '';
+            document.getElementById('edit-blog-category').value = post.category || 'Safari Tips';
+            document.getElementById('edit-blog-image').value = post.image_path || post.imageUrl || '';
+            document.getElementById('edit-blog-summary').value = post.summary || '';
+            document.getElementById('edit-blog-content').value = post.content || '';
+
+            if (!editModalInstance) {
                 editModalInstance = new bootstrap.Modal(document.getElementById('editBlogModal'));
             }
             editModalInstance.show();
-        })
-        .catch(err => {
+        } catch (err) {
             console.error("Failed fetching data payload details:", err);
             alert("Error trying to pull down records for revision context processing.");
-        });
-}
-
-// 2. Intercept submission event context to fire PUT/PATCH update pipeline request
-document.getElementById('edit-blog-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const postId = document.getElementById('edit-blog-id').value;
-    
-    const updatedPayload = {
-        title: document.getElementById('edit-blog-title').value,
-        category: document.getElementById('edit-blog-category').value,
-        imageUrl: document.getElementById('edit-blog-image').value,
-        content: document.getElementById('edit-blog-content').value
-    };
-
-    // Execute standard operational network payload update transfer
-    fetch(`/api/blog/${postId}`, {
-        method: 'PUT', // or 'PATCH' depending on how your backend controller routes updates
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(updatedPayload)
-    })
-    .then(response => {
-        if(response.ok) {
-            alert("Blog publication data successfully compiled and saved!");
-            editModalInstance.hide();
-            location.reload(); // Refresh viewport layout grid list items seamlessly
-        } else {
-            alert("Backend verification flag failure. Update rejected.");
         }
-    })
-    .catch(err => {
-        console.error("Operational update transfer loop crashed:", err);
-    });
+    }
+
+    // 6. PROCESS COMMITTED EDIT REVISIONS SUBMISSION
+    if (editForm) {
+        editForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const postId = document.getElementById('edit-blog-id').value;
+            if (!postId) return alert("System state error: Target structural identifier is missing.");
+            
+            const updatedPayload = {
+                title: document.getElementById('edit-blog-title').value.trim(),
+                category: document.getElementById('edit-blog-category').value,
+                imageUrl: document.getElementById('edit-blog-image').value.trim(),
+                summary: document.getElementById('edit-blog-summary').value.trim(),
+                content: document.getElementById('edit-blog-content').value.trim()
+            };
+
+            const saveButton = this.querySelector('button[type="submit"]');
+            const originalText = saveButton.innerHTML;
+
+            try {
+                saveButton.disabled = true;
+                saveButton.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Saving...`;
+
+                const response = await fetch(`${BASE_URL}/api/blogs/${postId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedPayload)
+                });
+                
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || "Backend compilation verification failure.");
+
+                alert("Blog publication data successfully compiled and saved!");
+                
+                if (editModalInstance) {
+                    editModalInstance.hide();
+                }
+
+                // Seamlessly reload layout grid list items without an aggressive full page refresh
+                fetchJournalEntries();
+            } catch (err) {
+                console.error("Operational update transfer loop crashed:", err);
+                alert(`Update rejected: ${err.message}`);
+            } finally {
+                saveButton.disabled = false;
+                saveButton.innerHTML = originalText;
+            }
+        });
+    }
+
+    // Initial Execution Context Call
+    fetchJournalEntries();
 });
