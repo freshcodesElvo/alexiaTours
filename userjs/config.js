@@ -1,6 +1,6 @@
 const BASE_URL = "https://alexia-tours-backend-production.up.railway.app";
 const API_TOURS = `${BASE_URL}/api/tours`;
-const API_DESTINATIONS = `${BASE_URL}/api/destinations`;
+const API_DESTINATIONS = "https://alexia-tours-backend-production.up.railway.app/api/explore-places";
 const API_PACKAGES = `${BASE_URL}/api/packages`;
 const IMAGE_BASE = `${BASE_URL}/uploads/`;
 
