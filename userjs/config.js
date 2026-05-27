@@ -1,9 +1,13 @@
+// ─── CORE ENDPOINT CONFIGURATIONS ───
 const BASE_URL = "https://alexia-tours-backend-production.up.railway.app";
+
 const API_TOURS = `${BASE_URL}/api/tours`;
-const API_DESTINATIONS = "https://alexia-tours-backend-production.up.railway.app/api/explore-places";
+const API_DESTINATIONS = `${BASE_URL}/api/explore-places`;
 const API_PACKAGES = `${BASE_URL}/api/packages`;
+const API_BLOGS = `${BASE_URL}/api/blogs`; // Explicitly mapped to resolve your data-transit routes
 const IMAGE_BASE = `${BASE_URL}/uploads/`;
 
+// ─── SHIMMER SKELETON STYLES INJECTION ───
 (function injectSkeletonStyles() {
   if (document.getElementById("skeleton-styles")) return;
   const style = document.createElement("style");
@@ -29,11 +33,7 @@ const IMAGE_BASE = `${BASE_URL}/uploads/`;
   document.head.appendChild(style);
 })();
 
-
-
-
-
-
+// ─── PERFORMANCE-CENTRIC LAZY LOADING ENGINE ───
 const imageObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -43,17 +43,15 @@ const imageObserver = new IntersectionObserver(
       if (!src) return;
       img.src = src;
       img.onload  = () => img.classList.add("loaded");
-      img.onerror = () => { img.src = "https://placehold.co/400x300"; img.classList.add("loaded"); };
+      img.onerror = () => { 
+        img.src = "https://placehold.co/400x300"; 
+        img.classList.add("loaded"); 
+      };
       imageObserver.unobserve(img);
     });
   },
   { rootMargin: "200px 0px" }
 );
-
-
-
-
-
 
 function lazyImg(src, alt, extraStyle = "") {
   const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E";

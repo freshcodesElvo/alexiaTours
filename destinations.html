@@ -296,9 +296,35 @@
 
   <script src="userjs/config.js"></script>
   <script src="userjs/loader.js"></script>
+  
   <script src="userjs/index.js"></script>
   <script src="userjs/tours.js"></script>
   <script src="userjs/blogs.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      console.log("DOM ready. Triggering database renders...");
+      
+      // 1. Render Trending Tours
+      if (typeof displayTrendingTours === "function") {
+        await displayTrendingTours();
+      }
+
+      // 2. Render Top Destinations
+      if (typeof displayDestinations === "function") {
+        await displayDestinations();
+      }
+      
+      // 3. Render Blog Articles
+      if (typeof displayBlogs === "function") {
+        await displayBlogs();
+      }
+    });
+  </script>
 </body>
 </html>
+
+ 
+</body>
+</html>
+

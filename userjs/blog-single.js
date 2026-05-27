@@ -8,25 +8,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const bannerEl = document.getElementById("article-banner");
     const bodyEl = document.getElementById("article-body");
 
-    // 1. Extract ?article=slug parameter from location path
+    // 1. Extract parameters from the search query path gracefully
     const urlParams = new URLSearchParams(window.location.search);
     const articleSlug = urlParams.get("article");
+    const articleId = urlParams.get("id"); // Dynamic backup hook
 
-    if (!articleSlug) {
-        showErrorState("No article reference was found in the URL parameter path.");
+    if (!articleSlug && !articleId) {
+        showErrorState("No article reference identifier was found in the URL parameter path.");
         return;
     }
 
-    // 2. Fetch specific article record by its unique slug string identifier
+    // 2. Fetch specific article record matching backend specifications cleanly
     async function loadFullNarrative() {
         try {
-            const response = await fetch(`${BASE_URL}/api/blogs/${articleSlug}`);
+            // Safe fallback reference to core environment context endpoints
+            const baseHost = typeof BASE_URL !== 'undefined' ? BASE_URL : "https://alexia-tours-backend-production.up.railway.app";
+            
+            // Dynamic path routing: if your route handler expects IDs, prioritize articleId
+            const fetchPath = articleId 
+                ? `${baseHost}/api/blogs/${articleId}`
+                : `${baseHost}/api/blogs/${articleSlug}`;
+
+            const response = await fetch(fetchPath);
             
             if (response.status === 404) {
                 showErrorState("The travel narrative you are looking for does not exist or has been archived.");
                 return;
             }
-            if (!response.ok) throw new Error("Server communication fault.");
+            if (!response.ok) throw new Error(`Server communication fault. Status code: ${response.status}`);
 
             const blog = await response.json();
             renderArticleDetails(blog);
@@ -46,36 +55,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Set text items
-        titleEl.innerText = blog.title;
-        categoryEl.innerText = blog.category;
-        dateEl.innerHTML = `<i class="ri-calendar-todo-line me-1"></i> Published on ${formattedDate}`;
+        if (titleEl) titleEl.innerText = blog.title;
+        if (categoryEl) categoryEl.innerText = blog.category || 'Travel Insights';
+        if (dateEl) dateEl.innerHTML = `<i class="ri-calendar-todo-line me-1"></i> Published on ${formattedDate}`;
         
-        // Handle image resolution fallback mapping safely
-        bannerEl.src = blog.image_path ? `${BASE_URL}/${blog.image_path}` : 'assets/images/placeholder-safari.jpg';
-        bannerEl.alt = blog.title;
+        // ─── ACCURATE ASSET RESOLUTION LAYER ───
+        if (bannerEl) {
+            let imageSrc = 'assets/images/placeholder-safari.jpg';
+            
+            if (blog.image_path) {
+                if (blog.image_path.startsWith("http://") || blog.image_path.startsWith("https://")) {
+                    imageSrc = blog.image_path;
+                } else {
+                    // Extract relative filenames without duplication blocks
+                    const pureFilename = blog.image_path.replace("./", "").replace(/^uploads\//, "");
+                    
+                    const baseImg = typeof IMAGE_BASE !== 'undefined' ? IMAGE_BASE : "https://alexia-tours-backend-production.up.railway.app/uploads/";
+                    
+                    imageSrc = baseImg.endsWith("/uploads/") 
+                        ? `${baseImg}${pureFilename}` 
+                        : `${baseImg}/${pureFilename}`;
+                }
+            }
+            bannerEl.src = imageSrc;
+            bannerEl.alt = blog.title;
+            bannerEl.onerror = function() { this.src = 'https://placehold.co/1200x600'; };
+        }
 
         /* Crucial Fix: Use innerText instead of innerHTML for content layout. 
            Coupled with CSS `white-space: pre-line`, this naturally parses your backend's 
            double-line break spacings without needing a complex rich-text parser layout engine!
         */
-        bodyEl.innerText = blog.content;
+        if (bodyEl) bodyEl.innerText = blog.content || blog.description || "";
 
-        // Toggle elements visibility states smooth
-        loader.classList.add("d-none");
-        container.classList.remove("d-none");
+        // Toggle elements visibility states smoothly
+        if (loader) loader.classList.add("d-none");
+        if (container) container.classList.remove("d-none");
         document.title = `${blog.title} | Alexia's Tours`;
     }
 
     function showErrorState(message) {
         if (!loader) return;
+        loader.classList.remove("d-none");
+        if (container) container.classList.add("d-none");
+        
         loader.innerHTML = `
             <div class="py-5 text-center">
                 <i class="ri-compass-3-line ri-2x text-danger mb-3 d-inline-block"></i>
                 <h4 class="fw-bold text-dark">Narrative Lost in Transit</h4>
                 <p class="text-muted small mx-auto" style="max-width: 400px;">${message}</p>
-                <a href="destinations.html" class="btn btn-sm btn-dark px-4 mt-2" style="border-radius:4px;">Return to Destinations</a>
+                <a href="blog.html" class="btn btn-sm btn-dark px-4 mt-2" style="border-radius:4px;">Return to Articles</a>
             </div>
-         Leyers`;
+        `;
     }
 
     loadFullNarrative();

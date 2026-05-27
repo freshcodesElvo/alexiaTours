@@ -97,7 +97,6 @@ async function displayTrendingTours() {
   }
 }
 
-// --- UPDATED METHOD: SAFE DESTINATIONS RENDERING ENGINE ---
 async function displayDestinations() {
   const destGrid = document.getElementById("index-destinations-container");
   if (!destGrid) return;
@@ -116,19 +115,7 @@ async function displayDestinations() {
     }
 
     destinations.forEach(dest => {
-      let imageSrc = "https://placehold.co/600x400";
-
-      if (dest.image) {
-        // If it's already a full production link (Cloudinary/HTTP), use it as-is
-        if (dest.image.startsWith("http://") || dest.image.startsWith("https://")) {
-          imageSrc = dest.image;
-        } else {
-          // Otherwise, strip local prefixes and append your standard base path asset URL string
-          const cleanedPath = dest.image.replace("./uploads/", "").replace("uploads/", "");
-          imageSrc = `${IMAGE_BASE}${cleanedPath}`;
-        }
-      }
-
+      const imageSrc = dest.image || "https://placehold.co/600x400";
       const shortDesc = dest.description ? dest.description.substring(0, 45) + "..." : "";
 
       const wrapper = document.createElement("div");
@@ -143,7 +130,7 @@ async function displayDestinations() {
       overlay.innerHTML = `
         <h5 class="fw-bold mb-1 text-white">${dest.name}</h5>
         <p class="small mb-0 text-white-50 opacity-75 line-clamp-desc">${shortDesc}</p>
-        <a href="destination-details.html?id=${dest.id || dest._id}" class="stretched-link">
+        <a href="destination-details.html?id=${dest.id}" class="stretched-link">
           <div class="dest-arrow-box">
             <i class="ri-arrow-right-line"></i>
           </div>
