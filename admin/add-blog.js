@@ -164,20 +164,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!postId) return;
 
         try {
-            // Updated path mapping syntax consistency standard
             const response = await fetch(`${BASE_URL}/api/blogs/${postId}`);
             if (!response.ok) throw new Error("Target document record processing dropped.");
             
             const data = await response.json();
-            const post = data.data || data; // Safely unpack nested data targets if wrapped
+            const post = data.data || data; 
 
-            // Assign raw fields safely back inside structural form nodes
+            // Assign base text fields
             document.getElementById('edit-blog-id').value = post.id || post._id || '';
             document.getElementById('edit-blog-title').value = post.title || '';
             document.getElementById('edit-blog-category').value = post.category || 'Safari Tips';
-            document.getElementById('edit-blog-image').value = post.image_path || post.imageUrl || '';
             document.getElementById('edit-blog-summary').value = post.summary || '';
             document.getElementById('edit-blog-content').value = post.content || '';
+
+            // Note: For security reasons, browser file inputs cannot be pre-assigned an arbitrary text path string.
+            // Reset the file input picker element so it's fresh for an optional new upload selection
+            document.getElementById('edit-blog-image').value = '';
 
             if (!editModalInstance) {
                 editModalInstance = new bootstrap.Modal(document.getElementById('editBlogModal'));
@@ -197,13 +199,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const postId = document.getElementById('edit-blog-id').value;
             if (!postId) return alert("System state error: Target structural identifier is missing.");
             
-            const updatedPayload = {
-                title: document.getElementById('edit-blog-title').value.trim(),
-                category: document.getElementById('edit-blog-category').value,
-                imageUrl: document.getElementById('edit-blog-image').value.trim(),
-                summary: document.getElementById('edit-blog-summary').value.trim(),
-                content: document.getElementById('edit-blog-content').value.trim()
-            };
+            // Re-encapsulate into a FormData container to safely transport files across the wire
+            const editFormData = new FormData();
+            editFormData.append('title', document.getElementById('edit-blog-title').value.trim());
+            editFormData.append('category', document.getElementById('edit-blog-category').value);
+            editFormData.append('summary', document.getElementById('edit-blog-summary').value.trim());
+            editFormData.append('content', document.getElementById('edit-blog-content').value.trim());
+
+            // Grab file asset if the user selected one
+            const imageFileInput = document.getElementById('edit-blog-image');
+            if (imageFileInput.files.length > 0) {
+                editFormData.append('blog_image', imageFileInput.files[0]);
+            }
 
             const saveButton = this.querySelector('button[type="submit"]');
             const originalText = saveButton.innerHTML;
@@ -214,10 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const response = await fetch(`${BASE_URL}/api/blogs/${postId}`, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(updatedPayload)
+                    // CRITICAL: Do NOT explicitly declare a Content-Type header when sending FormData!
+                    // Leaving it out allows the browser to automatically compute the correct boundary parameters.
+                    body: editFormData 
                 });
                 
                 const result = await response.json();
@@ -225,11 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 alert("Blog publication data successfully compiled and saved!");
                 
-                if (editModalInstance) {
-                    editModalInstance.hide();
-                }
-
-                // Seamlessly reload layout grid list items without an aggressive full page refresh
+                if (editModalInstance) editModalInstance.hide();
                 fetchJournalEntries();
             } catch (err) {
                 console.error("Operational update transfer loop crashed:", err);
