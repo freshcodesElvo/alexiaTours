@@ -185,7 +185,6 @@
             });
     </script>
 
-    <!-- Logout Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -202,7 +201,6 @@
         </div>
     </div>
 
-    <!-- ══════════════════════ MAIN ══════════════════════ -->
     <div class="main" style="margin-top: 5em;">
 
         <div class="page-header d-flex justify-content-between align-items-center mb-4">
@@ -233,7 +231,6 @@
 
     </div>
 
-    <!-- Add / Edit Destination Modal -->
     <div class="modal fade" id="destinationModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -250,19 +247,19 @@
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Destination Name</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="destinationName" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Description</label>
-                        <textarea id="description" class="form-control" rows="3"></textarea>
+                        <textarea id="destinationDescription" class="form-control" rows="3"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Image</label>
-                        <input type="file" id="image" class="form-control" accept="image/*">
+                        <input type="file" id="destinationImage" class="form-control" accept="image/*">
                         <img
-                            id="preview"
+                            id="destinationPreview"
                             alt="Image preview"
                             class="rounded mt-2 w-100"
                             style="max-height: 200px; object-fit: cover; display: none;"
@@ -280,17 +277,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('image').addEventListener('change', evt => {
-            const [file] = evt.target.files;
-            if (file) {
-                const preview = document.getElementById('preview');
-                preview.src = URL.createObjectURL(file);
-                preview.style.display = 'block';
-            }
-        });
-    </script>
 
     <script src="destinations.js"></script>
 </body>

@@ -5,14 +5,18 @@ let modal = new bootstrap.Modal(
 );
 
 // --- 1. PREVIEW IMAGE LOGIC ---
-document.getElementById("image").addEventListener("change", function() {
-    const file = this.files[0];
-    if (file) {
-        const preview = document.getElementById("preview");
-        preview.src = URL.createObjectURL(file);
-        preview.style.display = "block";
-    }
-});
+// Updated to a safer selector that handles dynamic image state changes gracefully
+const destinationImageInput = document.getElementById("destinationImage");
+if (destinationImageInput) {
+    destinationImageInput.addEventListener("change", function() {
+        const file = this.files[0];
+        if (file) {
+            const preview = document.getElementById("destinationPreview");
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+        }
+    });
+}
 
 // --- 2. LOAD DESTINATIONS ---
 async function loadDestinations() {
@@ -33,17 +37,20 @@ async function loadDestinations() {
                 ? d.description.substring(0, 50) + "..." 
                 : (d.description || "-");
 
+            // Safeguard row IDs whether database engine references via .id or ._id attributes
+            const currentId = d.id || d._id;
+
             table.innerHTML += `
             <tr>
-                <td>${d.id}</td>
-                <td><img src="${imageSrc}" class="destination-img" style="width:70px; height:50px; object-fit:cover; border-radius:4px;"></td>
+                <td>${currentId}</td>
+                <td><img src="${imageSrc}" class="destination-img" style="width:70px; height:50px; object-fit:cover; border-radius:4px;" alt="Cover"></td>
                 <td><strong>${d.name}</strong></td>
-                <td>${descriptionSnippet || "-"}</td>
+                <td>${descriptionSnippet}</td>
                 <td>
-                    <button onclick="editDestination(${d.id})" class="btn btn-icon" style="font-size: 1.5rem; color: blue">
+                    <button onclick="editDestination(${currentId})" class="btn btn-icon" style="font-size: 1.5rem; color: blue" title="Edit">
                         <ion-icon name="create-outline"></ion-icon>
                     </button>
-                    <button onclick="deleteDestination(${d.id})" class="btn btn-icon" style="font-size: 1.5rem; color: red">
+                    <button onclick="deleteDestination(${currentId})" class="btn btn-icon" style="font-size: 1.5rem; color: red" title="Delete">
                         <ion-icon name="trash-outline"></ion-icon>
                     </button>
                 </td>
@@ -63,10 +70,10 @@ function openModal() {
 
 function clearForm() {
     document.getElementById("destinationId").value = "";
-    document.getElementById("name").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("image").value = "";
-    const preview = document.getElementById("preview");
+    document.getElementById("destinationName").value = "";
+    document.getElementById("destinationDescription").value = "";
+    document.getElementById("destinationImage").value = "";
+    const preview = document.getElementById("destinationPreview");
     preview.src = "";
     preview.style.display = "none";
 }
@@ -74,12 +81,12 @@ function clearForm() {
 // --- 4. SAVE DESTINATION ---
 async function saveDestination() {
     const id = document.getElementById("destinationId").value;
-    const name = document.getElementById("name").value.trim();
-    const description = document.getElementById("description").value.trim();
-    const imageFile = document.getElementById("image").files[0];
+    const name = document.getElementById("destinationName").value.trim();
+    const description = document.getElementById("destinationDescription").value.trim();
+    const imageFile = document.getElementById("destinationImage").files[0];
 
     if (!name) {
-        alert("Name is required");
+        alert("Name field parameters are required.");
         return;
     }
 
@@ -98,17 +105,18 @@ async function saveDestination() {
         const res = await fetch(url, {
             method: method,
             body: formData
+            // Note: Keep Content-Type omitted so browser sets boundary properties automatically
         });
 
-        if (!res.ok) throw new Error("Save failed");
+        if (!res.ok) throw new Error("Save operational update pipeline failed.");
 
         modal.hide();
         clearForm();
         loadDestinations();
-        alert("Success!");
+        alert("Destination metrics saved successfully!");
     } catch (error) {
         console.error(error);
-        alert("Error saving destination");
+        alert("Error saving destination data to railway remote host.");
     }
 }
 
@@ -116,14 +124,15 @@ async function saveDestination() {
 async function editDestination(id) {
     try {
         const res = await fetch(`${API}/${id}`);
-        if (!res.ok) throw new Error("Destination not found");
+        if (!res.ok) throw new Error("Destination document path dropped.");
         const d = await res.json();
 
-        document.getElementById("destinationId").value = d.id;
-        document.getElementById("name").value = d.name || "";
-        document.getElementById("description").value = d.description || "";
+        // Populate fields using uniquely namespaced element IDs
+        document.getElementById("destinationId").value = d.id || d._id;
+        document.getElementById("destinationName").value = d.name || "";
+        document.getElementById("destinationDescription").value = d.description || "";
         
-        const preview = document.getElementById("preview");
+        const preview = document.getElementById("destinationPreview");
         if (d.image) {
             preview.src = d.image;
             preview.style.display = "block";
@@ -131,26 +140,26 @@ async function editDestination(id) {
             preview.style.display = "none";
         }
 
-        document.getElementById("image").value = "";
+        document.getElementById("destinationImage").value = "";
 
         modal.show();
     } catch (error) {
         console.error(error);
-        alert("Failed to load destination");
+        alert("Failed to load target destination data details.");
     }
 }
 
 // --- 6. DELETE DESTINATION ---
 async function deleteDestination(id) {
-    if (!confirm("Delete destination?")) return;
+    if (!confirm("Are you certain you want to remove this destination entry permanently?")) return;
 
     try {
         const res = await fetch(`${API}/${id}`, { method: "DELETE" });
-        if (!res.ok) throw new Error("Delete failed");
+        if (!res.ok) throw new Error("Delete execution context rejected.");
         loadDestinations();
     } catch (error) {
         console.error(error);
-        alert("Error deleting destination");
+        alert("Error deleting destination from data cluster.");
     }
 }
 
