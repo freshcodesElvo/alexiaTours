@@ -164,16 +164,13 @@
 
                 <div class="scroll-section mb-5">
                     <h3 class="fw-bold text-dark mb-3">About This Safari Experience</h3>
-                    <div id="tour-description" class="fs-5 text-secondary lh-lg mb-4" style="font-size: 1.1rem; text-align: justify;">
-                        </div>
+                    <div id="tour-description" class="fs-5 text-secondary lh-lg mb-4" style="font-size: 1.1rem; text-align: justify;"></div>
                 </div>
 
                 <div class="scroll-section mb-5 pt-4 border-top" id="itinerary-anchor">
                     <h3 class="fw-bold text-dark mb-2">Your Detailed Day-by-Day Journey</h3>
                     <p class="text-muted small mb-4">Click individual days below to inspect lodging stops, meal inclusions, and tracking maps.</p>
-                    
-                    <div class="premium-timeline ms-2" id="dynamic-itinerary-box">
-                        </div>
+                    <div class="premium-timeline ms-2" id="dynamic-itinerary-box"></div>
                 </div>
 
                 <div class="scroll-section mb-4 pt-4 border-top" id="inclusions-anchor">
@@ -213,35 +210,81 @@
                 </div>
 
             </div>
-
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg p-4 rounded-4 sticky-top" style="top: 100px; border: 1px solid #eee !important;">
-                    <h4 class="fw-bold mb-1">Book This Tour</h4>
-                    <p class="text-muted small mb-3">Reserve your spot now. Our expert team will reach out within 12 hours to confirm personalized dates.</p>
-                    <hr class="my-2 text-muted opacity-20">
-                    <form id="booking-form">
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold text-dark">Full Name</label>
-                            <input type="text" class="form-control py-2.5" style="border-radius:6px;" required placeholder="Jane Doe">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold text-dark">Email Address</label>
-                            <input type="email" class="form-control py-2.5" style="border-radius:6px;" required placeholder="jane@example.com">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold text-dark">Anticipated Departure Date</label>
-                            <input type="date" class="form-control py-2.5" style="border-radius:6px;">
-                        </div>
-                        <button type="submit" class="btn text-dark w-100 fw-bold py-3 mt-2 btn-warning" style="background-color:#F99E1C; border:none; border-radius:6px;">Check Seasonal Availability</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        <span class="text-muted small d-block mb-1">Need instant layout customization assistance?</span>
-                        <a href="https://wa.me/254700000000" class="text-success text-decoration-none small fw-bold d-inline-flex align-items-center gap-1">
-                            <i class="ri-whatsapp-line fs-5"></i> Chat with Safari Curation Desk
-                        </a>
+            
+           <div class="col-lg-4">
+    <div class="card border-0 shadow-lg p-4 rounded-4 sticky-top" style="top: 100px; border: 1px solid #eee !important;">
+        <h4 class="fw-bold mb-1">Secure Your Safari Space</h4>
+        <p class="text-muted small mb-3">Check real-time seasonal availability and generate an instant tailored quote for your travel party.</p>
+        <hr class="my-2 text-muted opacity-20">
+        
+        <div id="booking-flow-container">
+            <form id="booking-form">
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">Full Name</label>
+                    <input type="text" id="bk-name" class="form-control py-2" required placeholder="Jane Doe">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">Email Address</label>
+                    <input type="email" id="bk-email" class="form-control py-2" required placeholder="jane@example.com">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">Phone Number</label>
+                    <input type="tel" id="bk-phone" class="form-control py-2" required placeholder="+254 700 000000">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">Anticipated Departure Date</label>
+                    <input type="date" id="bk-date" class="form-control py-2" required>
+                </div>
+                
+                <div class="row g-2 mb-3">
+                    <div class="col-6">
+                        <label class="form-label small fw-bold text-dark">Adults</label>
+                        <input type="number" id="bk-adults" class="form-control py-2" min="1" value="1" required>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label small fw-bold text-dark">Children</label>
+                        <input type="number" id="bk-children" class="form-control py-2" min="0" value="0" required>
                     </div>
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">Special Requests / Preferences</label>
+                    <textarea id="bk-requests" class="form-control small" rows="2" placeholder="Dietary restrictions, preferred bedding options, airport pickups..."></textarea>
+                </div>
+
+                <button type="submit" class="btn text-dark w-100 fw-bold py-3 mt-2 btn-warning mb-4" style="background-color:#F99E1C; border:none; border-radius:6px;">
+                    Check Availability & Get Quote
+                </button>
+            </form>
+        </div>
+
+        <div class="payment-methods-showcase text-center bg-light p-3 rounded-3 border mb-2">
+            <span class="text-uppercase text-muted fw-bold d-block mb-2" style="font-size: 10px; letter-spacing: 0.5px;">Secured Gateway Channels</span>
+            <div class="d-flex align-items-center justify-content-center gap-3">
+                <div class="bg-white border rounded px-2 py-1 d-flex align-items-center justify-content-center" style="height: 32px; min-width: 60px;" title="M-Pesa">
+                    <span class="fw-black text-success" style="font-family: sans-serif; font-size: 13px; font-weight: 900; letter-spacing: -0.5px;">M-PESA</span>
+                </div>
+                <div class="bg-white border rounded px-2 py-1 d-flex align-items-center justify-content-center text-primary" style="height: 32px; width: 60px;" title="Visa Card Secured">
+                    <i class="ri-visa-line fs-2" style="line-height: 1; color: #1A1F71;"></i>
+                </div>
+                <div class="bg-white border rounded px-2 py-1 d-flex align-items-center justify-content-center" style="height: 32px; width: 60px;" title="Mastercard Secured">
+                    <i class="ri-mastercard-line fs-2" style="line-height: 1; color: #EB001B;"></i>
+                </div>
             </div>
+            <div class="d-flex align-items-center justify-content-center gap-1 text-muted mt-2" style="font-size: 11px;">
+                <i class="ri-lock-password-line text-success"></i> 256-bit SSL Encrypted Transaction
+            </div>
+        </div>
+        
+        <div class="text-center mt-3">
+            <span class="text-muted small d-block mb-1">Need instant layout customization assistance?</span>
+            <a href="https://wa.me/254700000000" class="text-success text-decoration-none small fw-bold d-inline-flex align-items-center gap-1">
+                <i class="ri-whatsapp-line fs-5"></i> Chat with Safari Curation Desk
+            </a>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 
@@ -315,6 +358,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/intasend-inline-js-sdk@1.0.4/build/intasend-inline.js"></script>
     <script src="userjs/tour-details.js"></script>
 </body>
 </html>

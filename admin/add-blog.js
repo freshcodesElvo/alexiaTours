@@ -148,3 +148,65 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial Execution Context Call
     fetchJournalEntries();
 });
+// Initialize Bootstrap Modal instantiation handlers globally
+let editModalInstance = null;
+
+// 1. Fetch current details from backend and reveal pre-populated modal
+function openEditBlogModal(postId) {
+    // Dynamically retrieve target entry metadata from your backend route
+    fetch(`/api/blog/${postId}`)
+        .then(response => response.json())
+        .then(post => {
+            // Populate form nodes with active database record fields
+            document.getElementById('edit-blog-id').value = post._id;
+            document.getElementById('edit-blog-title').value = post.title;
+            document.getElementById('edit-blog-category').value = post.category || 'Safari Guide';
+            document.getElementById('edit-blog-image').value = post.imageUrl || '';
+            document.getElementById('edit-blog-content').value = post.content;
+
+            // Trigger Modal UI visibility toggle safely 
+            if(!editModalInstance) {
+                editModalInstance = new bootstrap.Modal(document.getElementById('editBlogModal'));
+            }
+            editModalInstance.show();
+        })
+        .catch(err => {
+            console.error("Failed fetching data payload details:", err);
+            alert("Error trying to pull down records for revision context processing.");
+        });
+}
+
+// 2. Intercept submission event context to fire PUT/PATCH update pipeline request
+document.getElementById('edit-blog-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const postId = document.getElementById('edit-blog-id').value;
+    
+    const updatedPayload = {
+        title: document.getElementById('edit-blog-title').value,
+        category: document.getElementById('edit-blog-category').value,
+        imageUrl: document.getElementById('edit-blog-image').value,
+        content: document.getElementById('edit-blog-content').value
+    };
+
+    // Execute standard operational network payload update transfer
+    fetch(`/api/blog/${postId}`, {
+        method: 'PUT', // or 'PATCH' depending on how your backend controller routes updates
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedPayload)
+    })
+    .then(response => {
+        if(response.ok) {
+            alert("Blog publication data successfully compiled and saved!");
+            editModalInstance.hide();
+            location.reload(); // Refresh viewport layout grid list items seamlessly
+        } else {
+            alert("Backend verification flag failure. Update rejected.");
+        }
+    })
+    .catch(err => {
+        console.error("Operational update transfer loop crashed:", err);
+    });
+});

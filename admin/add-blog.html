@@ -164,6 +164,65 @@
         </div>
     </div>
 
+    <div class="modal fade" id="editBlogModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="editBlogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 5px;">
+                <div class="modal-header bg-light border-0 py-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-pencil-square fs-4" style="color: #F99E1C;"></i>
+                        <h5 class="modal-title fw-bold" id="editBlogModalLabel">Modify Journal Entry</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <form id="edit-blog-form">
+                    <div class="modal-body p-4">
+                        <input type="hidden" id="edit-blog-id">
+                        
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Article Title</label>
+                                <input type="text" id="edit-blog-title" class="form-control" style="border-radius: 5px;" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Journal Category</label>
+                                <select id="edit-blog-category" class="form-select text-dark" style="border-radius: 5px;" required>
+                                    <option value="Safari Tips">Safari Tips</option>
+                                    <option value="Packing Guide">Packing Guide</option>
+                                    <option value="Cultural Insights">Cultural Insights</option>
+                                    <option value="Beach Relaxation">Beach Relaxation</option>
+                                    <option value="General Travel">General Travel</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Featured Image Link Reference</label>
+                                <input type="text" id="edit-blog-image" class="form-control" placeholder="assets/img/blog/custom.jpg" style="border-radius: 5px;">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">SEO Summary Snippet</label>
+                                <textarea id="edit-blog-summary" class="form-control" rows="2" maxlength="450" style="border-radius: 5px;" required></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Complete Narrative Body Content</label>
+                                <textarea id="edit-blog-content" class="form-control" rows="8" style="border-radius: 5px; line-height: 1.6;" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 bg-light py-3">
+                        <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal" style="border-radius: 5px;">Cancel</button>
+                        <button type="submit" class="btn fw-bold text-white px-4" style="background-color: #F99E1C; border-radius: 5px;">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         fetch('nav.html').then(r => r.text()).then(data => { document.getElementById('nav-placeholder').innerHTML = data; });
         fetch('adminNavbar.html').then(r => r.text()).then(data => {
