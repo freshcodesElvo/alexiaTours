@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | Alexia's Tours</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .faq-header {
+            /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x600') no-repeat center center; */
+            background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6));
+
+            background-size: cover;
+            padding: 100px 0;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #fff3e0;
+            color: #F99E1C;
+        }
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(249, 158, 28, 0.25);
+            border-color: #F99E1C;
+        }
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5.5 0 0 1 .708.708l-6 6a.5.5.5 0 0 1-.708 0l-6-6a.5.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
+
+    const normalize = (path) => {
+        return path
+          .replace(/\.html$/, "")   
+          .replace(/\/$/, "")       
+          .split("/")
+          .pop();                  
+    };
+
+    const currentPage = normalize(window.location.pathname);
+
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+      const linkPage = normalize(link.getAttribute("href"));
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+    <!-- Hero Banner Section -->
+    <section class="faq-header text-center text-white">
+        <div class="container">
+            <h1 class="display-4 fw-bold">How Can We Help You?</h1>
+            <p class="lead">Find quick answers to common questions about your upcoming adventures.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Layout -->
+    <section class="container py-5 my-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <div class="accordion accordion-flush shadow-sm p-3 bg-white" id="faqAccordion" style="border-radius: 8px;">
+                    
+                    <!-- Item 1 -->
+                    <div class="accordion-item border-bottom py-2">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed fw-bold fs-5 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                How do I book a tour package?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary lh-lg">
+                                Booking an itinerary with us is simple! Browse our public destinations grid, select your preferred itinerary package details, and use the integrated dynamic inquiry form. Our travel orchestration experts will immediately reply with pricing layouts and formal updates.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="accordion-item border-bottom py-2">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed fw-bold fs-5 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                What is your cancellation and refund strategy?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary lh-lg">
+                                Cancellations made 14 days or more prior to the scheduled departure route qualify for a full refund trace layout. Cancellations requested less than 14 days out incur localized processing overheads depending on specific destination constraints.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="accordion-item border-bottom py-2">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed fw-bold fs-5 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Are travel medical insurance configurations included?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary lh-lg">
+                                Base tour metrics cover emergency localized medical evacuation transport services, but comprehensive medical insurance plans are not included automatically. We highly advise configuring private medical transit plans before clearing customs pipelines.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="accordion-item py-2">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed fw-bold fs-5 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Can I request custom route adjustments?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary lh-lg">
+                                Absolutely! We love engineering custom parameters for groups, corporate flights, or specific family itineraries. Drop us an inquiry thread directly via our contact channels to scale out a customized experience.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+<a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
+   class="whatsapp-float"
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+<div id="alexia-lang-wrapper">
+    <div id="alexia-lang-btn" onclick="toggleLangMenu()">
+        <span class="country-code">GB</span>
+        <span class="lang-text">EN</span>
+        <i class="ri-arrow-up-s-fill"></i>
+    </div>
+
+    <div id="alexia-lang-menu">
+        <!-- English -->
+        <div class="lang-item" onclick="changeLanguage('en', 'GB', 'EN')">
+            <span class="code">GB</span> <span class="name">English</span>
+        </div>
+        <!-- German (NEW) -->
+        <div class="lang-item" onclick="changeLanguage('de', 'DE', 'DE')">
+            <span class="code">DE</span> <span class="name">Deutsch</span>
+        </div>
+        <!-- Swahili -->
+        <div class="lang-item" onclick="changeLanguage('sw', 'KE', 'SW')">
+            <span class="code">KE</span> <span class="name">Swahili</span>
+        </div>
+        <!-- Arabic -->
+        <div class="lang-item" onclick="changeLanguage('ar', 'SA', 'AR')">
+            <span class="code">SA</span> <span class="name">Arabic</span>
+        </div>
+        <!-- Chinese -->
+        <div class="lang-item" onclick="changeLanguage('zh-CN', 'CN', 'ZH')">
+            <span class="code">CN</span> <span class="name">Chinese (Simplified)</span>
+        </div>
+        <!-- Dutch -->
+        <div class="lang-item" onclick="changeLanguage('nl', 'NL', 'NL')">
+            <span class="code">NL</span> <span class="name">Dutch</span>
+        </div>
+    </div>
+
+    <div id="google_translate_element" style="display:none;"></div>
+</div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    function toggleLangMenu() {
+        document.getElementById('alexia-lang-menu').classList.toggle('show');
+        // Toggle arrow icon direction if you want to get fancy
+        const icon = document.querySelector('#alexia-lang-btn i');
+        icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    function changeLanguage(langCode, country, display) {
+        document.querySelector('#alexia-lang-btn .country-code').innerText = country;
+        document.querySelector('#alexia-lang-btn .lang-text').innerText = display;
+
+        var selectField = document.querySelector("#google_translate_element select");
+        if(selectField) {
+            selectField.value = langCode;
+            selectField.dispatchEvent(new Event('change'));
+        }
+        
+        toggleLangMenu();
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest('#alexia-lang-wrapper')) {
+            document.getElementById('alexia-lang-menu').classList.remove('show');
+            document.querySelector('#alexia-lang-btn i').style.transform = 'rotate(0deg)';
+        }
+    }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+    #alexia-lang-wrapper {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 999999;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #alexia-lang-btn {
+        background: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        border: 1px solid #e0e0e0;
+        min-width: 120px;
+    }
+
+    #alexia-lang-btn .country-code { font-size: 16px; color: #333; }
+    #alexia-lang-btn .lang-text { font-size: 16px; color: #333; }
+    #alexia-lang-btn i { font-size: 10px; color: #666; transition: 0.3s; }
+
+    #alexia-lang-menu {
+        position: absolute;
+        bottom: 65px;
+        left: 0;
+        background: white;
+        width: 260px;
+        max-height: 320px;
+        overflow-y: auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        display: none;
+        border: 1px solid #eee;
+    }
+
+    #alexia-lang-menu.show { display: block; }
+
+    .lang-item {
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        cursor: pointer;
+        border-bottom: 1px solid #f9f9f9;
+    }
+
+    .lang-item:last-child { border-bottom: none; }
+    .lang-item:hover { background: #f8f9fa; }
+
+    .lang-item .code {
+        font-weight: 700;
+        font-size: 16px;
+        color: #000;
+        width: 30px;
+    }
+
+    .lang-item .name {
+        font-size: 16px;
+        color: #444;
+    }
+
+    #alexia-lang-menu::-webkit-scrollbar { width: 8px; }
+    #alexia-lang-menu::-webkit-scrollbar-track { background: #fff; }
+    #alexia-lang-menu::-webkit-scrollbar-thumb { 
+        background: #bbb; 
+        border-radius: 10px; 
+        border: 2px solid #fff;
+    }
+</style>
+    <div id="footer-placeholder"></div>
+  <script>
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
+  </script>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

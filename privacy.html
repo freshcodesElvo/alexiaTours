@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Alexia's Tours</title>
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="pictures/Logo.jpeg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .privacy-content p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        .privacy-content h2 {
+            font-weight: 700;
+            color: #1a202c;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
+
+    const normalize = (path) => {
+        return path
+          .replace(/\.html$/, "")   
+          .replace(/\/$/, "")       
+          .split("/")
+          .pop();                  
+    };
+
+    const currentPage = normalize(window.location.pathname);
+
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+      const linkPage = normalize(link.getAttribute("href"));
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+<body class="bg-light">
+
+    <div class="container py-5 my-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 bg-white p-5 shadow-sm" style="border-radius: 8px;">
+                
+                <div class="border-bottom pb-3 mb-4">
+                    <h1 class="fw-bold text-dark">Privacy Policy</h1>
+                    <p class="text-muted small mb-0">Last Updated: June 2026</p>
+                </div>
+
+                <div class="privacy-content">
+                    <p>At Alexia's Tours, we respect your data storage space and are dedicated to managing your identifiable records safely and transparently. This compliance document highlights how we track, process, and secure metrics transmitted across our travel booking pipelines.</p>
+
+                    <h2>1. Information Captured in Transit</h2>
+                    <p>When interacting with our client web layouts or forms, we collect information necessary to fulfill your travel arrangements, including:</p>
+                    <ul>
+                        <li>Identity keys (Full name, contact phone rows, email endpoints).</li>
+                        <li>Travel logistics data (Passport parameters where required, specific destination selections).</li>
+                        <li>Automated analytical tracking metrics (IP locations, processing cookies via browser contexts).</li>
+                    </ul>
+
+                    <h2>2. Processing Architecture Paths</h2>
+                    <p>Your records are processed strictly to ensure smooth execution contexts across your trips, specifically for:</p>
+                    <ul>
+                        <li>Confirming tour package allocations and database reservations cleanly.</li>
+                        <li>Answering service inquiries via our system channels.</li>
+                        <li>Pushing critical notification updates regarding modified itinerary timelines.</li>
+                    </ul>
+
+                    <h2>3. Asset Infrastructure Security</h2>
+                    <p>We deploy modern encryption protocols to prevent unauthorized file tracking or payload leaks. Your payment transitions and inquiry data strings are safely routed through secure SSL tunnels straight to our hosting repositories.</p>
+
+                    <h2>4. Third-Party Resource Transfers</h2>
+                    <p>Alexia's Tours will never sell or trade your data profiles. We pass data parameters to trusted destination entities (such as localized hotels, field guides, or transit authorities) solely to fulfill your booked tour requirements.</p>
+
+                    <h2>5. Your Rights</h2>
+                    <p>You can request to audit, edit, or purge your records from our cloud server storage configurations at any time. Simply drop an email to our team endpoints to clear your profile logs.</p>
+                </div>
+
+                <div class="mt-5 pt-4 border-top text-center">
+                    <a href="index.html" class="btn btn-outline-dark btn-sm px-4" style="border-radius: 4px;">Return to Dashboard Home</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<a href="https://wa.me/254728085007?text=Hello%20Alexia%20Tours,%20I'm%20interested%20in%20your%20services"
+   class="whatsapp-float"
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+<div id="alexia-lang-wrapper">
+    <div id="alexia-lang-btn" onclick="toggleLangMenu()">
+        <span class="country-code">GB</span>
+        <span class="lang-text">EN</span>
+        <i class="ri-arrow-up-s-fill"></i>
+    </div>
+
+    <div id="alexia-lang-menu">
+        <!-- English -->
+        <div class="lang-item" onclick="changeLanguage('en', 'GB', 'EN')">
+            <span class="code">GB</span> <span class="name">English</span>
+        </div>
+        <!-- German (NEW) -->
+        <div class="lang-item" onclick="changeLanguage('de', 'DE', 'DE')">
+            <span class="code">DE</span> <span class="name">Deutsch</span>
+        </div>
+        <!-- Swahili -->
+        <div class="lang-item" onclick="changeLanguage('sw', 'KE', 'SW')">
+            <span class="code">KE</span> <span class="name">Swahili</span>
+        </div>
+        <!-- Arabic -->
+        <div class="lang-item" onclick="changeLanguage('ar', 'SA', 'AR')">
+            <span class="code">SA</span> <span class="name">Arabic</span>
+        </div>
+        <!-- Chinese -->
+        <div class="lang-item" onclick="changeLanguage('zh-CN', 'CN', 'ZH')">
+            <span class="code">CN</span> <span class="name">Chinese (Simplified)</span>
+        </div>
+        <!-- Dutch -->
+        <div class="lang-item" onclick="changeLanguage('nl', 'NL', 'NL')">
+            <span class="code">NL</span> <span class="name">Dutch</span>
+        </div>
+    </div>
+
+    <div id="google_translate_element" style="display:none;"></div>
+</div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    function toggleLangMenu() {
+        document.getElementById('alexia-lang-menu').classList.toggle('show');
+        // Toggle arrow icon direction if you want to get fancy
+        const icon = document.querySelector('#alexia-lang-btn i');
+        icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    function changeLanguage(langCode, country, display) {
+        document.querySelector('#alexia-lang-btn .country-code').innerText = country;
+        document.querySelector('#alexia-lang-btn .lang-text').innerText = display;
+
+        var selectField = document.querySelector("#google_translate_element select");
+        if(selectField) {
+            selectField.value = langCode;
+            selectField.dispatchEvent(new Event('change'));
+        }
+        
+        toggleLangMenu();
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest('#alexia-lang-wrapper')) {
+            document.getElementById('alexia-lang-menu').classList.remove('show');
+            document.querySelector('#alexia-lang-btn i').style.transform = 'rotate(0deg)';
+        }
+    }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+    #alexia-lang-wrapper {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 999999;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #alexia-lang-btn {
+        background: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        border: 1px solid #e0e0e0;
+        min-width: 120px;
+    }
+
+    #alexia-lang-btn .country-code { font-size: 16px; color: #333; }
+    #alexia-lang-btn .lang-text { font-size: 16px; color: #333; }
+    #alexia-lang-btn i { font-size: 10px; color: #666; transition: 0.3s; }
+
+    #alexia-lang-menu {
+        position: absolute;
+        bottom: 65px;
+        left: 0;
+        background: white;
+        width: 260px;
+        max-height: 320px;
+        overflow-y: auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        display: none;
+        border: 1px solid #eee;
+    }
+
+    #alexia-lang-menu.show { display: block; }
+
+    .lang-item {
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        cursor: pointer;
+        border-bottom: 1px solid #f9f9f9;
+    }
+
+    .lang-item:last-child { border-bottom: none; }
+    .lang-item:hover { background: #f8f9fa; }
+
+    .lang-item .code {
+        font-weight: 700;
+        font-size: 16px;
+        color: #000;
+        width: 30px;
+    }
+
+    .lang-item .name {
+        font-size: 16px;
+        color: #444;
+    }
+
+    #alexia-lang-menu::-webkit-scrollbar { width: 8px; }
+    #alexia-lang-menu::-webkit-scrollbar-track { background: #fff; }
+    #alexia-lang-menu::-webkit-scrollbar-thumb { 
+        background: #bbb; 
+        border-radius: 10px; 
+        border: 2px solid #fff;
+    }
+</style>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+          integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+          crossorigin="anonymous"></script>
+</body>
+</html>
