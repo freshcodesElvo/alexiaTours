@@ -3,25 +3,17 @@ export default function HomePage() {
     <main>
       <section className="hero">
         <div className="container">
-          <p>Welcome to Alexia&apos;s Tours</p>
+          <p className="eyebrow">WELCOME TO ALEXIA&apos;S TOURS</p>
           <h1>Discover the beauty of Kenya.</h1>
-          <p>
-            Experience unforgettable safaris, beach vacations, cultural
-            adventures, hotel bookings and airport transfers.
-          </p>
-          <a className="button" href="/destinations">
-            Explore destinations
-          </a>
+          <p>Experience unforgettable safaris, beach vacations, cultural adventures, hotel bookings and airport transfers.</p>
+          <a className="button" href="/destinations">Explore Destinations</a>
         </div>
       </section>
-
       <section className="section">
         <div className="container">
+          <p className="eyebrow">YOUR NEXT ADVENTURE</p>
           <h2>Your Kenyan adventure starts here.</h2>
-          <p>
-            We are beginning the migration of the Alexia&apos;s Tours website
-            to Next.js, one page at a time.
-          </p>
+          <p>From the wild landscapes of the Maasai Mara to the beautiful beaches of the Kenyan coast, we help you create experiences worth remembering.</p>
         </div>
       </section>
     </main>
