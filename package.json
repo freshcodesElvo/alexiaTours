@@ -1,36 +1,27 @@
 {
-  "name": "alexiatours",
-  "version": "1.0.0",
-  "description": "alexia tours website",
-  "main": "index.js",
+  "name": "alexia-tours-nextjs",
+  "version": "2.0.0",
+  "private": true,
   "scripts": {
-    "build": "sass scss:assets/css",
-    "compile:sass": "sass --watch scss:assets/css"
-  },
-  "keywords": [
-    "keywords:",
-    "kenya",
-    "tours",
-    "safari",
-    "travel",
-    "maasai-mara",
-    "nairobi",
-    "website",
-    "alexia-tours"
-  ],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "sass": "^1.90.0"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sass": "sass --watch scss:assets/css"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
-    "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.7",
-    "cors": "^2.8.6",
-    "intasend-inlinejs-sdk": "^4.0.7",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "remixicon": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "sass": "^1.90.0",
+    "typescript": "latest"
   }
 }
